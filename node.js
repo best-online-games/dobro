@@ -12631,6 +12631,730 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_gallery) = class $mol_gallery extends ($.$mol_view) {
+		items(){
+			return [];
+		}
+		side_size(id){
+			return "1";
+		}
+		side_items(id){
+			return [];
+		}
+		sub(){
+			return (this.items());
+		}
+		Side(id){
+			const obj = new this.$.$mol_gallery();
+			(obj.style) = () => ({"flexGrow": (this.side_size(id))});
+			(obj.items) = () => ((this.side_items(id)));
+			return obj;
+		}
+	};
+	($mol_mem_key(($.$mol_gallery.prototype), "Side"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_gallery extends $.$mol_gallery {
+            sub() {
+                const items = this.items();
+                if (items.length <= 3)
+                    return items;
+                return [
+                    this.Side(0),
+                    this.Side(1),
+                ];
+            }
+            side_items(id) {
+                const items = this.items();
+                const middle = items.length % 2
+                    ? Math.ceil(items.length / 3)
+                    : items.length / 2;
+                return id
+                    ? items.slice(middle)
+                    : items.slice(0, middle);
+            }
+            side_size(id) {
+                return String(this.side_items(id).length);
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_gallery.prototype, "sub", null);
+        __decorate([
+            $mol_mem_key
+        ], $mol_gallery.prototype, "side_items", null);
+        $$.$mol_gallery = $mol_gallery;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/gallery/gallery.view.css", "[mol_gallery] {\n\tflex-wrap: wrap;\n\tflex: 1 1 auto;\n\talign-items: stretch;\n    align-content: stretch;\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_card) = class $mol_card extends ($.$mol_list) {
+		status(){
+			return "";
+		}
+		content(){
+			return [(this.title())];
+		}
+		Content(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ((this.content()));
+			return obj;
+		}
+		status_text(){
+			return (this.status());
+		}
+		Status(){
+			const obj = new this.$.$mol_view();
+			(obj.minimal_height) = () => (30);
+			(obj.sub) = () => ([(this.status_text())]);
+			return obj;
+		}
+		attr(){
+			return {...(super.attr()), "mol_card_status_type": (this.status())};
+		}
+		rows(){
+			return [(this.Content()), (this.Status())];
+		}
+	};
+	($mol_mem(($.$mol_card.prototype), "Content"));
+	($mol_mem(($.$mol_card.prototype), "Status"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_card extends $.$mol_card {
+            rows() {
+                return [
+                    this.Content(),
+                    ...this.status_text() ? [this.Status()] : [],
+                ];
+            }
+        }
+        $$.$mol_card = $mol_card;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/card/card.view.css", "[mol_card] {\n\tbackground: var(--mol_theme_card);\n\tcolor: var(--mol_theme_text);\n\tborder-radius: var(--mol_gap_round);\n\tdisplay: flex;\n\tflex: 0 1 auto;\n\tflex-direction: column;\n\tposition: relative;\n\tbox-shadow: 0 0 0.5rem 0rem hsla(0,0%,0%,.125);\n\t/* overflow: hidden; */\n}\n\n[mol_card_content] {\n\tflex: 1 1 auto;\n\tborder-radius: var(--mol_gap_round);\n\tmargin: 0;\n\tpadding: var(--mol_gap_block);\n}\n\n[mol_card_status] {\n\tbackground: var(--mol_theme_line);\n\tpadding: var(--mol_gap_text);\n\tmargin: 0;\n}\n\n[mol_card_status] {\n\tbackground: var(--mol_theme_line);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$bog_dobro_app_prof) = class $bog_dobro_app_prof extends ($.$mol_book2_catalog) {
+		All_gallery_items(){
+			return [];
+		}
+		All_gallery(){
+			const obj = new this.$.$mol_gallery();
+			(obj.items) = () => ((this.All_gallery_items()));
+			return obj;
+		}
+		All(){
+			const obj = new this.$.$mol_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_dobro_app_prof_All_title")));
+			(obj.body) = () => ([(this.All_gallery())]);
+			return obj;
+		}
+		Dev_gallery_items(){
+			return [];
+		}
+		Dev_gallery(){
+			const obj = new this.$.$mol_gallery();
+			(obj.items) = () => ((this.Dev_gallery_items()));
+			return obj;
+		}
+		Development(){
+			const obj = new this.$.$mol_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_dobro_app_prof_Development_title")));
+			(obj.body) = () => ([(this.Dev_gallery())]);
+			return obj;
+		}
+		Design_gallery_items(){
+			return [];
+		}
+		Design_gallery(){
+			const obj = new this.$.$mol_gallery();
+			(obj.items) = () => ((this.Design_gallery_items()));
+			return obj;
+		}
+		Design(){
+			const obj = new this.$.$mol_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_dobro_app_prof_Design_title")));
+			(obj.body) = () => ([(this.Design_gallery())]);
+			return obj;
+		}
+		Devops_gallery_items(){
+			return [];
+		}
+		Devops_gallery(){
+			const obj = new this.$.$mol_gallery();
+			(obj.items) = () => ((this.Devops_gallery_items()));
+			return obj;
+		}
+		DevOps(){
+			const obj = new this.$.$mol_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_dobro_app_prof_DevOps_title")));
+			(obj.body) = () => ([(this.Devops_gallery())]);
+			return obj;
+		}
+		All_item_uri(id){
+			return "";
+		}
+		All_item_open(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		All_icon_path(id){
+			return "";
+		}
+		All_icon(id){
+			const obj = new this.$.$mol_icon();
+			(obj.path) = () => ((this.All_icon_path(id)));
+			return obj;
+		}
+		all_title(id){
+			return "";
+		}
+		All_title_view(id){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.all_title(id))]);
+			return obj;
+		}
+		all_description(id){
+			return "";
+		}
+		All_descr_view(id){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.all_description(id)));
+			return obj;
+		}
+		All_link(id){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ((this.All_item_uri(id)));
+			(obj.click) = (next) => ((this.All_item_open(id, next)));
+			(obj.title) = () => (null);
+			(obj.sub) = () => ([
+				(this.All_icon(id)), 
+				(this.All_title_view(id)), 
+				(this.All_descr_view(id))
+			]);
+			return obj;
+		}
+		Dev_item_uri(id){
+			return "";
+		}
+		Dev_item_open(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Dev_icon_path(id){
+			return "";
+		}
+		Dev_icon(id){
+			const obj = new this.$.$mol_icon();
+			(obj.path) = () => ((this.Dev_icon_path(id)));
+			return obj;
+		}
+		dev_title(id){
+			return "";
+		}
+		Dev_title_view(id){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.dev_title(id))]);
+			return obj;
+		}
+		dev_description(id){
+			return "";
+		}
+		Dev_descr_view(id){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.dev_description(id)));
+			return obj;
+		}
+		Dev_link(id){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ((this.Dev_item_uri(id)));
+			(obj.click) = (next) => ((this.Dev_item_open(id, next)));
+			(obj.title) = () => (null);
+			(obj.sub) = () => ([
+				(this.Dev_icon(id)), 
+				(this.Dev_title_view(id)), 
+				(this.Dev_descr_view(id))
+			]);
+			return obj;
+		}
+		Design_item_uri(id){
+			return "";
+		}
+		Design_item_open(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Design_icon_path(id){
+			return "";
+		}
+		Design_icon(id){
+			const obj = new this.$.$mol_icon();
+			(obj.path) = () => ((this.Design_icon_path(id)));
+			return obj;
+		}
+		design_title(id){
+			return "";
+		}
+		Design_title_view(id){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.design_title(id))]);
+			return obj;
+		}
+		design_description(id){
+			return "";
+		}
+		Design_descr_view(id){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.design_description(id)));
+			return obj;
+		}
+		Design_link(id){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ((this.Design_item_uri(id)));
+			(obj.click) = (next) => ((this.Design_item_open(id, next)));
+			(obj.title) = () => (null);
+			(obj.sub) = () => ([
+				(this.Design_icon(id)), 
+				(this.Design_title_view(id)), 
+				(this.Design_descr_view(id))
+			]);
+			return obj;
+		}
+		Devops_item_uri(id){
+			return "";
+		}
+		Devops_item_open(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Devops_icon_path(id){
+			return "";
+		}
+		Devops_icon(id){
+			const obj = new this.$.$mol_icon();
+			(obj.path) = () => ((this.Devops_icon_path(id)));
+			return obj;
+		}
+		devops_title(id){
+			return "";
+		}
+		Devops_title_view(id){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.devops_title(id))]);
+			return obj;
+		}
+		devops_description(id){
+			return "";
+		}
+		Devops_descr_view(id){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.devops_description(id)));
+			return obj;
+		}
+		Devops_link(id){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ((this.Devops_item_uri(id)));
+			(obj.click) = (next) => ((this.Devops_item_open(id, next)));
+			(obj.title) = () => (null);
+			(obj.sub) = () => ([
+				(this.Devops_icon(id)), 
+				(this.Devops_title_view(id)), 
+				(this.Devops_descr_view(id))
+			]);
+			return obj;
+		}
+		param(){
+			return "prof";
+		}
+		menu_title(){
+			return (this.$.$mol_locale.text("$bog_dobro_app_prof_menu_title"));
+		}
+		spreads(){
+			return {
+				"": (this.All()), 
+				"development": (this.Development()), 
+				"design": (this.Design()), 
+				"devops": (this.DevOps())
+			};
+		}
+		All_item(id){
+			const obj = new this.$.$mol_card();
+			(obj.sub) = () => ([(this.All_link(id))]);
+			return obj;
+		}
+		Dev_item(id){
+			const obj = new this.$.$mol_card();
+			(obj.sub) = () => ([(this.Dev_link(id))]);
+			return obj;
+		}
+		Design_item(id){
+			const obj = new this.$.$mol_card();
+			(obj.sub) = () => ([(this.Design_link(id))]);
+			return obj;
+		}
+		Devops_item(id){
+			const obj = new this.$.$mol_card();
+			(obj.sub) = () => ([(this.Devops_link(id))]);
+			return obj;
+		}
+	};
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "All_gallery"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "All"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "Dev_gallery"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "Development"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "Design_gallery"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "Design"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "Devops_gallery"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "DevOps"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_item_open"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_icon"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_title_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_descr_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_link"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_item_open"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_icon"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_title_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_descr_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_link"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_item_open"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_icon"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_title_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_descr_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_link"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_item_open"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_icon"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_title_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_descr_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_link"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_item"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_item"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_item"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_item"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_dobro_app_prof extends $.$bog_dobro_app_prof {
+            dev_titles() {
+                return [
+                    'Frontend Developer',
+                    'Backend Developer',
+                    'Full Stack Developer',
+                    'Mobile Developer',
+                    'QA Engineer',
+                    'Data Engineer',
+                    'ML Engineer',
+                ];
+            }
+            dev_title(id) {
+                return this.dev_titles()[id] ?? '';
+            }
+            Dev_gallery_items() {
+                return this.dev_titles().map((_, i) => this.Dev_item(i));
+            }
+            design_titles() {
+                return ['UI/UX Designer', 'Product Designer', 'Graphic Designer', 'Motion Designer'];
+            }
+            design_title(id) {
+                return this.design_titles()[id] ?? '';
+            }
+            Design_gallery_items() {
+                return this.design_titles().map((_, i) => this.Design_item(i));
+            }
+            devops_titles() {
+                return ['DevOps Engineer', 'Site Reliability Engineer', 'Cloud Engineer', 'Platform Engineer'];
+            }
+            devops_title(id) {
+                return this.devops_titles()[id] ?? '';
+            }
+            Devops_gallery_items() {
+                return this.devops_titles().map((_, i) => this.Devops_item(i));
+            }
+            all_titles() {
+                const all = [...this.dev_titles(), ...this.design_titles(), ...this.devops_titles()];
+                return Array.from(new Set(all));
+            }
+            all_title(id) {
+                return this.all_titles()[id] ?? '';
+            }
+            All_gallery_items() {
+                return this.all_titles().map((_, i) => this.All_item(i));
+            }
+            All_item_uri(index) {
+                return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' });
+            }
+            Dev_item_uri(index) {
+                return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' });
+            }
+            Design_item_uri(index) {
+                return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' });
+            }
+            Devops_item_uri(index) {
+                return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' });
+            }
+            All_item_open(index, event) {
+                event?.preventDefault();
+                const title = this.all_title(index);
+                try {
+                    this.$.$mol_state_session?.value('history', null);
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('title', null);
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('digest', '');
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('gd_profession', title);
+                }
+                catch { }
+                this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' });
+            }
+            Dev_item_open(index, event) {
+                event?.preventDefault();
+                const title = this.dev_title(index);
+                try {
+                    this.$.$mol_state_session?.value('history', null);
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('title', null);
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('digest', '');
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('gd_profession', title);
+                }
+                catch { }
+                this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' });
+            }
+            Design_item_open(index, event) {
+                event?.preventDefault();
+                const title = this.design_title(index);
+                try {
+                    this.$.$mol_state_session?.value('history', null);
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('title', null);
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('digest', '');
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('gd_profession', title);
+                }
+                catch { }
+                this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' });
+            }
+            Devops_item_open(index, event) {
+                event?.preventDefault();
+                const title = this.devops_title(index);
+                try {
+                    this.$.$mol_state_session?.value('history', null);
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('title', null);
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('digest', '');
+                }
+                catch { }
+                try {
+                    this.$.$mol_state_session?.value('gd_profession', title);
+                }
+                catch { }
+                this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' });
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_prof.prototype, "dev_titles", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_prof.prototype, "Dev_gallery_items", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_prof.prototype, "design_titles", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_prof.prototype, "Design_gallery_items", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_prof.prototype, "devops_titles", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_prof.prototype, "Devops_gallery_items", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_prof.prototype, "all_titles", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_prof.prototype, "All_gallery_items", null);
+        __decorate([
+            $mol_action
+        ], $bog_dobro_app_prof.prototype, "All_item_open", null);
+        __decorate([
+            $mol_action
+        ], $bog_dobro_app_prof.prototype, "Dev_item_open", null);
+        __decorate([
+            $mol_action
+        ], $bog_dobro_app_prof.prototype, "Design_item_open", null);
+        __decorate([
+            $mol_action
+        ], $bog_dobro_app_prof.prototype, "Devops_item_open", null);
+        $$.$bog_dobro_app_prof = $bog_dobro_app_prof;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_dobro_app_prof, {
+            All_item: {
+                padding: $mol_gap.block,
+                flex: {
+                    grow: 1,
+                    shrink: 1,
+                    basis: '18rem',
+                },
+                border: {
+                    radius: $mol_gap.round,
+                },
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                background: {
+                    color: $mol_theme.card,
+                },
+                gap: $mol_gap.space,
+                cursor: 'pointer',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                ':hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
+                },
+            },
+            Dev_item: {
+                padding: $mol_gap.block,
+                flex: {
+                    grow: 1,
+                    shrink: 1,
+                    basis: '18rem',
+                },
+                border: {
+                    radius: $mol_gap.round,
+                },
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                background: {
+                    color: $mol_theme.card,
+                },
+                gap: $mol_gap.space,
+                cursor: 'pointer',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                ':hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
+                },
+            },
+            Design_item: {
+                padding: $mol_gap.block,
+                flex: {
+                    grow: 1,
+                    shrink: 1,
+                    basis: '18rem',
+                },
+                border: {
+                    radius: $mol_gap.round,
+                },
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                background: {
+                    color: $mol_theme.card,
+                },
+                gap: $mol_gap.space,
+                cursor: 'pointer',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                ':hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
+                },
+            },
+            Devops_item: {
+                padding: $mol_gap.block,
+                flex: {
+                    grow: 1,
+                    shrink: 1,
+                    basis: '18rem',
+                },
+                border: {
+                    radius: $mol_gap.round,
+                },
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                background: {
+                    color: $mol_theme.card,
+                },
+                gap: $mol_gap.space,
+                cursor: 'pointer',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                ':hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_pick) = class $mol_pick extends ($.$mol_pop) {
 		keydown(next){
 			if(next !== undefined) return next;
@@ -13542,67 +14266,6 @@ var $;
 
 
 ;
-	($.$mol_card) = class $mol_card extends ($.$mol_list) {
-		status(){
-			return "";
-		}
-		content(){
-			return [(this.title())];
-		}
-		Content(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ((this.content()));
-			return obj;
-		}
-		status_text(){
-			return (this.status());
-		}
-		Status(){
-			const obj = new this.$.$mol_view();
-			(obj.minimal_height) = () => (30);
-			(obj.sub) = () => ([(this.status_text())]);
-			return obj;
-		}
-		attr(){
-			return {...(super.attr()), "mol_card_status_type": (this.status())};
-		}
-		rows(){
-			return [(this.Content()), (this.Status())];
-		}
-	};
-	($mol_mem(($.$mol_card.prototype), "Content"));
-	($mol_mem(($.$mol_card.prototype), "Status"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_card extends $.$mol_card {
-            rows() {
-                return [
-                    this.Content(),
-                    ...this.status_text() ? [this.Status()] : [],
-                ];
-            }
-        }
-        $$.$mol_card = $mol_card;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/card/card.view.css", "[mol_card] {\n\tbackground: var(--mol_theme_card);\n\tcolor: var(--mol_theme_text);\n\tborder-radius: var(--mol_gap_round);\n\tdisplay: flex;\n\tflex: 0 1 auto;\n\tflex-direction: column;\n\tposition: relative;\n\tbox-shadow: 0 0 0.5rem 0rem hsla(0,0%,0%,.125);\n\t/* overflow: hidden; */\n}\n\n[mol_card_content] {\n\tflex: 1 1 auto;\n\tborder-radius: var(--mol_gap_round);\n\tmargin: 0;\n\tpadding: var(--mol_gap_block);\n}\n\n[mol_card_status] {\n\tbackground: var(--mol_theme_line);\n\tpadding: var(--mol_gap_text);\n\tmargin: 0;\n}\n\n[mol_card_status] {\n\tbackground: var(--mol_theme_line);\n}\n");
-})($ || ($ = {}));
-
-;
 	($.$bog_dobro_app_vaka_item) = class $bog_dobro_app_vaka_item extends ($.$mol_card) {
 		title(next){
 			if(next !== undefined) return next;
@@ -14101,6 +14764,10 @@ var $;
 			(obj.Lights) = () => (null);
 			return obj;
 		}
+		Prof(){
+			const obj = new this.$.$bog_dobro_app_prof();
+			return obj;
+		}
 		Settings(){
 			const obj = new this.$.$bog_dobro_app_settings();
 			return obj;
@@ -14129,6 +14796,7 @@ var $;
 		spreads(){
 			return {
 				"\t": (this.Bot()), 
+				"prof": (this.Prof()), 
 				"settings": (this.Settings()), 
 				"vaka": (this.Vaka())
 			};
@@ -14137,6 +14805,7 @@ var $;
 	($mol_mem(($.$bog_dobro_app.prototype), "Lights"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Theme"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Bot"));
+	($mol_mem(($.$bog_dobro_app.prototype), "Prof"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Settings"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Vaka"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Menu_logo"));
