@@ -1,0 +1,19 @@
+$bog_dobro_app $mol_book2_catalog
+	Placeholder null
+	Menu_logo $mol_image
+		uri \bog/prof/assets/job.png
+	menu_title @ \VibeJobs 
+	menu_tools /
+		<= Lights $mol_lights_toggle
+	plugins /
+		<= Theme $bog_theme_auto
+	spreads *
+		\	
+			<= Bot $gd_bot
+				Space null
+				Sources null
+				Donate null
+				Support null
+				Lights null
+		settings <= Settings $bog_dobro_app_settings
+		vaka <= Vaka $bog_dobro_app_vaka

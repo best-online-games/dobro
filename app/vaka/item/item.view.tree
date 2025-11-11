@@ -1,0 +1,12 @@
+$bog_dobro_app_vaka_item $mol_card
+	vacancy null
+	sub /
+		<= Title $mol_link
+			title <= title? \
+			uri <= url? \
+		<= Meta $mol_text
+			text <= meta? \
+		<= Salary $mol_text
+			text <= salary? \
+		<= Snippet $mol_text
+			text <= snippet? \

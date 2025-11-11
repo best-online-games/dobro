@@ -1,0 +1,11 @@
+{
+	"$bog_dobro_app_settings_title": "Настройки",
+	"$bog_dobro_app_settings_Language_labeler_title": "Язык интерфейса",
+	"$bog_dobro_app_settings_Install_labeler_title": "Установить приложение",
+	"$bog_dobro_app_settings_Install_button_title": "Добавить на главный экран",
+	"$bog_dobro_app_settings_install_ios_instruction": "Чтобы добавить на главный экран на iPhone или iPad, нажмите «Поделиться» и выберите «На экран Домой».",
+	"$bog_dobro_app_settings_install_android_instruction": "Чтобы добавить на главный экран в браузере Chrome, откройте меню (⋮) и выберите «Установить приложение».",
+	"$bog_dobro_app_settings_install_desktop_instruction": "Чтобы установить приложение на компьютер, используйте кнопку установки в адресной строке или пункт меню браузера «Установить приложение».",
+	"$bog_dobro_app_settings_install_unsupported_browser": "Установка на главный экран не поддерживается в этом браузере.",
+	"$bog_dobro_app_settings_install_already_installed": "Приложение уже установлено или установка не поддерживается."
+}
