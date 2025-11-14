@@ -1,11 +1,12 @@
 FROM node:20-alpine
 
-WORKDIR /app
+RUN apk add --no-cache git
 
-COPY . .
+# Кладём текущий проект внутрь контейнера в /dobro
+WORKDIR /mam
+RUN mkdir -p /mam/bog/dobro
+COPY . /mam/bog/dobro
+
+RUN npm exec mam /bog/dobro
 
 EXPOSE 9080
-
-# Run MAM dev server (как локально через `npm exec mam`)
-# Добро будет доступно по /bog/dobro/app/-/test.html
-CMD ["npm", "exec", "mam"]

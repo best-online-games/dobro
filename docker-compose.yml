@@ -8,3 +8,4 @@ services:
     ports:
       - "9080:9080"
     restart: unless-stopped
+    command: "npm start"

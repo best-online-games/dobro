@@ -58,25 +58,27 @@ http://localhost:9080/bog/dobro/app/-/test.html
 
 ## 2. Запуск через Docker Compose (рекомендуется)
 
-### 2.1. Сборка и запуск
+### 2.1. Запуск
 
 Из папки проекта `bog/dobro`:
 
 ```bash
 cd bog/dobro
-docker compose up --build
+docker compose up
 ```
 
 или (для старых версий Docker):
 
 ```bash
-docker-compose up --build
+docker-compose up
 ```
 
-Compose использует:
+Что делает Compose:
 
-- `bog/dobro/docker-compose.yml`
-- `bog/dobro/Dockerfile` для сборки сервиса `dobro`
+- строит образ по `bog/dobro/Dockerfile` на базе `node:20-alpine`
+- внутри образа создаётся новый mam‑проект в `/app/mam`
+- исходники Добро копируются в `/app/mam/bog/dobro`
+- `npm start` внутри контейнера запускает `mam .` из корня `/app/mam`
 
 После запуска приложение доступно по адресу:
 
