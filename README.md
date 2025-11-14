@@ -82,9 +82,10 @@ docker-compose up
 
 После запуска **во всех вариантах (локально, Docker, Docker Compose)** приложение доступно по адресу:
 
-```text
-http://localhost:9080/bog/dobro/app/-/test.html
-```
+- локально / в контейнере:  
+  `http://localhost:9080/bog/dobro/app/-/test.html`
+- прод‑версия:  
+  `https://best-online-games.github.io/dobro/`
 
 Остановить:
 
