@@ -58,31 +58,34 @@ http://localhost:9080/bog/dobro/app/-/test.html
 
 ## 2. Запуск через Docker Compose (рекомендуется)
 
-### 2.1. Сборка и запуск
+### 2.1. Запуск
 
 Из папки проекта `bog/dobro`:
 
 ```bash
 cd bog/dobro
-docker compose up --build
+docker compose up
 ```
 
 или (для старых версий Docker):
 
 ```bash
-docker-compose up --build
+docker-compose up
 ```
 
-Compose использует:
+Что делает Compose:
 
-- `bog/dobro/docker-compose.yml`
-- `bog/dobro/Dockerfile` для сборки сервиса `dobro`
+- строит образ по `bog/dobro/Dockerfile` на базе `node:20-alpine`
+- внутри образа создаётся mam‑проект в `/mam`
+- исходники Добро копируются в `/mam/bog/dobro`
+- `npm exec mam /bog/dobro` собирает модуль, а `npm start` поднимает dev‑сервер mam
 
-После запуска приложение доступно по адресу:
+После запуска **во всех вариантах (локально, Docker, Docker Compose)** приложение доступно по адресу:
 
-```text
-http://localhost:9080/bog/dobro/app/-/test.html
-```
+- локально / в контейнере:  
+  `http://localhost:9080/bog/dobro/app/-/test.html`
+- прод‑версия:  
+  `https://best-online-games.github.io/dobro/`
 
 Остановить:
 
