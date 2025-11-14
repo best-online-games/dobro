@@ -5632,287 +5632,71 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_gallery__items_bog_dobro_app_prof_1 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['All_gallery_items'] >
+	type $mol_string__hint_bog_dobro_app_prof_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__value_bog_dobro_app_prof_2 = $mol_type_enforce<
+		ReturnType< $bog_dobro_app_prof['query'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_gallery__items_bog_dobro_app_prof_3 = $mol_type_enforce<
+		ReturnType< $bog_dobro_app_prof['Helpers_gallery_items'] >
 		,
 		ReturnType< $mol_gallery['items'] >
 	>
-	type $mol_page__title_bog_dobro_app_prof_2 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_page['title'] >
-	>
-	type $mol_page__body_bog_dobro_app_prof_3 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['body'] >
-	>
-	type $mol_gallery__items_bog_dobro_app_prof_4 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Dev_gallery_items'] >
-		,
-		ReturnType< $mol_gallery['items'] >
-	>
-	type $mol_page__title_bog_dobro_app_prof_5 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_page['title'] >
-	>
-	type $mol_page__body_bog_dobro_app_prof_6 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['body'] >
-	>
-	type $mol_gallery__items_bog_dobro_app_prof_7 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Design_gallery_items'] >
-		,
-		ReturnType< $mol_gallery['items'] >
-	>
-	type $mol_page__title_bog_dobro_app_prof_8 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_page['title'] >
-	>
-	type $mol_page__body_bog_dobro_app_prof_9 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['body'] >
-	>
-	type $mol_gallery__items_bog_dobro_app_prof_10 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Devops_gallery_items'] >
-		,
-		ReturnType< $mol_gallery['items'] >
-	>
-	type $mol_page__title_bog_dobro_app_prof_11 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_page['title'] >
-	>
-	type $mol_page__body_bog_dobro_app_prof_12 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_page['body'] >
-	>
-	type $mol_icon__path_bog_dobro_app_prof_13 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['All_icon_path'] >
-		,
-		ReturnType< $mol_icon['path'] >
-	>
-	type $mol_view__sub_bog_dobro_app_prof_14 = $mol_type_enforce<
+	type $mol_view__sub_bog_dobro_app_prof_4 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_bog_dobro_app_prof_15 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['all_description'] >
+	type $mol_text__text_bog_dobro_app_prof_5 = $mol_type_enforce<
+		ReturnType< $bog_dobro_app_prof['helper_description'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_link__uri_bog_dobro_app_prof_16 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['All_item_uri'] >
+	type $mol_link__uri_bog_dobro_app_prof_6 = $mol_type_enforce<
+		ReturnType< $bog_dobro_app_prof['Helper_item_uri'] >
 		,
 		ReturnType< $mol_link['uri'] >
 	>
-	type $mol_link__click_bog_dobro_app_prof_17 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['All_item_open'] >
+	type $mol_link__click_bog_dobro_app_prof_7 = $mol_type_enforce<
+		ReturnType< $bog_dobro_app_prof['Helper_item_open'] >
 		,
 		ReturnType< $mol_link['click'] >
 	>
-	type $mol_link__title_bog_dobro_app_prof_18 = $mol_type_enforce<
+	type $mol_link__title_bog_dobro_app_prof_8 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $mol_link['title'] >
 	>
-	type $mol_link__sub_bog_dobro_app_prof_19 = $mol_type_enforce<
+	type $mol_link__sub_bog_dobro_app_prof_9 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_icon__path_bog_dobro_app_prof_20 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Dev_icon_path'] >
-		,
-		ReturnType< $mol_icon['path'] >
-	>
-	type $mol_view__sub_bog_dobro_app_prof_21 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_text__text_bog_dobro_app_prof_22 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['dev_description'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_link__uri_bog_dobro_app_prof_23 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Dev_item_uri'] >
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__click_bog_dobro_app_prof_24 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Dev_item_open'] >
-		,
-		ReturnType< $mol_link['click'] >
-	>
-	type $mol_link__title_bog_dobro_app_prof_25 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__sub_bog_dobro_app_prof_26 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_icon__path_bog_dobro_app_prof_27 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Design_icon_path'] >
-		,
-		ReturnType< $mol_icon['path'] >
-	>
-	type $mol_view__sub_bog_dobro_app_prof_28 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_text__text_bog_dobro_app_prof_29 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['design_description'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_link__uri_bog_dobro_app_prof_30 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Design_item_uri'] >
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__click_bog_dobro_app_prof_31 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Design_item_open'] >
-		,
-		ReturnType< $mol_link['click'] >
-	>
-	type $mol_link__title_bog_dobro_app_prof_32 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__sub_bog_dobro_app_prof_33 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_icon__path_bog_dobro_app_prof_34 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Devops_icon_path'] >
-		,
-		ReturnType< $mol_icon['path'] >
-	>
-	type $mol_view__sub_bog_dobro_app_prof_35 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_text__text_bog_dobro_app_prof_36 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['devops_description'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_link__uri_bog_dobro_app_prof_37 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Devops_item_uri'] >
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__click_bog_dobro_app_prof_38 = $mol_type_enforce<
-		ReturnType< $bog_dobro_app_prof['Devops_item_open'] >
-		,
-		ReturnType< $mol_link['click'] >
-	>
-	type $mol_link__title_bog_dobro_app_prof_39 = $mol_type_enforce<
-		any
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__sub_bog_dobro_app_prof_40 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_card__sub_bog_dobro_app_prof_41 = $mol_type_enforce<
+	type $mol_card__sub_bog_dobro_app_prof_10 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_card['sub'] >
 	>
-	type $mol_card__sub_bog_dobro_app_prof_42 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_card['sub'] >
-	>
-	type $mol_card__sub_bog_dobro_app_prof_43 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_card['sub'] >
-	>
-	type $mol_card__sub_bog_dobro_app_prof_44 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_card['sub'] >
-	>
-	export class $bog_dobro_app_prof extends $mol_book2_catalog {
-		All_gallery_items( ): readonly($mol_view)[]
-		All_gallery( ): $mol_gallery
-		All( ): $mol_page
-		Dev_gallery_items( ): readonly($mol_view)[]
-		Dev_gallery( ): $mol_gallery
-		Development( ): $mol_page
-		Design_gallery_items( ): readonly($mol_view)[]
-		Design_gallery( ): $mol_gallery
-		Design( ): $mol_page
-		Devops_gallery_items( ): readonly($mol_view)[]
-		Devops_gallery( ): $mol_gallery
-		DevOps( ): $mol_page
-		All_item_uri( id: any): string
-		All_item_open( id: any, next?: any ): any
-		All_icon_path( id: any): string
-		All_icon( id: any): $mol_icon
-		all_title( id: any): string
-		All_title_view( id: any): $mol_view
-		all_description( id: any): string
-		All_descr_view( id: any): $mol_text
-		All_link( id: any): $mol_link
-		Dev_item_uri( id: any): string
-		Dev_item_open( id: any, next?: any ): any
-		Dev_icon_path( id: any): string
-		Dev_icon( id: any): $mol_icon
-		dev_title( id: any): string
-		Dev_title_view( id: any): $mol_view
-		dev_description( id: any): string
-		Dev_descr_view( id: any): $mol_text
-		Dev_link( id: any): $mol_link
-		Design_item_uri( id: any): string
-		Design_item_open( id: any, next?: any ): any
-		Design_icon_path( id: any): string
-		Design_icon( id: any): $mol_icon
-		design_title( id: any): string
-		Design_title_view( id: any): $mol_view
-		design_description( id: any): string
-		Design_descr_view( id: any): $mol_text
-		Design_link( id: any): $mol_link
-		Devops_item_uri( id: any): string
-		Devops_item_open( id: any, next?: any ): any
-		Devops_icon_path( id: any): string
-		Devops_icon( id: any): $mol_icon
-		devops_title( id: any): string
-		Devops_title_view( id: any): $mol_view
-		devops_description( id: any): string
-		Devops_descr_view( id: any): $mol_text
-		Devops_link( id: any): $mol_link
-		param( ): string
-		menu_title( ): string
-		spreads( ): ({ 
-			'': ReturnType< $bog_dobro_app_prof['All'] >,
-			'development': ReturnType< $bog_dobro_app_prof['Development'] >,
-			'design': ReturnType< $bog_dobro_app_prof['Design'] >,
-			'devops': ReturnType< $bog_dobro_app_prof['DevOps'] >,
-		}) 
-		All_item( id: any): $mol_card
-		Dev_item( id: any): $mol_card
-		Design_item( id: any): $mol_card
-		Devops_item( id: any): $mol_card
+	export class $bog_dobro_app_prof extends $mol_page {
+		query( next?: string ): string
+		Search( ): $mol_string
+		Helpers_gallery_items( ): readonly($mol_view)[]
+		Helpers_gallery( ): $mol_gallery
+		Helper_item_uri( id: any): string
+		Helper_item_open( id: any, next?: any ): any
+		helper_title( id: any): string
+		Helper_title_view( id: any): $mol_view
+		helper_description( id: any): string
+		Helper_descr_view( id: any): $mol_text
+		Helper_link( id: any): $mol_link
+		title( ): string
+		body( ): readonly(any)[]
+		Helper_item( id: any): $mol_card
 	}
 	
 }
@@ -5920,26 +5704,59 @@ declare namespace $ {
 //# sourceMappingURL=prof.view.tree.d.ts.map
 declare namespace $.$$ {
     class $bog_dobro_app_prof extends $.$bog_dobro_app_prof {
-        dev_titles(): readonly string[];
-        dev_title(id: number): string;
-        Dev_gallery_items(): $.$mol_card[];
-        design_titles(): readonly string[];
-        design_title(id: number): string;
-        Design_gallery_items(): $.$mol_card[];
-        devops_titles(): readonly string[];
-        devops_title(id: number): string;
-        Devops_gallery_items(): $.$mol_card[];
-        all_titles(): readonly string[];
-        all_title(id: number): string;
-        All_gallery_items(): $.$mol_card[];
-        All_item_uri(index: number): string;
-        Dev_item_uri(index: number): string;
-        Design_item_uri(index: number): string;
-        Devops_item_uri(index: number): string;
-        All_item_open(index: number, event?: Event): void;
-        Dev_item_open(index: number, event?: Event): void;
-        Design_item_open(index: number, event?: Event): void;
-        Devops_item_open(index: number, event?: Event): void;
+        query(next?: string): string;
+        helper_titles(): readonly string[];
+        helper_title(id: number): string;
+        helper_descriptions(): readonly string[];
+        helper_description(id: number): string;
+        Helpers_gallery_items(): $.$mol_card[];
+        Helper_item_open(index: number, event?: Event): void;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_list__rows_bog_dobro_app_charity_1 = $mol_type_enforce<
+		ReturnType< $bog_dobro_app_charity['charity_rows'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	export class $bog_dobro_app_charity extends $mol_page {
+		charity_rows( ): readonly(any)[]
+		Charity_list( ): $mol_list
+		title( ): string
+		body( ): readonly(any)[]
+	}
+	
+	type $mol_text__text_bog_dobro_app_charity_row_1 = $mol_type_enforce<
+		ReturnType< $bog_dobro_app_charity_row['title'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_text__text_bog_dobro_app_charity_row_2 = $mol_type_enforce<
+		ReturnType< $bog_dobro_app_charity_row['description'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	export class $bog_dobro_app_charity_row extends $mol_card {
+		title( ): string
+		Title( ): $mol_text
+		description( ): string
+		Description( ): $mol_text
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=charity.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_dobro_app_charity extends $.$bog_dobro_app_charity {
+        charity_titles(): readonly string[];
+        charity_descriptions(): readonly string[];
+        charity_rows(): $bog_dobro_app_charity_row[];
     }
 }
 
@@ -8443,6 +8260,7 @@ declare namespace $ {
 		Theme( ): $bog_theme_auto
 		Bot( ): $gd_bot
 		Prof( ): $bog_dobro_app_prof
+		Charity( ): $bog_dobro_app_charity
 		Settings( ): $bog_dobro_app_settings
 		Vaka( ): $bog_dobro_app_vaka
 		Ainews( ): $bog_ainews_app
@@ -8454,6 +8272,7 @@ declare namespace $ {
 		spreads( ): ({ 
 			'	': ReturnType< $bog_dobro_app['Bot'] >,
 			'prof': ReturnType< $bog_dobro_app['Prof'] >,
+			'charity': ReturnType< $bog_dobro_app['Charity'] >,
 			'settings': ReturnType< $bog_dobro_app['Settings'] >,
 			'vaka': ReturnType< $bog_dobro_app['Vaka'] >,
 			'ainews': ReturnType< $bog_dobro_app['Ainews'] >,

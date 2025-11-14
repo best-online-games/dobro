@@ -13313,302 +13313,76 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$bog_dobro_app_prof) = class $bog_dobro_app_prof extends ($.$mol_book2_catalog) {
-		All_gallery_items(){
-			return [];
-		}
-		All_gallery(){
-			const obj = new this.$.$mol_gallery();
-			(obj.items) = () => ((this.All_gallery_items()));
-			return obj;
-		}
-		All(){
-			const obj = new this.$.$mol_page();
-			(obj.title) = () => ((this.$.$mol_locale.text("$bog_dobro_app_prof_All_title")));
-			(obj.body) = () => ([(this.All_gallery())]);
-			return obj;
-		}
-		Dev_gallery_items(){
-			return [];
-		}
-		Dev_gallery(){
-			const obj = new this.$.$mol_gallery();
-			(obj.items) = () => ((this.Dev_gallery_items()));
-			return obj;
-		}
-		Development(){
-			const obj = new this.$.$mol_page();
-			(obj.title) = () => ((this.$.$mol_locale.text("$bog_dobro_app_prof_Development_title")));
-			(obj.body) = () => ([(this.Dev_gallery())]);
-			return obj;
-		}
-		Design_gallery_items(){
-			return [];
-		}
-		Design_gallery(){
-			const obj = new this.$.$mol_gallery();
-			(obj.items) = () => ((this.Design_gallery_items()));
-			return obj;
-		}
-		Design(){
-			const obj = new this.$.$mol_page();
-			(obj.title) = () => ((this.$.$mol_locale.text("$bog_dobro_app_prof_Design_title")));
-			(obj.body) = () => ([(this.Design_gallery())]);
-			return obj;
-		}
-		Devops_gallery_items(){
-			return [];
-		}
-		Devops_gallery(){
-			const obj = new this.$.$mol_gallery();
-			(obj.items) = () => ((this.Devops_gallery_items()));
-			return obj;
-		}
-		DevOps(){
-			const obj = new this.$.$mol_page();
-			(obj.title) = () => ((this.$.$mol_locale.text("$bog_dobro_app_prof_DevOps_title")));
-			(obj.body) = () => ([(this.Devops_gallery())]);
-			return obj;
-		}
-		All_item_uri(id){
+	($.$bog_dobro_app_prof) = class $bog_dobro_app_prof extends ($.$mol_page) {
+		query(next){
+			if(next !== undefined) return next;
 			return "";
 		}
-		All_item_open(id, next){
+		Search(){
+			const obj = new this.$.$mol_string();
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_dobro_app_prof_Search_hint")));
+			(obj.value) = (next) => ((this.query(next)));
+			return obj;
+		}
+		Helpers_gallery_items(){
+			return [];
+		}
+		Helpers_gallery(){
+			const obj = new this.$.$mol_gallery();
+			(obj.items) = () => ((this.Helpers_gallery_items()));
+			return obj;
+		}
+		Helper_item_uri(id){
+			return "";
+		}
+		Helper_item_open(id, next){
 			if(next !== undefined) return next;
 			return null;
 		}
-		All_icon_path(id){
+		helper_title(id){
 			return "";
 		}
-		All_icon(id){
-			const obj = new this.$.$mol_icon();
-			(obj.path) = () => ((this.All_icon_path(id)));
-			return obj;
-		}
-		all_title(id){
-			return "";
-		}
-		All_title_view(id){
+		Helper_title_view(id){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.all_title(id))]);
+			(obj.sub) = () => ([(this.helper_title(id))]);
 			return obj;
 		}
-		all_description(id){
+		helper_description(id){
 			return "";
 		}
-		All_descr_view(id){
+		Helper_descr_view(id){
 			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.all_description(id)));
+			(obj.text) = () => ((this.helper_description(id)));
 			return obj;
 		}
-		All_link(id){
+		Helper_link(id){
 			const obj = new this.$.$mol_link();
-			(obj.uri) = () => ((this.All_item_uri(id)));
-			(obj.click) = (next) => ((this.All_item_open(id, next)));
+			(obj.uri) = () => ((this.Helper_item_uri(id)));
+			(obj.click) = (next) => ((this.Helper_item_open(id, next)));
 			(obj.title) = () => (null);
-			(obj.sub) = () => ([
-				(this.All_icon(id)), 
-				(this.All_title_view(id)), 
-				(this.All_descr_view(id))
-			]);
+			(obj.sub) = () => ([(this.Helper_title_view(id)), (this.Helper_descr_view(id))]);
 			return obj;
 		}
-		Dev_item_uri(id){
-			return "";
+		title(){
+			return (this.$.$mol_locale.text("$bog_dobro_app_prof_title"));
 		}
-		Dev_item_open(id, next){
-			if(next !== undefined) return next;
-			return null;
+		body(){
+			return [(this.Search()), (this.Helpers_gallery())];
 		}
-		Dev_icon_path(id){
-			return "";
-		}
-		Dev_icon(id){
-			const obj = new this.$.$mol_icon();
-			(obj.path) = () => ((this.Dev_icon_path(id)));
-			return obj;
-		}
-		dev_title(id){
-			return "";
-		}
-		Dev_title_view(id){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.dev_title(id))]);
-			return obj;
-		}
-		dev_description(id){
-			return "";
-		}
-		Dev_descr_view(id){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.dev_description(id)));
-			return obj;
-		}
-		Dev_link(id){
-			const obj = new this.$.$mol_link();
-			(obj.uri) = () => ((this.Dev_item_uri(id)));
-			(obj.click) = (next) => ((this.Dev_item_open(id, next)));
-			(obj.title) = () => (null);
-			(obj.sub) = () => ([
-				(this.Dev_icon(id)), 
-				(this.Dev_title_view(id)), 
-				(this.Dev_descr_view(id))
-			]);
-			return obj;
-		}
-		Design_item_uri(id){
-			return "";
-		}
-		Design_item_open(id, next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Design_icon_path(id){
-			return "";
-		}
-		Design_icon(id){
-			const obj = new this.$.$mol_icon();
-			(obj.path) = () => ((this.Design_icon_path(id)));
-			return obj;
-		}
-		design_title(id){
-			return "";
-		}
-		Design_title_view(id){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.design_title(id))]);
-			return obj;
-		}
-		design_description(id){
-			return "";
-		}
-		Design_descr_view(id){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.design_description(id)));
-			return obj;
-		}
-		Design_link(id){
-			const obj = new this.$.$mol_link();
-			(obj.uri) = () => ((this.Design_item_uri(id)));
-			(obj.click) = (next) => ((this.Design_item_open(id, next)));
-			(obj.title) = () => (null);
-			(obj.sub) = () => ([
-				(this.Design_icon(id)), 
-				(this.Design_title_view(id)), 
-				(this.Design_descr_view(id))
-			]);
-			return obj;
-		}
-		Devops_item_uri(id){
-			return "";
-		}
-		Devops_item_open(id, next){
-			if(next !== undefined) return next;
-			return null;
-		}
-		Devops_icon_path(id){
-			return "";
-		}
-		Devops_icon(id){
-			const obj = new this.$.$mol_icon();
-			(obj.path) = () => ((this.Devops_icon_path(id)));
-			return obj;
-		}
-		devops_title(id){
-			return "";
-		}
-		Devops_title_view(id){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.devops_title(id))]);
-			return obj;
-		}
-		devops_description(id){
-			return "";
-		}
-		Devops_descr_view(id){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.devops_description(id)));
-			return obj;
-		}
-		Devops_link(id){
-			const obj = new this.$.$mol_link();
-			(obj.uri) = () => ((this.Devops_item_uri(id)));
-			(obj.click) = (next) => ((this.Devops_item_open(id, next)));
-			(obj.title) = () => (null);
-			(obj.sub) = () => ([
-				(this.Devops_icon(id)), 
-				(this.Devops_title_view(id)), 
-				(this.Devops_descr_view(id))
-			]);
-			return obj;
-		}
-		param(){
-			return "prof";
-		}
-		menu_title(){
-			return (this.$.$mol_locale.text("$bog_dobro_app_prof_menu_title"));
-		}
-		spreads(){
-			return {
-				"": (this.All()), 
-				"development": (this.Development()), 
-				"design": (this.Design()), 
-				"devops": (this.DevOps())
-			};
-		}
-		All_item(id){
+		Helper_item(id){
 			const obj = new this.$.$mol_card();
-			(obj.sub) = () => ([(this.All_link(id))]);
-			return obj;
-		}
-		Dev_item(id){
-			const obj = new this.$.$mol_card();
-			(obj.sub) = () => ([(this.Dev_link(id))]);
-			return obj;
-		}
-		Design_item(id){
-			const obj = new this.$.$mol_card();
-			(obj.sub) = () => ([(this.Design_link(id))]);
-			return obj;
-		}
-		Devops_item(id){
-			const obj = new this.$.$mol_card();
-			(obj.sub) = () => ([(this.Devops_link(id))]);
+			(obj.sub) = () => ([(this.Helper_link(id))]);
 			return obj;
 		}
 	};
-	($mol_mem(($.$bog_dobro_app_prof.prototype), "All_gallery"));
-	($mol_mem(($.$bog_dobro_app_prof.prototype), "All"));
-	($mol_mem(($.$bog_dobro_app_prof.prototype), "Dev_gallery"));
-	($mol_mem(($.$bog_dobro_app_prof.prototype), "Development"));
-	($mol_mem(($.$bog_dobro_app_prof.prototype), "Design_gallery"));
-	($mol_mem(($.$bog_dobro_app_prof.prototype), "Design"));
-	($mol_mem(($.$bog_dobro_app_prof.prototype), "Devops_gallery"));
-	($mol_mem(($.$bog_dobro_app_prof.prototype), "DevOps"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_item_open"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_icon"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_title_view"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_descr_view"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_link"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_item_open"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_icon"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_title_view"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_descr_view"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_link"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_item_open"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_icon"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_title_view"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_descr_view"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_link"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_item_open"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_icon"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_title_view"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_descr_view"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_link"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "All_item"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Dev_item"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Design_item"));
-	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Devops_item"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "query"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "Search"));
+	($mol_mem(($.$bog_dobro_app_prof.prototype), "Helpers_gallery"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Helper_item_open"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Helper_title_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Helper_descr_view"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Helper_link"));
+	($mol_mem_key(($.$bog_dobro_app_prof.prototype), "Helper_item"));
 
 
 ;
@@ -13621,66 +13395,38 @@ var $;
     var $$;
     (function ($$) {
         class $bog_dobro_app_prof extends $.$bog_dobro_app_prof {
-            dev_titles() {
+            query(next) {
+                return next ?? '';
+            }
+            helper_titles() {
+                return ['Личный юрист', 'Личный бухгалтер', 'Финансовый консультант', 'Карьерный коуч'];
+            }
+            helper_title(id) {
+                return this.helper_titles()[id] ?? '';
+            }
+            helper_descriptions() {
                 return [
-                    'Frontend Developer',
-                    'Backend Developer',
-                    'Full Stack Developer',
-                    'Mobile Developer',
-                    'QA Engineer',
-                    'Data Engineer',
-                    'ML Engineer',
+                    'Поможет с договорами, спорами и правами.',
+                    'Разберётся с налогами, отчётами и бюджетом.',
+                    'Поддержит в вопросах инвестиций и планирования.',
+                    'Поможет спланировать карьеру и рост в профессии.',
                 ];
             }
-            dev_title(id) {
-                return this.dev_titles()[id] ?? '';
+            helper_description(id) {
+                return this.helper_descriptions()[id] ?? '';
             }
-            Dev_gallery_items() {
-                return this.dev_titles().map((_, i) => this.Dev_item(i));
+            Helpers_gallery_items() {
+                const query = this.query().toLowerCase().trim();
+                const titles = this.helper_titles();
+                const indices = titles
+                    .map((title, index) => ({ title, index }))
+                    .filter(item => !query || item.title.toLowerCase().includes(query))
+                    .map(item => item.index);
+                return indices.map(i => this.Helper_item(i));
             }
-            design_titles() {
-                return ['UI/UX Designer', 'Product Designer', 'Graphic Designer', 'Motion Designer'];
-            }
-            design_title(id) {
-                return this.design_titles()[id] ?? '';
-            }
-            Design_gallery_items() {
-                return this.design_titles().map((_, i) => this.Design_item(i));
-            }
-            devops_titles() {
-                return ['DevOps Engineer', 'Site Reliability Engineer', 'Cloud Engineer', 'Platform Engineer'];
-            }
-            devops_title(id) {
-                return this.devops_titles()[id] ?? '';
-            }
-            Devops_gallery_items() {
-                return this.devops_titles().map((_, i) => this.Devops_item(i));
-            }
-            all_titles() {
-                const all = [...this.dev_titles(), ...this.design_titles(), ...this.devops_titles()];
-                return Array.from(new Set(all));
-            }
-            all_title(id) {
-                return this.all_titles()[id] ?? '';
-            }
-            All_gallery_items() {
-                return this.all_titles().map((_, i) => this.All_item(i));
-            }
-            All_item_uri(index) {
-                return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' });
-            }
-            Dev_item_uri(index) {
-                return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' });
-            }
-            Design_item_uri(index) {
-                return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' });
-            }
-            Devops_item_uri(index) {
-                return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' });
-            }
-            All_item_open(index, event) {
+            Helper_item_open(index, event) {
                 event?.preventDefault();
-                const title = this.all_title(index);
+                const title = this.helper_title(index);
                 try {
                     this.$.$mol_state_session?.value('history', null);
                 }
@@ -13697,108 +13443,27 @@ var $;
                     this.$.$mol_state_session?.value('gd_profession', title);
                 }
                 catch { }
-                this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' });
-            }
-            Dev_item_open(index, event) {
-                event?.preventDefault();
-                const title = this.dev_title(index);
-                try {
-                    this.$.$mol_state_session?.value('history', null);
-                }
-                catch { }
-                try {
-                    this.$.$mol_state_session?.value('title', null);
-                }
-                catch { }
-                try {
-                    this.$.$mol_state_session?.value('digest', '');
-                }
-                catch { }
-                try {
-                    this.$.$mol_state_session?.value('gd_profession', title);
-                }
-                catch { }
-                this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' });
-            }
-            Design_item_open(index, event) {
-                event?.preventDefault();
-                const title = this.design_title(index);
-                try {
-                    this.$.$mol_state_session?.value('history', null);
-                }
-                catch { }
-                try {
-                    this.$.$mol_state_session?.value('title', null);
-                }
-                catch { }
-                try {
-                    this.$.$mol_state_session?.value('digest', '');
-                }
-                catch { }
-                try {
-                    this.$.$mol_state_session?.value('gd_profession', title);
-                }
-                catch { }
-                this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' });
-            }
-            Devops_item_open(index, event) {
-                event?.preventDefault();
-                const title = this.devops_title(index);
-                try {
-                    this.$.$mol_state_session?.value('history', null);
-                }
-                catch { }
-                try {
-                    this.$.$mol_state_session?.value('title', null);
-                }
-                catch { }
-                try {
-                    this.$.$mol_state_session?.value('digest', '');
-                }
-                catch { }
-                try {
-                    this.$.$mol_state_session?.value('gd_profession', title);
-                }
-                catch { }
-                this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' });
+                this.$.$mol_state_arg.go({
+                    '': '\t',
+                    prompt: 'привет',
+                });
             }
         }
         __decorate([
             $mol_mem
-        ], $bog_dobro_app_prof.prototype, "dev_titles", null);
+        ], $bog_dobro_app_prof.prototype, "query", null);
         __decorate([
             $mol_mem
-        ], $bog_dobro_app_prof.prototype, "Dev_gallery_items", null);
+        ], $bog_dobro_app_prof.prototype, "helper_titles", null);
         __decorate([
             $mol_mem
-        ], $bog_dobro_app_prof.prototype, "design_titles", null);
+        ], $bog_dobro_app_prof.prototype, "helper_descriptions", null);
         __decorate([
             $mol_mem
-        ], $bog_dobro_app_prof.prototype, "Design_gallery_items", null);
-        __decorate([
-            $mol_mem
-        ], $bog_dobro_app_prof.prototype, "devops_titles", null);
-        __decorate([
-            $mol_mem
-        ], $bog_dobro_app_prof.prototype, "Devops_gallery_items", null);
-        __decorate([
-            $mol_mem
-        ], $bog_dobro_app_prof.prototype, "all_titles", null);
-        __decorate([
-            $mol_mem
-        ], $bog_dobro_app_prof.prototype, "All_gallery_items", null);
+        ], $bog_dobro_app_prof.prototype, "Helpers_gallery_items", null);
         __decorate([
             $mol_action
-        ], $bog_dobro_app_prof.prototype, "All_item_open", null);
-        __decorate([
-            $mol_action
-        ], $bog_dobro_app_prof.prototype, "Dev_item_open", null);
-        __decorate([
-            $mol_action
-        ], $bog_dobro_app_prof.prototype, "Design_item_open", null);
-        __decorate([
-            $mol_action
-        ], $bog_dobro_app_prof.prototype, "Devops_item_open", null);
+        ], $bog_dobro_app_prof.prototype, "Helper_item_open", null);
         $$.$bog_dobro_app_prof = $bog_dobro_app_prof;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -13810,7 +13475,7 @@ var $;
     var $$;
     (function ($$) {
         $mol_style_define($bog_dobro_app_prof, {
-            All_item: {
+            Helper_item: {
                 padding: $mol_gap.block,
                 flex: {
                     grow: 1,
@@ -13832,72 +13497,132 @@ var $;
                     boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
                 },
             },
-            Dev_item: {
-                padding: $mol_gap.block,
-                flex: {
-                    grow: 1,
-                    shrink: 1,
-                    basis: '18rem',
-                },
-                border: {
-                    radius: $mol_gap.round,
-                },
-                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                background: {
-                    color: $mol_theme.card,
-                },
-                gap: $mol_gap.space,
-                cursor: 'pointer',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                ':hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
-                },
+            Helper_title_view: {
+                whiteSpace: 'normal',
+                wordBreak: 'break-word',
             },
-            Design_item: {
-                padding: $mol_gap.block,
-                flex: {
-                    grow: 1,
-                    shrink: 1,
-                    basis: '18rem',
-                },
-                border: {
-                    radius: $mol_gap.round,
-                },
-                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                background: {
-                    color: $mol_theme.card,
-                },
-                gap: $mol_gap.space,
-                cursor: 'pointer',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                ':hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
-                },
+            Helper_descr_view: {
+                whiteSpace: 'normal',
+                wordBreak: 'break-word',
             },
-            Devops_item: {
-                padding: $mol_gap.block,
-                flex: {
-                    grow: 1,
-                    shrink: 1,
-                    basis: '18rem',
-                },
-                border: {
-                    radius: $mol_gap.round,
-                },
-                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                background: {
-                    color: $mol_theme.card,
-                },
-                gap: $mol_gap.space,
-                cursor: 'pointer',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                ':hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
-                },
+            Helper_link: {
+                display: "flex",
+                flexWrap: "wrap"
+            }
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$bog_dobro_app_charity) = class $bog_dobro_app_charity extends ($.$mol_page) {
+		charity_rows(){
+			return [];
+		}
+		Charity_list(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.charity_rows()));
+			return obj;
+		}
+		title(){
+			return (this.$.$mol_locale.text("$bog_dobro_app_charity_title"));
+		}
+		body(){
+			return [(this.Charity_list())];
+		}
+	};
+	($mol_mem(($.$bog_dobro_app_charity.prototype), "Charity_list"));
+	($.$bog_dobro_app_charity_row) = class $bog_dobro_app_charity_row extends ($.$mol_card) {
+		title(){
+			return "";
+		}
+		Title(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.title()));
+			return obj;
+		}
+		description(){
+			return "";
+		}
+		Description(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.description()));
+			return obj;
+		}
+		sub(){
+			return [(this.Title()), (this.Description())];
+		}
+	};
+	($mol_mem(($.$bog_dobro_app_charity_row.prototype), "Title"));
+	($mol_mem(($.$bog_dobro_app_charity_row.prototype), "Description"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_dobro_app_charity extends $.$bog_dobro_app_charity {
+            charity_titles() {
+                return [
+                    'Поддержать пожилого соседа',
+                    'Сделать донорство крови',
+                    'Помочь приюту для животных',
+                    'Купить продукты малообеспеченной семье',
+                    'Участие в субботнике во дворе',
+                ];
+            }
+            charity_descriptions() {
+                return [
+                    'Спросить, нужна ли помощь с покупками, лекарствами или прогулкой.',
+                    'Записаться в ближайший пункт сдачи крови и прийти вовремя.',
+                    'Отнести корм, лекарства или помочь с выгулом животных.',
+                    'Собрать базовый набор продуктов и передать через волонтёров.',
+                    'Присоединиться к уборке двора или парка вместе с соседями.',
+                ];
+            }
+            charity_rows() {
+                return this.charity_titles().map((_, index) => {
+                    const row = new this.$.$bog_dobro_app_charity_row();
+                    row.title = () => this.charity_titles()[index] ?? '';
+                    row.description = () => this.charity_descriptions()[index] ?? '';
+                    return row;
+                });
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_charity.prototype, "charity_titles", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_charity.prototype, "charity_descriptions", null);
+        __decorate([
+            $mol_mem
+        ], $bog_dobro_app_charity.prototype, "charity_rows", null);
+        $$.$bog_dobro_app_charity = $bog_dobro_app_charity;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_dobro_app_charity_row, {
+            padding: $mol_gap.block,
+            margin: $mol_gap.block,
+            border: {
+                radius: $mol_gap.round,
             },
+            boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+            background: {
+                color: $mol_theme.card,
+            },
+            gap: $mol_gap.space,
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -18995,6 +18720,10 @@ var $;
 			const obj = new this.$.$bog_dobro_app_prof();
 			return obj;
 		}
+		Charity(){
+			const obj = new this.$.$bog_dobro_app_charity();
+			return obj;
+		}
 		Settings(){
 			const obj = new this.$.$bog_dobro_app_settings();
 			return obj;
@@ -19031,6 +18760,7 @@ var $;
 			return {
 				"\t": (this.Bot()), 
 				"prof": (this.Prof()), 
+				"charity": (this.Charity()), 
 				"settings": (this.Settings()), 
 				"vaka": (this.Vaka()), 
 				"ainews": (this.Ainews())
@@ -19041,6 +18771,7 @@ var $;
 	($mol_mem(($.$bog_dobro_app.prototype), "Theme"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Bot"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Prof"));
+	($mol_mem(($.$bog_dobro_app.prototype), "Charity"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Settings"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Vaka"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Ainews"));
@@ -19066,7 +18797,7 @@ var $;
                 const base = this.Bot().rules();
                 const prof = this.$.$mol_state_session.value('gd_profession');
                 return prof
-                    ? `${base}\nТы сейчас отвечаешь как ${prof}. Если пользователь поздоровается и попросит рассказать о себе, ответь и распиши типичный день человека на этой професии : \"я ${prof}\ ".`
+                    ? `${base}\nТы сейчас отвечаешь как ${prof}. Если пользователь поздоровается и попросит рассказать о себе, опиши, чем ты можешь помочь людям в этой роли, и приведи три типичных вопроса, которые тебе обычно задают.`
                     : base;
             }
             Ainews() {
