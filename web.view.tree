@@ -332,34 +332,71 @@ $mol_book2_catalog $mol_book2
 		sub /
 			<= Spread_close_icon $mol_icon_close
 
-$mol_check $mol_button_minor
-	attr *
-		^
-		mol_check_checked <= checked? false
-		aria-checked <= aria_checked \false
-		role <= aria_role \checkbox
-	sub /$mol_view_content
-		<= Icon null
-		<= label /
-			<= Title $mol_view
-				sub /
-					<= title \
-
-$mol_check_icon $mol_check
-
 $mol_icon_brightness_4 $mol_icon path \M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z
-
-$mol_lights_toggle $mol_check_icon
-	Icon <= Lights_icon $mol_icon_brightness_4
-	hint @ \Toggle lights
-	checked? <=> lights? false
 
 $bog_theme_auto $mol_plugin
 	themes <= themes_default /
+	theme_light \$mol_theme_light
+	theme_dark \$mol_theme_dark
 	theme_next? null
 	theme_prev? null
 	theme_set? null
 	attr * mol_theme <= theme \
+
+$bog_theme_picker_row $mol_button_minor
+	theme_name \
+	title <= theme_name
+	attr *
+		^
+		bog_theme_picker_row_focused <= focused_str \
+	event *
+		^
+		pointerenter?event <=> hover?event null
+
+$bog_theme_picker $mol_scroll
+	theme_auto $bog_theme_auto
+	close? null
+	query?val \
+	focused_index?val -1
+	Theme_row* $bog_theme_picker_row
+		theme_name <= theme_name* \
+		focused <= theme_focused* false
+		click?event <=> theme_select*?event null
+		hover?event <=> theme_hover*?event null
+	sub /
+		<= Content $mol_list rows /
+			<= Search $mol_string
+				value?val <=> query?val
+				hint @ \Just start typing
+			<= Theme_list $mol_list
+				rows <= theme_rows /
+	event *
+		^
+		keydown?event <=> key_down?event null
+
+$bog_theme_toggle $mol_pop
+	theme_auto $bog_theme_auto
+	showed?val false
+	align \bottom_right
+	Anchor $mol_button_minor
+		sub /
+			<= Icon $mol_icon_brightness_4
+		hint @ \Cycle through themes
+		click?event <=> clicked?event null
+		event *
+			^
+			pointerdown?event <=> press_start?event null
+			pointermove?event <=> press_move?event null
+			pointerup?event <=> press_end?event null
+			pointercancel?event <=> press_cancel?event null
+			lostpointercapture?event <=> press_lost?event null
+	bubble_content /
+		<= Backdrop $mol_view
+			event *
+				click?event <=> backdrop_click?event null
+		<= Picker $bog_theme_picker
+			theme_auto <= theme_auto
+			close? <=> picker_close? null
 
 $mol_theme_auto $mol_plugin
 	light \$mol_theme_light
@@ -487,6 +524,19 @@ $mol_float $mol_view
 	style *
 		^
 		minHeight \auto
+
+$mol_check $mol_button_minor
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \checkbox
+	sub /$mol_view_content
+		<= Icon null
+		<= label /
+			<= Title $mol_view
+				sub /
+					<= title \
 
 $mol_icon_chevron $mol_icon path \M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z
 
@@ -841,6 +891,13 @@ $mol_link_support $mol_link
 	sub /
 		<= Icon $mol_icon_face_agent
 
+$mol_check_icon $mol_check
+
+$mol_lights_toggle $mol_check_icon
+	Icon <= Lights_icon $mol_icon_brightness_4
+	hint @ \Toggle lights
+	checked? <=> lights? false
+
 $mol_text_list $mol_text
 	auto_scroll null
 	attr *
@@ -1163,15 +1220,393 @@ $bog_dobro_app_vaka_item $mol_card
 		<= Snippet $mol_text
 			text <= snippet? \
 
-$bog_dobro_app $mol_book2_catalog
+$bog_ainews_app_page $mol_page
+
+$mol_check_list $mol_view
+	dictionary *
+	Option* $mol_check
+		checked? <=> option_checked*? false
+		label <= option_label* /
+			<= option_title* \
+		enabled <= option_enabled* <= enabled true
+		hint <= option_hint* \
+		minimal_height 24
+	options *
+	keys /string
+	sub <= items /$mol_check
+
+$mol_switch $mol_check_list
+	value? \
+
+$mol_deck $mol_list
+	items /$mol_view
+	rows /$mol_view
+		<= Switch $mol_switch
+			value? <=> current? \0
+			options <= switch_options *
+		<= Content $mol_view
+
+$bog_ainews_app_feed_img $mol_view
+	src? null
+	alt? null
+	width? null
+	height? null
+
+$mol_icon_cards $mol_icon path \M21.47,4.35L20.13,3.79V12.82L22.56,6.96C22.97,5.94 22.5,4.77 21.47,4.35M1.97,8.05L6.93,20C7.24,20.77 7.97,21.24 8.74,21.26C9,21.26 9.27,21.21 9.53,21.1L16.9,18.05C17.65,17.74 18.11,17 18.13,16.26C18.14,16 18.09,15.71 18,15.45L13,3.5C12.71,2.73 11.97,2.26 11.19,2.25C10.93,2.25 10.67,2.31 10.42,2.4L3.06,5.45C2.04,5.87 1.55,7.04 1.97,8.05M18.12,4.25A2,2 0 0,0 16.12,2.25H14.67L18.12,10.59
+
+$mol_icon_cards_heart $mol_icon path \M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z
+
+$bog_ainews_app_filters $bog_ainews_app_page
+	title @ \Filters
+	body /
+		<= Include_labeler $mol_labeler
+			title @ \Post must include text:
+			content /
+				<= Include_string $mol_string
+					value? <=> include_string_value? \
+					hint \Visual
+				<= Include_string_clear_button $mol_button_minor
+					click? <=> include_string_clear_click? null 
+					sub /
+						<= Include_string_close_icon $mol_icon_close
+		<= Excldue_labeler $mol_labeler
+			title @ \Post must exclude text:
+			content /
+				<= Exclude_string $mol_string
+					value? <=> exclude_string_value? \
+					hint \AI,II
+				<= Exclude_string_clear_button $mol_button_minor
+					click? <=> exclude_string_clear_click? null
+					sub /
+						<= Exclude_string_close_icon $mol_icon_close
+		<= Tip_labeler $mol_labeler
+			title @ \Tip:
+			content /
+				<= Tip $mol_paragraph title @ \You can use a comma for multiple word instructions: AI,AGI
+
+$mol_icon_tick $mol_icon path \M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z
+
+$mol_check_box $mol_check
+	Icon $mol_icon_tick
+
+$mol_icon_chevron_left $mol_icon path \M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z
+
+$mol_icon_chevron_right $mol_icon path \M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z
+
+$mol_number $mol_view
+	precision_view <= precision 1
+	precision_change <= precision 1
+	boost 10
+	value_min -Infinity
+	value_max +Infinity
+	value? +NaN
+	enabled true
+	plugins /
+		<= Hotkey $mol_hotkey
+			key *
+				down? <=> event_dec? null
+				up? <=> event_inc? null
+				pageDown? <=> event_dec_boost? null
+				pageUp? <=> event_inc_boost? null
+	sub /
+		<= Dec $mol_button_minor
+			event_click? <=> event_dec? null
+			enabled <= dec_enabled <= enabled
+			sub / <= dec_icon $mol_icon_chevron_left
+		<= String $mol_string
+			- \ we don't want native number controls in mobile devices
+			- \ https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box
+			type <= type \text
+			keyboard \decimal
+			value? <=> value_string? \
+			hint <= hint \ 
+			enabled <= string_enabled <= enabled
+			submit? <=> submit? null
+		<= Inc $mol_button_minor
+			event_click? <=> event_inc? null
+			enabled <= inc_enabled <= enabled
+			sub / <= inc_icon $mol_icon_chevron_right
+
+$mol_icon_settings $mol_icon path \M12,15.5C10.07,15.5 8.5,13.93 8.5,12C8.5,10.07 10.07,8.5 12,8.5C13.93,8.5 15.5,10.07 15.5,12C15.5,13.93 13.93,15.5 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z
+
+$bog_ainews_app_settings $bog_ainews_app_page
+	current_language \
+	langs_list *
+		ru \Russian
+		en \English
+		de \Deutsch
+	title @ \Settings
+	Logo $mol_icon_settings
+	install? null
+	install_ios_instruction @ \To install on iPhone/iPad: 1. Tap the Share button (⎙) in Safari 2. Scroll down and tap "Add to Home Screen" 3. Tap "Add"
+	install_chrome_instruction @ \To install on PC: 1. Click the install icon ⊕ in the address bar (right side) 2. Or open Chrome menu (⋮) → "Install app..."
+	install_edge_instruction @ \To install on PC: 1. Click the install icon ⊕ in the address bar (right side) 2. Or open Edge menu (⋯) → Apps → "Install this site as an app"
+	install_unsupported_browser @ \To install this app, please use Chrome or Edge browser
+	install_already_installed @ \App is already installed or not supported
+	body /
+		<= Interface_language_labeler $mol_labeler
+			title @ \Interface language
+			content /
+				<= Interface_language_select $mol_locale_select
+					dictionary *
+						ru \Russian
+						en \English
+						de \Deutsch
+		<= Translate_to_labeler $mol_labeler
+			title @ \Translate post to
+			content /
+				<= Translate_to_select $mol_select
+					value? <=> current_language_code? \ru
+					dictionary <= langs_list
+		<= Localization_labeler $mol_labeler
+			title @ \Localization
+			content /
+				<= Auto_translate $mol_check_box
+					title @ \Auto translate post to selected language
+					checked? <=> is_enable_auto_translate? true
+		<= Description_count_limiter_labeler $mol_labeler
+			title @ \Limit description lenght
+			content /
+				<= Description_count_limiter $mol_number
+					value? <=> description_count_limiter_value? 256
+					precision_change 20
+					value_min 20
+		- <= Font_size_labeler $mol_labeler
+			title @ \Font size
+			content /
+				<= Font_size_number $mol_number
+					value? <=> font_size_value? 1.2
+					precision_change 0.1
+					precision 0.1
+					value_min 0.1
+		<= Spoilers_labeler $mol_labeler
+			title @ \Common options
+			content / <= Spoilers_labeler_list $mol_list rows /
+				<= Auto_open_spoiler_check_box $mol_check_box
+					title @ \Auto open post spoilers ?
+					checked? <=> auto_open_spoiler_check_box_value? false
+				<= Open_links_in_new_tabs_check_box $mol_check_box
+					title @ \Open post links in new tab ?
+					checked? <=> open_links_in_new_tabs_check_box_value? true
+		<= Install_labeler $mol_labeler
+			title @ \Install app
+			content /
+				<= Install_button $mol_button_major
+					title @ \Add to Home Screen
+					click? <=> install?
+
+$bog_ainews_app_feed $bog_ainews_app_page
+	app_filters $bog_ainews_app_filters
+	app_settings $bog_ainews_app_settings
+	app_source $bog_ainews_app_sources
+	app_favorites $bog_ainews_app_favorites
+	title @ \Feed
+	Logo $mol_icon_script_text
+	tools /
+		<= Summary_all_button $mol_button_major
+			title @ \Summary all news
+			click? <=> summary_all_click? null
+		<= Summary_all_pop $mol_pop
+			showed? <=> summary_all_showed? false
+			Anchor <= Summary_all_button
+			bubble_content /
+				<= Summary_all_content $mol_page
+					title @ \Summary all news
+					tools /
+						<= Summary_all_close $mol_button_minor
+							title @ \Close
+							click? <=> summary_all_close_click? null
+					body /
+						<= Summary_all_text $mol_paragraph
+							title <= summary_all_result \
+	body /
+		<= Hot_fix $mol_view sub /
+			<= Searcher $mol_search
+				query? <=> search_word? \
+		<= Tabs $mol_deck items <= Categories /
+		<= Welcome_block $mol_list rows /
+			<= Welcome_block_p1_paragraph $mol_paragraph
+				title @ \Empty feed - time to choose some sources!
+				dom_name \h4
+			<= Welcome_block_p2 $mol_view sub /
+				<= Welcome_block_p2_paragraph $mol_link 
+					title @ \To do this, go to the Sources page
+					uri \#!=sources
+	Category_page* $mol_list
+		title <= category_title* \blank category title
+		rows /
+			<= Category_summary_button* $mol_button_major
+				title @ \Summary category
+				click? <=> category_summary_click*? null
+			<= Category_summary_pop* $mol_pop
+				showed? <=> category_summary_showed*? false
+				Anchor <= Category_summary_button*
+				bubble_content /
+					<= Category_summary_content* $mol_page
+						title @ \Category summary
+						tools /
+							<= Category_summary_close* $mol_button_minor
+								title @ \Close
+								click? <=> category_summary_close_click*? null
+						body /
+							<= Category_summary_text* $mol_paragraph
+								title <= category_summary_result* \
+			<= Items* $mol_list rows <= articles* /
+	- <= Spoiler $mol_expander
+		label / \Murder is..
+		content / \majordomo
+		Tools <= Spoiler_tools $mol_view
+			sub /
+				<= Lock_icon $mol_icon_lock
+	Article* $mol_expander
+		expanded? <=> openned_post*? false
+		label / <= article_title* \
+		content /
+			<= Article_thumbnail* $bog_ainews_app_feed_img
+				src <= article_image_src* /
+				alt <= article_title*
+				width 192
+				height 108
+			- <= Article_title* $bog_ainews_app_feed_title
+				line_height <= font_size_value* 7
+				title <= article_title* \
+			<= Article_description_summary_button* $mol_button_minor
+				title @ \Summary this
+				click? <=> summary_description_click*? null
+			<= Article_description* $mol_paragraph
+				title <= article_description* \
+		Tools <= Spoiler_tools* $mol_view
+			sub /
+				<= Article_link* $mol_link
+					title @ \Open link
+					target <= open_in_new_tab* \_self
+					uri_toggle <= article_link* \
+				<= Article_translated_link* $mol_link
+					title @ \Open translated link
+					target <= open_in_new_tab*
+					uri_toggle <= article_translated_link* \
+				<= Article_translate_text* $mol_button_minor
+					title @ \Translate
+					- enabled <= article_translate_enable true
+					click? <=> translate_click*? null
+				<= Favorite* $mol_check_icon
+					Icon <= Base_icon* $mol_icon_cards_heart
+					checked? <=> base_checked*? false
+$bog_ainews_app_feed_title $mol_paragraph
+	style *
+		^
+		font-size <= font_size_title \1.22rem
+
+$bog_ainews_app_favorites $bog_ainews_app_feed
+	title @ \Favorites
+	category_title* \ 
+	add_post? null
+	remove_post? null
+	posts /
+
+$mol_icon_newspaper $mol_icon path \M20,11H4V8H20M20,15H13V13H20M20,19H13V17H20M11,19H4V13H11M20.33,4.67L18.67,3L17,4.67L15.33,3L13.67,4.67L12,3L10.33,4.67L8.67,3L7,4.67L5.33,3L3.67,4.67L2,3V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V3L20.33,4.67Z
+
+$bog_ainews_app $mol_book2_catalog
 	Placeholder null
-	Menu_logo $mol_image
-		uri \bog/prof/assets/job.png
-	menu_title @ \VibeJobs 
+	Menu_logo $mol_icon_newspaper
+	menu_title @ \VibeNews - your favorites 
 	menu_tools /
 		<= Lights $mol_lights_toggle
 	plugins /
 		<= Theme $bog_theme_auto
+			themes /
+				\$mol_theme_ainews_light
+				\$mol_theme_ainews_dark
+			theme_light \$mol_theme_ainews_light
+			theme_dark \$mol_theme_ainews_dark
+	spreads *
+		\
+			- <= FAQ $bog_ainews_app_faq
+			<= Feed $bog_ainews_app_feed
+		- feed <= Feed $bog_ainews_app_feed
+		favorite <= Favorite $bog_ainews_app_favorites
+		sources <= Sources $bog_ainews_app_sources
+		filters <= Filters $bog_ainews_app_filters
+		settings <= Settings $bog_ainews_app_settings
+		features <= Features $mol_page
+			title @ \Features list
+			body /
+				<= Feat_1 $mol_paragraph title @ \* Specify your own RSS feeds
+				<= Feat_2 $mol_paragraph title @ \* Choose from ready-made presets
+
+$mol_icon_plus $mol_icon path \M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z
+
+$mol_select_list $mol_view
+	value? /string
+	dictionary *
+	badges_list <= Badges /$mol_view
+	Badge* $mol_button_minor
+		title <= badge_title* \badge
+		click?event <=> remove*?event null
+		hint <= badge_hint @ \Drop
+		enabled <= drop_enabled <= enabled true
+	sub /$mol_view
+		<= Pick $mol_select
+			event_select*? <=> event_select*? null
+			align_hor <= align_hor \right
+			options <= options_pickable <= options /string
+			value? <=> pick? \
+			option_label* <= option_title* \
+			trigger_enabled <= pick_enabled <= enabled true
+			hint <= pick_hint @ \Add..
+			filter_pattern? => filter_pattern?
+			Trigger_icon <= Pick_icon $mol_icon_plus
+		^ badges_list
+
+$mol_icon_open_source_initiative $mol_icon path \M15.41,22C15.35,22 15.28,22 15.22,22C15.1,21.95 15,21.85 14.96,21.73L12.74,15.93C12.65,15.69 12.77,15.42 13,15.32C13.71,15.06 14.28,14.5 14.58,13.83C15.22,12.4 14.58,10.73 13.15,10.09C11.72,9.45 10.05,10.09 9.41,11.5C9.11,12.21 9.09,13 9.36,13.69C9.66,14.43 10.25,15 11,15.28C11.24,15.37 11.37,15.64 11.28,15.89L9,21.69C8.96,21.81 8.87,21.91 8.75,21.96C8.63,22 8.5,22 8.39,21.96C3.24,19.97 0.67,14.18 2.66,9.03C4.65,3.88 10.44,1.31 15.59,3.3C18.06,4.26 20.05,6.15 21.13,8.57C22.22,11 22.29,13.75 21.33,16.22C20.32,18.88 18.23,21 15.58,22C15.5,22 15.47,22 15.41,22M12,3.59C7.03,3.46 2.9,7.39 2.77,12.36C2.68,16.08 4.88,19.47 8.32,20.9L10.21,16C8.38,15 7.69,12.72 8.68,10.89C9.67,9.06 11.96,8.38 13.79,9.36C15.62,10.35 16.31,12.64 15.32,14.47C14.97,15.12 14.44,15.65 13.79,16L15.68,20.93C17.86,19.95 19.57,18.16 20.44,15.93C22.28,11.31 20.04,6.08 15.42,4.23C14.33,3.8 13.17,3.58 12,3.59Z
+
+$bog_ainews_app_sources $bog_ainews_app_page
+	runtime_links null
+	custom_sources*? /
+	title @ \Source
+	Logo $mol_icon_open_source_initiative
+	body /
+		<= My_sources_labeler $mol_labeler
+			title @ \Add custom rss feeds:
+			content / <= My_sources_labeler_content $mol_list rows /
+				<= My $mol_list rows <= My_rss_feeds /
+				<= Add_feed_string $mol_string
+				<= Add_feed_button $mol_button_minor
+					title @ \Add
+					click? <=> add_custom_feed_click? null
+		<= Sources_labeler $mol_labeler
+			title @ \Select your interests:
+			content /
+				<= Tabs $mol_list rows <= Categories /
+				- <= Tabs $mol_deck items <= Categories /
+	- Category_page* $mol_list
+	Category_page* $mol_labeler
+		title <= category_title* \blank category title
+		content /
+			<= Sources* $mol_select_list
+				value? <=> sources*? /
+				dictionary <= suggestions* /
+			<= Items* $mol_list rows <= articles* /
+	My_rss_item* $mol_view
+		sub /
+			<= RSS_title* $mol_paragraph
+				title <= my_rss_title* \
+			<= Delete_my_feed_button* $mol_button_major
+				sub / <= Delete_close_icon* $mol_icon_close
+				click? <=> delete_custom_feed_click*? null
+
+$bog_dobro_app $mol_book2_catalog
+	Placeholder null
+	Menu_logo $mol_image
+		uri \bog/dobro/assets/icon.jpg
+	menu_title @ \Goodness is near 
+	menu_tools /
+		<= Theme_toggle $bog_theme_toggle
+			theme_auto <= Theme 
+	plugins /
+		<= Theme $bog_theme_auto
+			theme_light \$mol_theme_light
+			theme_dark \$mol_theme_dark
 	spreads *
 		\	
 			<= Bot $gd_bot
@@ -1183,3 +1618,7 @@ $bog_dobro_app $mol_book2_catalog
 		prof <= Prof $bog_dobro_app_prof
 		settings <= Settings $bog_dobro_app_settings
 		vaka <= Vaka $bog_dobro_app_vaka
+		ainews <= Ainews $bog_ainews_app
+			menu_tools /
+			param null
+			Theme null

@@ -7669,156 +7669,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_check) = class $mol_check extends ($.$mol_button_minor) {
-		checked(next){
-			if(next !== undefined) return next;
-			return false;
-		}
-		aria_checked(){
-			return "false";
-		}
-		aria_role(){
-			return "checkbox";
-		}
-		Icon(){
-			return null;
-		}
-		title(){
-			return "";
-		}
-		Title(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.title())]);
-			return obj;
-		}
-		label(){
-			return [(this.Title())];
-		}
-		attr(){
-			return {
-				...(super.attr()), 
-				"mol_check_checked": (this.checked()), 
-				"aria-checked": (this.aria_checked()), 
-				"role": (this.aria_role())
-			};
-		}
-		sub(){
-			return [(this.Icon()), (this.label())];
-		}
-	};
-	($mol_mem(($.$mol_check.prototype), "checked"));
-	($mol_mem(($.$mol_check.prototype), "Title"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/check/check.css", "[mol_check] {\n\tflex: 0 0 auto;\n\tjustify-content: flex-start;\n\talign-content: center;\n\t/* align-items: flex-start; */\n\tborder: none;\n\tfont-weight: inherit;\n\tbox-shadow: none;\n\ttext-align: left;\n\tdisplay: inline-flex;\n\tflex-wrap: nowrap;\n}\n\n[mol_check_title] {\n\tflex-shrink: 1;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_check extends $.$mol_check {
-            click(next) {
-                if (next?.defaultPrevented)
-                    return;
-                this.checked(!this.checked());
-                if (next)
-                    next.preventDefault();
-            }
-            sub() {
-                return [
-                    ...$mol_maybe(this.Icon()),
-                    ...this.label(),
-                ];
-            }
-            label() {
-                return this.title() ? super.label() : [];
-            }
-            aria_checked() {
-                return String(this.checked());
-            }
-        }
-        $$.$mol_check = $mol_check;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-	($.$mol_check_icon) = class $mol_check_icon extends ($.$mol_check) {};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/check/icon/icon.view.css", "[mol_check_icon]:where([mol_check_checked]) {\n\tcolor: var(--mol_theme_current);\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-	($.$mol_icon_brightness_4) = class $mol_icon_brightness_4 extends ($.$mol_icon) {
-		path(){
-			return "M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_lights_toggle) = class $mol_lights_toggle extends ($.$mol_check_icon) {
-		Lights_icon(){
-			const obj = new this.$.$mol_icon_brightness_4();
-			return obj;
-		}
-		lights(next){
-			if(next !== undefined) return next;
-			return false;
-		}
-		Icon(){
-			return (this.Lights_icon());
-		}
-		hint(){
-			return (this.$.$mol_locale.text("$mol_lights_toggle_hint"));
-		}
-		checked(next){
-			return (this.lights(next));
-		}
-	};
-	($mol_mem(($.$mol_lights_toggle.prototype), "Lights_icon"));
-	($mol_mem(($.$mol_lights_toggle.prototype), "lights"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_lights_toggle extends $.$mol_lights_toggle {
-            lights(next) {
-                return this.$.$mol_lights(next);
-            }
-        }
-        $$.$mol_lights_toggle = $mol_lights_toggle;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
 "use strict";
 var $;
 (function ($) {
@@ -7837,15 +7687,32 @@ var $;
         'image',
         'spirit',
     ]);
-    $.$bog_theme_names = ['$mol_theme_light', '$mol_theme_dark', '$mol_theme_upwork'];
+    $.$bog_theme_names = [
+        '$mol_theme_light',
+        '$mol_theme_dark',
+        '$mol_theme_upwork',
+        '$mol_theme_ainews_light',
+        '$mol_theme_ainews_dark',
+    ];
 })($ || ($ = {}));
 
 ;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("bog/theme/theme.css", ":root {\n    --mol_theme_hue: 645deg;\n    --mol_theme_hue_spread: 90deg;\n\n    /* Bog theme semantic aliases */\n    --mol_theme_primary_hue: var(--mol_theme_hue);\n    --mol_theme_secondary_hue: calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread));\n    --mol_theme_tertiary_hue: calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread));\n    --mol_theme_accent_hue: calc(var(--mol_theme_hue) + 180deg);\n}\n\n:where([mol_theme]) {\n    color: var(--mol_theme_text);\n    fill: var(--mol_theme_text);\n    background-color: var(--mol_theme_back);\n}\n\n:root,\n[mol_theme='$mol_theme_dark'],\n:where([mol_theme='$mol_theme_dark']) [mol_theme] {\n    --mol_theme_luma: -1;\n    --mol_theme_image: invert(1) hue-rotate(180deg);\n    --mol_theme_spirit: hsl(0deg, 0%, 0%, 0.75);\n\n    --bog_theme_back: hsl(var(--bog_theme_hue), 8%, 12%);\n    --bog_theme_card: hsl(var(--bog_theme_hue), 15%, 18%, 0.25);\n    --bog_theme_field: hsl(var(--bog_theme_hue), 12%, 10%, 0.25);\n    --bog_theme_hover: hsl(var(--bog_theme_hue), 0%, 50%, 0.1);\n\n    --bog_theme_text: hsl(var(--bog_theme_hue), 8%, 85%);\n    --bog_theme_shade: hsl(var(--bog_theme_hue), 12%, 65%, 1);\n    --bog_theme_line: hsl(var(--bog_theme_hue), 8%, 50%, 0.25);\n    --bog_theme_focus: hsl(calc(var(--bog_theme_hue) + 180deg), 60%, 65%);\n\n    --bog_theme_control: hsl(var(--bog_theme_hue), 25%, 70%);\n    --bog_theme_current: hsl(calc(var(--bog_theme_hue) - var(--bog_theme_hue_spread)), 25%, 70%);\n    --bog_theme_special: hsl(calc(var(--bog_theme_hue) + var(--bog_theme_hue_spread)), 25%, 70%);\n}\n@supports (color: oklch(0% 0 0deg)) {\n    :root,\n    [mol_theme='$mol_theme_dark'],\n    :where([mol_theme='$mol_theme_dark']) [mol_theme] {\n        --bog_theme_back: oklch(12% 0.02 var(--bog_theme_hue));\n        --bog_theme_card: oklch(18% 0.03 var(--bog_theme_hue) / 0.25);\n        --bog_theme_field: oklch(10% 0.015 var(--bog_theme_hue) / 0.25);\n        --bog_theme_hover: oklch(70% 0 var(--bog_theme_hue) / 0.1);\n\n        --bog_theme_text: oklch(85% 0.025 var(--bog_theme_hue));\n        --bog_theme_shade: oklch(65% 0.035 var(--bog_theme_hue));\n        --bog_theme_line: oklch(50% 0.025 var(--bog_theme_hue) / 0.25);\n        --bog_theme_focus: oklch(75% 0.15 calc(var(--bog_theme_hue) + 180deg));\n\n        --bog_theme_control: oklch(70% 0.06 var(--bog_theme_hue));\n        --bog_theme_current: oklch(70% 0.08 calc(var(--bog_theme_hue) - var(--bog_theme_hue_spread)));\n        --bog_theme_special: oklch(70% 0.08 calc(var(--bog_theme_hue) + var(--bog_theme_hue_spread)));\n    }\n}\n\n[mol_theme='$mol_theme_light'],\n:where([mol_theme='$mol_theme_light']) [mol_theme] {\n    --mol_theme_luma: 1;\n    --mol_theme_image: none;\n    --mol_theme_spirit: hsl(0deg, 0%, 100%, 0.75);\n\n    --mol_theme_back: hsl(var(--mol_theme_hue), 0%, 100%);\n    --mol_theme_card: hsl(var(--mol_theme_hue), 50%, 100%, 0.5);\n    --mol_theme_field: hsl(var(--mol_theme_hue), 50%, 100%, 0.75);\n    --mol_theme_hover: hsl(var(--mol_theme_hue), 0%, 50%, 0.1);\n\n    --mol_theme_text: hsl(var(--mol_theme_hue), 0%, 0%);\n    --mol_theme_shade: hsl(var(--mol_theme_hue), 0%, 40%, 1);\n    --mol_theme_line: hsl(var(--mol_theme_hue), 0%, 50%, 0.25);\n    --mol_theme_focus: hsl(calc(var(--mol_theme_hue) + 180deg), 100%, 40%);\n\n    --mol_theme_control: hsl(var(--mol_theme_hue), 80%, 30%);\n    --mol_theme_current: hsl(calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)), 80%, 30%);\n    --mol_theme_special: hsl(calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)), 80%, 30%);\n}\n@supports (color: oklch(0% 0 0deg)) {\n    [mol_theme='$mol_theme_light'],\n    :where([mol_theme='$mol_theme_light']) [mol_theme] {\n        --mol_theme_back: oklch(100% 0 var(--mol_theme_hue));\n        --mol_theme_card: oklch(99% 0.01 var(--mol_theme_hue) / 0.5);\n        --mol_theme_field: oklch(100% 0 var(--mol_theme_hue) / 0.5);\n        --mol_theme_hover: oklch(70% 0 var(--mol_theme_hue) / 0.1);\n\n        --mol_theme_text: oklch(20% 0 var(--mol_theme_hue));\n        --mol_theme_shade: oklch(60% 0 var(--mol_theme_hue));\n        --mol_theme_line: oklch(50% 0 var(--mol_theme_hue) / 0.25);\n        --mol_theme_focus: oklch(60% 0.2 calc(var(--mol_theme_hue) + 180deg));\n\n        --mol_theme_control: oklch(40% 0.15 var(--mol_theme_hue));\n        --mol_theme_current: oklch(50% 0.2 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)));\n        --mol_theme_special: oklch(50% 0.2 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)));\n    }\n}\n\n:where(:root, [mol_theme='$mol_theme_dark']) [mol_theme='$mol_theme_base'] {\n    --mol_theme_back: oklch(25% 0.075 var(--mol_theme_hue));\n    --mol_theme_card: oklch(35% 0.1 var(--mol_theme_hue) / 0.25);\n}\n:where([mol_theme='$mol_theme_light']) [mol_theme='$mol_theme_base'] {\n    --mol_theme_back: oklch(85% 0.075 var(--mol_theme_hue));\n    --mol_theme_card: oklch(98% 0.03 var(--mol_theme_hue) / 0.25);\n}\n\n:where(:root, [mol_theme='$mol_theme_dark']) [mol_theme='$mol_theme_current'] {\n    --mol_theme_back: oklch(25% 0.05 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)));\n    --mol_theme_card: oklch(35% 0.1 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)) / 0.25);\n}\n:where([mol_theme='$mol_theme_light']) [mol_theme='$mol_theme_current'] {\n    --mol_theme_back: oklch(85% 0.05 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)));\n    --mol_theme_card: oklch(98% 0.03 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)) / 0.25);\n}\n\n:where(:root, [mol_theme='$mol_theme_dark']) [mol_theme='$mol_theme_special'] {\n    --mol_theme_back: oklch(25% 0.05 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)));\n    --mol_theme_card: oklch(35% 0.1 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)) / 0.25);\n}\n:where([mol_theme='$mol_theme_light']) [mol_theme='$mol_theme_special'] {\n    --mol_theme_back: oklch(85% 0.05 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)));\n    --mol_theme_card: oklch(98% 0.03 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)) / 0.25);\n}\n\n:where(:root, [mol_theme='$mol_theme_dark']) [mol_theme='$mol_theme_accent'] {\n    --mol_theme_back: oklch(35% 0.1 calc(var(--mol_theme_hue) + 180deg));\n    --mol_theme_card: oklch(45% 0.15 calc(var(--mol_theme_hue) + 180deg) / 0.25);\n}\n:where([mol_theme='$mol_theme_light']) [mol_theme='$mol_theme_accent'] {\n    --mol_theme_back: oklch(83% 0.1 calc(var(--mol_theme_hue) + 180deg));\n    --mol_theme_card: oklch(98% 0.03 calc(var(--mol_theme_hue) + 180deg) / 0.25);\n}\n\n/* Upwork theme - based on Upwork brand colors */\n[mol_theme='$mol_theme_upwork'],\n:where([mol_theme='$mol_theme_upwork']) [mol_theme] {\n    --mol_theme_luma: 1;\n    --mol_theme_image: none;\n    --mol_theme_spirit: rgba(255, 255, 255, 0.75);\n\n    /* Upwork brand colors: #73bb44 (primary green), #4fab4a (medium green), #385925 (dark green), #b5deb1 (light green) */\n    --mol_theme_back: #ffffff;\n    --mol_theme_card: #f9fcf7;\n    --mol_theme_field: #ffffff;\n    --mol_theme_hover: rgba(115, 187, 68, 0.1);\n\n    --mol_theme_text: #4c4444;\n    --mol_theme_shade: #6e6d7a;\n    --mol_theme_line: rgba(115, 187, 68, 0.25);\n    --mol_theme_focus: #73bb44;\n\n    --mol_theme_control: #73bb44;\n    --mol_theme_current: #4fab4a;\n    --mol_theme_special: #385925;\n}\n");
+    $mol_style_attach("bog/theme/theme.css", ":root {\n\t--mol_theme_hue: 645deg;\n\t--mol_theme_hue_spread: 90deg;\n\n\t/* Bog theme semantic aliases */\n\t--mol_theme_primary_hue: var(--mol_theme_hue);\n\t--mol_theme_secondary_hue: calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread));\n\t--mol_theme_tertiary_hue: calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread));\n\t--mol_theme_accent_hue: calc(var(--mol_theme_hue) + 180deg);\n}\n\n:where([mol_theme]) {\n\tcolor: var(--mol_theme_text);\n\tfill: var(--mol_theme_text);\n\tbackground-color: var(--mol_theme_back);\n}\n\n:root,\n[mol_theme='$mol_theme_dark'],\n:where([mol_theme='$mol_theme_dark']) [mol_theme] {\n\t--mol_theme_luma: -1;\n\t--mol_theme_image: invert(1) hue-rotate(180deg);\n\t--mol_theme_spirit: hsl(0deg, 0%, 0%, 0.75);\n\n\t--bog_theme_back: hsl(var(--bog_theme_hue), 8%, 12%);\n\t--bog_theme_card: hsl(var(--bog_theme_hue), 15%, 18%, 0.25);\n\t--bog_theme_field: hsl(var(--bog_theme_hue), 12%, 10%, 0.25);\n\t--bog_theme_hover: hsl(var(--bog_theme_hue), 0%, 50%, 0.1);\n\n\t--bog_theme_text: hsl(var(--bog_theme_hue), 8%, 85%);\n\t--bog_theme_shade: hsl(var(--bog_theme_hue), 12%, 65%, 1);\n\t--bog_theme_line: hsl(var(--bog_theme_hue), 8%, 50%, 0.25);\n\t--bog_theme_focus: hsl(calc(var(--bog_theme_hue) + 180deg), 60%, 65%);\n\n\t--bog_theme_control: hsl(var(--bog_theme_hue), 25%, 70%);\n\t--bog_theme_current: hsl(calc(var(--bog_theme_hue) - var(--bog_theme_hue_spread)), 25%, 70%);\n\t--bog_theme_special: hsl(calc(var(--bog_theme_hue) + var(--bog_theme_hue_spread)), 25%, 70%);\n}\n@supports (color: oklch(0% 0 0deg)) {\n\t:root,\n\t[mol_theme='$mol_theme_dark'],\n\t:where([mol_theme='$mol_theme_dark']) [mol_theme] {\n\t\t--bog_theme_back: oklch(12% 0.02 var(--bog_theme_hue));\n\t\t--bog_theme_card: oklch(18% 0.03 var(--bog_theme_hue) / 0.25);\n\t\t--bog_theme_field: oklch(10% 0.015 var(--bog_theme_hue) / 0.25);\n\t\t--bog_theme_hover: oklch(70% 0 var(--bog_theme_hue) / 0.1);\n\n\t\t--bog_theme_text: oklch(85% 0.025 var(--bog_theme_hue));\n\t\t--bog_theme_shade: oklch(65% 0.035 var(--bog_theme_hue));\n\t\t--bog_theme_line: oklch(50% 0.025 var(--bog_theme_hue) / 0.25);\n\t\t--bog_theme_focus: oklch(75% 0.15 calc(var(--bog_theme_hue) + 180deg));\n\n\t\t--bog_theme_control: oklch(70% 0.06 var(--bog_theme_hue));\n\t\t--bog_theme_current: oklch(70% 0.08 calc(var(--bog_theme_hue) - var(--bog_theme_hue_spread)));\n\t\t--bog_theme_special: oklch(70% 0.08 calc(var(--bog_theme_hue) + var(--bog_theme_hue_spread)));\n\t}\n}\n\n[mol_theme='$mol_theme_light'],\n:where([mol_theme='$mol_theme_light']) [mol_theme] {\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n\t--mol_theme_spirit: hsl(0deg, 0%, 100%, 0.75);\n\n\t--mol_theme_back: hsl(var(--mol_theme_hue), 0%, 100%);\n\t--mol_theme_card: hsl(var(--mol_theme_hue), 50%, 100%, 0.5);\n\t--mol_theme_field: hsl(var(--mol_theme_hue), 50%, 100%, 0.75);\n\t--mol_theme_hover: hsl(var(--mol_theme_hue), 0%, 50%, 0.1);\n\n\t--mol_theme_text: hsl(var(--mol_theme_hue), 0%, 0%);\n\t--mol_theme_shade: hsl(var(--mol_theme_hue), 0%, 40%, 1);\n\t--mol_theme_line: hsl(var(--mol_theme_hue), 0%, 50%, 0.25);\n\t--mol_theme_focus: hsl(calc(var(--mol_theme_hue) + 180deg), 100%, 40%);\n\n\t--mol_theme_control: hsl(var(--mol_theme_hue), 80%, 30%);\n\t--mol_theme_current: hsl(calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)), 80%, 30%);\n\t--mol_theme_special: hsl(calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)), 80%, 30%);\n}\n@supports (color: oklch(0% 0 0deg)) {\n\t[mol_theme='$mol_theme_light'],\n\t:where([mol_theme='$mol_theme_light']) [mol_theme] {\n\t\t--mol_theme_back: oklch(100% 0 var(--mol_theme_hue));\n\t\t--mol_theme_card: oklch(99% 0.01 var(--mol_theme_hue) / 0.5);\n\t\t--mol_theme_field: oklch(100% 0 var(--mol_theme_hue) / 0.5);\n\t\t--mol_theme_hover: oklch(70% 0 var(--mol_theme_hue) / 0.1);\n\n\t\t--mol_theme_text: oklch(20% 0 var(--mol_theme_hue));\n\t\t--mol_theme_shade: oklch(60% 0 var(--mol_theme_hue));\n\t\t--mol_theme_line: oklch(50% 0 var(--mol_theme_hue) / 0.25);\n\t\t--mol_theme_focus: oklch(60% 0.2 calc(var(--mol_theme_hue) + 180deg));\n\n\t\t--mol_theme_control: oklch(40% 0.15 var(--mol_theme_hue));\n\t\t--mol_theme_current: oklch(50% 0.2 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)));\n\t\t--mol_theme_special: oklch(50% 0.2 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)));\n\t}\n}\n\n:where(:root, [mol_theme='$mol_theme_dark']) [mol_theme='$mol_theme_base'] {\n\t--mol_theme_back: oklch(25% 0.075 var(--mol_theme_hue));\n\t--mol_theme_card: oklch(35% 0.1 var(--mol_theme_hue) / 0.25);\n}\n:where([mol_theme='$mol_theme_light']) [mol_theme='$mol_theme_base'] {\n\t--mol_theme_back: oklch(85% 0.075 var(--mol_theme_hue));\n\t--mol_theme_card: oklch(98% 0.03 var(--mol_theme_hue) / 0.25);\n}\n\n:where(:root, [mol_theme='$mol_theme_dark']) [mol_theme='$mol_theme_current'] {\n\t--mol_theme_back: oklch(25% 0.05 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)));\n\t--mol_theme_card: oklch(35% 0.1 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)) / 0.25);\n}\n:where([mol_theme='$mol_theme_light']) [mol_theme='$mol_theme_current'] {\n\t--mol_theme_back: oklch(85% 0.05 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)));\n\t--mol_theme_card: oklch(98% 0.03 calc(var(--mol_theme_hue) - var(--mol_theme_hue_spread)) / 0.25);\n}\n\n:where(:root, [mol_theme='$mol_theme_dark']) [mol_theme='$mol_theme_special'] {\n\t--mol_theme_back: oklch(25% 0.05 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)));\n\t--mol_theme_card: oklch(35% 0.1 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)) / 0.25);\n}\n:where([mol_theme='$mol_theme_light']) [mol_theme='$mol_theme_special'] {\n\t--mol_theme_back: oklch(85% 0.05 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)));\n\t--mol_theme_card: oklch(98% 0.03 calc(var(--mol_theme_hue) + var(--mol_theme_hue_spread)) / 0.25);\n}\n\n:where(:root, [mol_theme='$mol_theme_dark']) [mol_theme='$mol_theme_accent'] {\n\t--mol_theme_back: oklch(35% 0.1 calc(var(--mol_theme_hue) + 180deg));\n\t--mol_theme_card: oklch(45% 0.15 calc(var(--mol_theme_hue) + 180deg) / 0.25);\n}\n:where([mol_theme='$mol_theme_light']) [mol_theme='$mol_theme_accent'] {\n\t--mol_theme_back: oklch(83% 0.1 calc(var(--mol_theme_hue) + 180deg));\n\t--mol_theme_card: oklch(98% 0.03 calc(var(--mol_theme_hue) + 180deg) / 0.25);\n}\n\n/* Upwork theme - based on Upwork brand colors */\n[mol_theme='$mol_theme_upwork'],\n:where([mol_theme='$mol_theme_upwork']) [mol_theme] {\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n\t--mol_theme_spirit: rgba(255, 255, 255, 0.75);\n\n\t/* Upwork brand colors: #73bb44 (primary green), #4fab4a (medium green), #385925 (dark green), #b5deb1 (light green) */\n\t--mol_theme_back: #ffffff;\n\t--mol_theme_card: #f9fcf7;\n\t--mol_theme_field: #ffffff;\n\t--mol_theme_hover: rgba(115, 187, 68, 0.1);\n\n\t--mol_theme_text: #4c4444;\n\t--mol_theme_shade: #6e6d7a;\n\t--mol_theme_line: rgba(115, 187, 68, 0.25);\n\t--mol_theme_focus: #73bb44;\n\n\t--mol_theme_control: #73bb44;\n\t--mol_theme_current: #4fab4a;\n\t--mol_theme_special: #385925;\n}\n\n/* Ainews dark theme - based on Ainews brand palette */\n[mol_theme='$mol_theme_ainews_dark'],\n:where([mol_theme='$mol_theme_ainews_dark']) [mol_theme] {\n\t--mol_theme_luma: -1;\n\t--mol_theme_image: invert(1) hue-rotate(180deg);\n\n\t/* ВАЖНО: mol_* — именно их читает демка */\n\t--mol_theme_back: #3e3e3e; /* paper dark */\n\t--mol_theme_card: #4a4a4a40; /* paper-2 dark 25% */\n\t--mol_theme_field: #4c4c4c40; /* chip dark 25% */\n\t--mol_theme_hover: #5a5a5a1a; /* edge dark 10% */\n\n\t--mol_theme_text: #bcbcbc; /* ink dark */\n\t--mol_theme_shade: #909090; /* ink-muted dark */\n\t--mol_theme_line: #5a5a5a40; /* edge dark 25% */\n\t--mol_theme_focus: #a8bcff; /* accent dark */\n\n\t--mol_theme_control: #a8bcff; /* accent dark */\n\t--mol_theme_current: #c7b18c; /* accent-2 dark */\n\t--mol_theme_special: #d4bf9d; /* accent-2 lighter */\n}\n\n@supports (color: oklch(0% 0 0deg)) {\n\t[mol_theme='$mol_theme_ainews_dark'],\n\t:where([mol_theme='$mol_theme_ainews_dark']) [mol_theme] {\n\t\t--mol_theme_back: #3e3e3e;\n\t\t--mol_theme_card: #4a4a4a40;\n\t\t--mol_theme_field: #4c4c4c40;\n\t\t--mol_theme_hover: #5a5a5a1a;\n\n\t\t--mol_theme_text: #bcbcbc;\n\t\t--mol_theme_shade: #909090;\n\t\t--mol_theme_line: #5a5a5a40;\n\t\t--mol_theme_focus: #a8bcff;\n\n\t\t--mol_theme_control: #a8bcff;\n\t\t--mol_theme_current: #c7b18c;\n\t\t--mol_theme_special: #d4bf9d;\n\t}\n}\n\n/* Ainews light theme */\n[mol_theme='$mol_theme_ainews_light'],\n:where([mol_theme='$mol_theme_ainews_light']) [mol_theme] {\n\t--mol_theme_luma: 1;\n\t--mol_theme_image: none;\n\t--mol_theme_spirit: #fbf8f1bf; /* 75% */\n\n\t--mol_theme_back: #f7f3e9; /* paper */\n\t--mol_theme_card: #fbf8f180; /* paper-2 50% */\n\t--mol_theme_field: #efe8d8bf; /* chip 75% */\n\t--mol_theme_hover: #ded7c81a; /* edge 10% */\n\n\t--mol_theme_text: #22211f; /* ink */\n\t--mol_theme_shade: #6e6a62; /* ink-muted */\n\t--mol_theme_line: #ded7c840; /* edge 25% */\n\t--mol_theme_focus: #3b5aad; /* accent */\n\n\t--mol_theme_control: #3b5aad; /* accent */\n\t--mol_theme_current: #92734b; /* accent-2 */\n\t--mol_theme_special: #c7b18c; /* accent-2 lighter */\n}\n\n@supports (color: oklch(0% 0 0deg)) {\n\t[mol_theme='$mol_theme_ainews_light'],\n\t:where([mol_theme='$mol_theme_ainews_light']) [mol_theme] {\n\t\t--mol_theme_back: #f7f3e9;\n\t\t--mol_theme_card: #fbf8f180;\n\t\t--mol_theme_field: #efe8d8bf;\n\t\t--mol_theme_hover: #ded7c81a;\n\n\t\t--mol_theme_text: #22211f;\n\t\t--mol_theme_shade: #6e6a62;\n\t\t--mol_theme_line: #ded7c840;\n\t\t--mol_theme_focus: #3b5aad;\n\n\t\t--mol_theme_control: #3b5aad;\n\t\t--mol_theme_current: #92734b;\n\t\t--mol_theme_special: #c7b18c;\n\t}\n}\n");
 })($ || ($ = {}));
+
+;
+	($.$mol_icon_brightness_4) = class $mol_icon_brightness_4 extends ($.$mol_icon) {
+		path(){
+			return "M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z";
+		}
+	};
+
+
+;
+"use strict";
 
 ;
 	($.$bog_theme_auto) = class $bog_theme_auto extends ($.$mol_plugin) {
@@ -7857,6 +7724,12 @@ var $;
 		}
 		themes(){
 			return (this.themes_default());
+		}
+		theme_light(){
+			return "$mol_theme_light";
+		}
+		theme_dark(){
+			return "$mol_theme_dark";
 		}
 		theme_next(next){
 			if(next !== undefined) return next;
@@ -7881,6 +7754,9 @@ var $;
 
 ;
 "use strict";
+
+;
+"use strict";
 var $;
 (function ($) {
     var $$;
@@ -7899,7 +7775,7 @@ var $;
             system_theme_index() {
                 const themes = this.themes();
                 const prefersLight = this.$.$mol_lights();
-                const preferredTheme = prefersLight ? '$mol_theme_light' : '$mol_theme_dark';
+                const preferredTheme = prefersLight ? this.theme_light() : this.theme_dark();
                 const index = themes.indexOf(preferredTheme);
                 return index !== -1 ? index : 0;
             }
@@ -7954,7 +7830,538 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$bog_theme_picker_row) = class $bog_theme_picker_row extends ($.$mol_button_minor) {
+		focused_str(){
+			return "";
+		}
+		hover(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		theme_name(){
+			return "";
+		}
+		title(){
+			return (this.theme_name());
+		}
+		attr(){
+			return {...(super.attr()), "bog_theme_picker_row_focused": (this.focused_str())};
+		}
+		event(){
+			return {...(super.event()), "pointerenter": (next) => (this.hover(next))};
+		}
+	};
+	($mol_mem(($.$bog_theme_picker_row.prototype), "hover"));
+
+
+;
 "use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_theme_picker_row extends $.$bog_theme_picker_row {
+            focused_str() {
+                return this.focused() ? 'true' : '';
+            }
+        }
+        $$.$bog_theme_picker_row = $bog_theme_picker_row;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_theme_picker_row, {
+            '@': {
+                bog_theme_picker_row_focused: {
+                    true: {
+                        background: {
+                            color: $mol_theme.hover,
+                        },
+                        boxShadow: `inset 0 0 0 1px #000, inset 0 0 0 2px #fff`,
+                    },
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$bog_theme_picker) = class $bog_theme_picker extends ($.$mol_scroll) {
+		theme_name(id){
+			return "";
+		}
+		theme_focused(id){
+			return false;
+		}
+		theme_select(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		theme_hover(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Search(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.query(next)));
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_theme_picker_Search_hint")));
+			return obj;
+		}
+		theme_rows(){
+			return [];
+		}
+		Theme_list(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.theme_rows()));
+			return obj;
+		}
+		Content(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ([(this.Search()), (this.Theme_list())]);
+			return obj;
+		}
+		key_down(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		theme_auto(){
+			const obj = new this.$.$bog_theme_auto();
+			return obj;
+		}
+		close(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		query(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		focused_index(next){
+			if(next !== undefined) return next;
+			return -1;
+		}
+		Theme_row(id){
+			const obj = new this.$.$bog_theme_picker_row();
+			(obj.theme_name) = () => ((this.theme_name(id)));
+			(obj.focused) = () => ((this.theme_focused(id)));
+			(obj.click) = (next) => ((this.theme_select(id, next)));
+			(obj.hover) = (next) => ((this.theme_hover(id, next)));
+			return obj;
+		}
+		sub(){
+			return [(this.Content())];
+		}
+		event(){
+			return {...(super.event()), "keydown": (next) => (this.key_down(next))};
+		}
+	};
+	($mol_mem_key(($.$bog_theme_picker.prototype), "theme_select"));
+	($mol_mem_key(($.$bog_theme_picker.prototype), "theme_hover"));
+	($mol_mem(($.$bog_theme_picker.prototype), "Search"));
+	($mol_mem(($.$bog_theme_picker.prototype), "Theme_list"));
+	($mol_mem(($.$bog_theme_picker.prototype), "Content"));
+	($mol_mem(($.$bog_theme_picker.prototype), "key_down"));
+	($mol_mem(($.$bog_theme_picker.prototype), "theme_auto"));
+	($mol_mem(($.$bog_theme_picker.prototype), "close"));
+	($mol_mem(($.$bog_theme_picker.prototype), "query"));
+	($mol_mem(($.$bog_theme_picker.prototype), "focused_index"));
+	($mol_mem_key(($.$bog_theme_picker.prototype), "Theme_row"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_theme_picker extends $.$bog_theme_picker {
+            theme_rows() {
+                const themes = this.filtered_themes();
+                return themes.map((_, index) => this.Theme_row(index));
+            }
+            filtered_themes() {
+                const query = this.query().toLowerCase().trim();
+                const themes = this.$.$bog_theme_names;
+                const filtered = query ? themes.filter(name => name.toLowerCase().includes(query)) : [...themes];
+                const current = this.focused_index();
+                if (current >= filtered.length) {
+                    this.focused_index(-1);
+                }
+                return filtered;
+            }
+            theme_name(index) {
+                return this.filtered_themes()[index] || '';
+            }
+            theme_focused(index) {
+                return this.focused_index() === index;
+            }
+            theme_select(index, event) {
+                if (!event)
+                    return null;
+                const themes = this.filtered_themes();
+                const theme_name = themes[index];
+                const global_index = this.$.$bog_theme_names.indexOf(theme_name);
+                if (global_index !== -1) {
+                    this.theme_auto().theme_set(global_index);
+                }
+                this.close();
+                return null;
+            }
+            theme_hover(index, event) {
+                if (!event)
+                    return null;
+                this.focused_index(index);
+                const themes = this.filtered_themes();
+                const theme_name = themes[index];
+                const global_index = this.$.$bog_theme_names.indexOf(theme_name);
+                if (global_index !== -1) {
+                    this.theme_auto().theme_set(global_index);
+                }
+                return null;
+            }
+            key_down(event) {
+                if (!event)
+                    return null;
+                const themes = this.filtered_themes();
+                let current = this.focused_index();
+                switch (event.key) {
+                    case 'ArrowDown':
+                        event.preventDefault();
+                        event.stopPropagation();
+                        if (current === -1) {
+                            current = 0;
+                        }
+                        else {
+                            current = current < themes.length - 1 ? current + 1 : 0;
+                        }
+                        this.focused_index(current);
+                        this.preview_theme(current);
+                        break;
+                    case 'ArrowUp':
+                        event.preventDefault();
+                        event.stopPropagation();
+                        if (current === -1) {
+                            current = themes.length - 1;
+                        }
+                        else {
+                            current = current > 0 ? current - 1 : themes.length - 1;
+                        }
+                        this.focused_index(current);
+                        this.preview_theme(current);
+                        break;
+                    case 'Enter':
+                        event.preventDefault();
+                        if (current >= 0 && current < themes.length) {
+                            this.select_theme(current);
+                        }
+                        break;
+                    case 'Escape':
+                        event.preventDefault();
+                        this.close();
+                        break;
+                }
+                return null;
+            }
+            select_theme(index) {
+                const themes = this.filtered_themes();
+                const theme_name = themes[index];
+                const global_index = this.$.$bog_theme_names.indexOf(theme_name);
+                if (global_index !== -1) {
+                    this.theme_auto().theme_set(global_index);
+                }
+                this.close();
+            }
+            preview_theme(index) {
+                const themes = this.filtered_themes();
+                const theme_name = themes[index];
+                const global_index = this.$.$bog_theme_names.indexOf(theme_name);
+                if (global_index !== -1) {
+                    this.theme_auto().theme_set(global_index);
+                }
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_theme_picker.prototype, "theme_rows", null);
+        __decorate([
+            $mol_mem
+        ], $bog_theme_picker.prototype, "filtered_themes", null);
+        __decorate([
+            $mol_action
+        ], $bog_theme_picker.prototype, "select_theme", null);
+        __decorate([
+            $mol_action
+        ], $bog_theme_picker.prototype, "preview_theme", null);
+        $$.$bog_theme_picker = $bog_theme_picker;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_theme_picker, {
+            background: {
+                color: $mol_theme.back,
+            },
+            borderRadius: '8px',
+            overflow: 'hidden',
+            opacity: 1,
+            Search: {
+                borderRadius: '8px',
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$bog_theme_toggle) = class $bog_theme_toggle extends ($.$mol_pop) {
+		Icon(){
+			const obj = new this.$.$mol_icon_brightness_4();
+			return obj;
+		}
+		clicked(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		press_start(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		press_move(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		press_end(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		press_cancel(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		press_lost(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		backdrop_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Backdrop(){
+			const obj = new this.$.$mol_view();
+			(obj.event) = () => ({"click": (next) => (this.backdrop_click(next))});
+			return obj;
+		}
+		picker_close(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Picker(){
+			const obj = new this.$.$bog_theme_picker();
+			(obj.theme_auto) = () => ((this.theme_auto()));
+			(obj.close) = (next) => ((this.picker_close(next)));
+			return obj;
+		}
+		theme_auto(){
+			const obj = new this.$.$bog_theme_auto();
+			return obj;
+		}
+		showed(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		align(){
+			return "bottom_right";
+		}
+		Anchor(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.sub) = () => ([(this.Icon())]);
+			(obj.hint) = () => ((this.$.$mol_locale.text("$bog_theme_toggle_Anchor_hint")));
+			(obj.click) = (next) => ((this.clicked(next)));
+			(obj.event) = () => ({
+				...(this.$.$mol_button_minor.prototype.event.call(obj)), 
+				"pointerdown": (next) => (this.press_start(next)), 
+				"pointermove": (next) => (this.press_move(next)), 
+				"pointerup": (next) => (this.press_end(next)), 
+				"pointercancel": (next) => (this.press_cancel(next)), 
+				"lostpointercapture": (next) => (this.press_lost(next))
+			});
+			return obj;
+		}
+		bubble_content(){
+			return [(this.Backdrop()), (this.Picker())];
+		}
+	};
+	($mol_mem(($.$bog_theme_toggle.prototype), "Icon"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "clicked"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "press_start"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "press_move"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "press_end"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "press_cancel"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "press_lost"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "backdrop_click"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "Backdrop"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "picker_close"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "Picker"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "theme_auto"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "showed"));
+	($mol_mem(($.$bog_theme_toggle.prototype), "Anchor"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_theme_toggle extends $.$bog_theme_toggle {
+            long_press_delay = 300;
+            move_threshold = 8;
+            press_timer = null;
+            press_start_x = 0;
+            press_start_y = 0;
+            is_long_press = false;
+            clicked(event) {
+                if (!event)
+                    return null;
+                if (this.is_long_press) {
+                    this.is_long_press = false;
+                    return null;
+                }
+                this.theme_auto().theme_next();
+                return null;
+            }
+            press_start(event) {
+                if (!event)
+                    return null;
+                this.clear_press_timer();
+                this.press_start_x = event.clientX;
+                this.press_start_y = event.clientY;
+                this.is_long_press = false;
+                this.press_timer = setTimeout(() => {
+                    this.is_long_press = true;
+                    this.on_long_press();
+                }, this.long_press_delay);
+                return null;
+            }
+            press_move(event) {
+                if (!event || !this.press_timer)
+                    return null;
+                const dx = Math.abs(event.clientX - this.press_start_x);
+                const dy = Math.abs(event.clientY - this.press_start_y);
+                if (dx > this.move_threshold || dy > this.move_threshold) {
+                    this.clear_press_timer();
+                }
+                return null;
+            }
+            press_end(event) {
+                if (!event)
+                    return null;
+                this.clear_press_timer();
+                return null;
+            }
+            press_cancel(event) {
+                if (!event)
+                    return null;
+                this.clear_press_timer();
+                return null;
+            }
+            press_lost(event) {
+                if (!event)
+                    return null;
+                this.clear_press_timer();
+                return null;
+            }
+            clear_press_timer() {
+                if (this.press_timer) {
+                    clearTimeout(this.press_timer);
+                    this.press_timer = null;
+                }
+            }
+            on_long_press() {
+                this.showed(true);
+                setTimeout(() => {
+                    try {
+                        const search = this.Picker().Search();
+                        search.focused(true);
+                    }
+                    catch (e) {
+                    }
+                }, 100);
+            }
+            picker_close() {
+                this.showed(false);
+            }
+            backdrop_click(event) {
+                if (!event)
+                    return null;
+                this.showed(false);
+                return null;
+            }
+        }
+        $$.$bog_theme_toggle = $bog_theme_toggle;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_theme_toggle, {
+            Bubble: {
+                position: 'fixed !important',
+                left: '0 !important',
+                top: '0 !important',
+                transform: 'none !important',
+                width: '100vw !important',
+                height: '100vh !important',
+                maxWidth: 'none !important',
+                maxHeight: 'none !important',
+                padding: '0 !important',
+                boxShadow: 'none',
+                background: 'transparent !important',
+            },
+            Backdrop: {
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                zIndex: 1,
+                opacity: 0,
+            },
+            Picker: {
+                position: 'fixed',
+                left: '50%',
+                top: '15vh',
+                transform: 'translateX(-50%)',
+                maxWidth: '400px',
+                width: '90vw',
+                maxHeight: '70vh',
+                zIndex: 2,
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
 
 ;
 	($.$mol_theme_auto) = class $mol_theme_auto extends ($.$mol_plugin) {
@@ -9095,6 +9502,89 @@ var $;
 
 ;
 "use strict";
+
+;
+	($.$mol_check) = class $mol_check extends ($.$mol_button_minor) {
+		checked(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		aria_checked(){
+			return "false";
+		}
+		aria_role(){
+			return "checkbox";
+		}
+		Icon(){
+			return null;
+		}
+		title(){
+			return "";
+		}
+		Title(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.title())]);
+			return obj;
+		}
+		label(){
+			return [(this.Title())];
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"mol_check_checked": (this.checked()), 
+				"aria-checked": (this.aria_checked()), 
+				"role": (this.aria_role())
+			};
+		}
+		sub(){
+			return [(this.Icon()), (this.label())];
+		}
+	};
+	($mol_mem(($.$mol_check.prototype), "checked"));
+	($mol_mem(($.$mol_check.prototype), "Title"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/check.css", "[mol_check] {\n\tflex: 0 0 auto;\n\tjustify-content: flex-start;\n\talign-content: center;\n\t/* align-items: flex-start; */\n\tborder: none;\n\tfont-weight: inherit;\n\tbox-shadow: none;\n\ttext-align: left;\n\tdisplay: inline-flex;\n\tflex-wrap: nowrap;\n}\n\n[mol_check_title] {\n\tflex-shrink: 1;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_check extends $.$mol_check {
+            click(next) {
+                if (next?.defaultPrevented)
+                    return;
+                this.checked(!this.checked());
+                if (next)
+                    next.preventDefault();
+            }
+            sub() {
+                return [
+                    ...$mol_maybe(this.Icon()),
+                    ...this.label(),
+                ];
+            }
+            label() {
+                return this.title() ? super.label() : [];
+            }
+            aria_checked() {
+                return String(this.checked());
+            }
+        }
+        $$.$mol_check = $mol_check;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
 
 ;
 	($.$mol_icon_chevron) = class $mol_icon_chevron extends ($.$mol_icon) {
@@ -11158,6 +11648,62 @@ var $;
 
 ;
 "use strict";
+
+;
+	($.$mol_check_icon) = class $mol_check_icon extends ($.$mol_check) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/icon/icon.view.css", "[mol_check_icon]:where([mol_check_checked]) {\n\tcolor: var(--mol_theme_current);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_lights_toggle) = class $mol_lights_toggle extends ($.$mol_check_icon) {
+		Lights_icon(){
+			const obj = new this.$.$mol_icon_brightness_4();
+			return obj;
+		}
+		lights(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Icon(){
+			return (this.Lights_icon());
+		}
+		hint(){
+			return (this.$.$mol_locale.text("$mol_lights_toggle_hint"));
+		}
+		checked(next){
+			return (this.lights(next));
+		}
+	};
+	($mol_mem(($.$mol_lights_toggle.prototype), "Lights_icon"));
+	($mol_mem(($.$mol_lights_toggle.prototype), "lights"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_lights_toggle extends $.$mol_lights_toggle {
+            lights(next) {
+                return this.$.$mol_lights(next);
+            }
+        }
+        $$.$mol_lights_toggle = $mol_lights_toggle;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
 
 ;
 "use strict";
@@ -14263,13 +14809,3692 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$bog_dobro_app) = class $bog_dobro_app extends ($.$mol_book2_catalog) {
+var $node = $node || {} ; $node[ "/bog/ainews/favicon.svg" ] = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik5ld3NwYXBlciBpY29uIj4KICA8cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik0yMCwxMUg0VjhIMjBNMjAsMTVIMTNWMTNIMjBNMjAsMTlIMTNWMTdIMjBNMTEsMTlINFYxM0gxMU0yMC4zMyw0LjY3TDE4LjY3LDNMMTcsNC42N0wxNS4zMywzTDEzLjY3LDQuNjdMMTIsM0wxMC4zMyw0LjY3TDguNjcsM0w3LDQuNjdMNS4zMywzTDMuNjcsNC42N0wyLDNWMTlBMiwyIDAgMCwwIDQsMjFIMjBBMiwyIDAgMCwwIDIyLDE5VjNMMjAuMzMsNC42N1oiLz4KPC9zdmc+Cg=="
+
+;
+	($.$bog_ainews_app_page) = class $bog_ainews_app_page extends ($.$mol_page) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("bog/ainews/app/page/page.view.css", "[bog_ainews_app_page] {\n\tflex: 1 0 40rem;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_check_list) = class $mol_check_list extends ($.$mol_view) {
+		option_checked(id, next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		option_title(id){
+			return "";
+		}
+		option_label(id){
+			return [(this.option_title(id))];
+		}
+		enabled(){
+			return true;
+		}
+		option_enabled(id){
+			return (this.enabled());
+		}
+		option_hint(id){
+			return "";
+		}
+		items(){
+			return [];
+		}
+		dictionary(){
+			return {};
+		}
+		Option(id){
+			const obj = new this.$.$mol_check();
+			(obj.checked) = (next) => ((this.option_checked(id, next)));
+			(obj.label) = () => ((this.option_label(id)));
+			(obj.enabled) = () => ((this.option_enabled(id)));
+			(obj.hint) = () => ((this.option_hint(id)));
+			(obj.minimal_height) = () => (24);
+			return obj;
+		}
+		options(){
+			return {};
+		}
+		keys(){
+			return [];
+		}
+		sub(){
+			return (this.items());
+		}
+	};
+	($mol_mem_key(($.$mol_check_list.prototype), "option_checked"));
+	($mol_mem_key(($.$mol_check_list.prototype), "Option"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_check_list extends $.$mol_check_list {
+            options() {
+                return {};
+            }
+            dictionary(next) {
+                return next ?? {};
+            }
+            option_checked(id, next) {
+                const prev = this.dictionary();
+                if (next === undefined)
+                    return prev[id] ?? null;
+                const next_rec = { ...prev, [id]: next };
+                if (next === null)
+                    delete next_rec[id];
+                return this.dictionary(next_rec)[id] ?? null;
+            }
+            keys() {
+                return Object.keys(this.options());
+            }
+            items() {
+                return this.keys().map(key => this.Option(key));
+            }
+            option_title(key) {
+                return this.options()[key] || key;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_check_list.prototype, "keys", null);
+        __decorate([
+            $mol_mem
+        ], $mol_check_list.prototype, "items", null);
+        $$.$mol_check_list = $mol_check_list;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/list/list.view.css", "[mol_check_list] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tflex: 1 1 auto;\n\tborder-radius: var(--mol_gap_round);\n\tgap: 1px;\n}\n\n[mol_check_list_option] {\n\tflex: 0 1 auto;\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"]) {\n\ttext-shadow: 0 0;\n\tcolor: var(--mol_theme_current);\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"][disabled]) {\n\tcolor: var(--mol_theme_text);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_switch) = class $mol_switch extends ($.$mol_check_list) {
+		value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+	};
+	($mol_mem(($.$mol_switch.prototype), "value"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_switch extends $.$mol_switch {
+            value(next) {
+                return $mol_state_session.value(`${this}.value()`, next) ?? '';
+            }
+            option_checked(key, next) {
+                if (next === undefined)
+                    return this.value() == key;
+                this.value(next ? key : '');
+                return next;
+            }
+        }
+        $$.$mol_switch = $mol_switch;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_deck) = class $mol_deck extends ($.$mol_list) {
+		current(next){
+			if(next !== undefined) return next;
+			return "0";
+		}
+		switch_options(){
+			return {};
+		}
+		Switch(){
+			const obj = new this.$.$mol_switch();
+			(obj.value) = (next) => ((this.current(next)));
+			(obj.options) = () => ((this.switch_options()));
+			return obj;
+		}
+		Content(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		items(){
+			return [];
+		}
+		rows(){
+			return [(this.Switch()), (this.Content())];
+		}
+	};
+	($mol_mem(($.$mol_deck.prototype), "current"));
+	($mol_mem(($.$mol_deck.prototype), "Switch"));
+	($mol_mem(($.$mol_deck.prototype), "Content"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_deck extends $.$mol_deck {
+            current(next) {
+                return $mol_state_session.value(`${this}.current()`, next) || '0';
+            }
+            switch_options() {
+                let options = {};
+                this.items().forEach((item, index) => {
+                    options[String(index)] = item.title();
+                });
+                return options;
+            }
+            Content() {
+                return this.items()[Number(this.current())];
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_deck.prototype, "Content", null);
+        $$.$mol_deck = $mol_deck;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$bog_ainews_app_feed_img) = class $bog_ainews_app_feed_img extends ($.$mol_view) {
+		src(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		alt(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		width(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		height(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+	};
+	($mol_mem(($.$bog_ainews_app_feed_img.prototype), "src"));
+	($mol_mem(($.$bog_ainews_app_feed_img.prototype), "alt"));
+	($mol_mem(($.$bog_ainews_app_feed_img.prototype), "width"));
+	($mol_mem(($.$bog_ainews_app_feed_img.prototype), "height"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_ainews_app_feed_img extends $.$bog_ainews_app_feed_img {
+            dom_name() {
+                return 'img';
+            }
+            attr() {
+                const a = super.attr();
+                const src = this.src();
+                if (!src || (Array.isArray(src) && src.length === 0))
+                    return {};
+                return {
+                    ...a,
+                    src: Array.isArray(src) ? src[0] : src,
+                    alt: this.alt() ?? '',
+                    loading: 'lazy',
+                    referrerpolicy: 'no-referrer',
+                    width: this.width() ? String(this.width()) : undefined,
+                    height: this.height() ? String(this.height()) : undefined,
+                };
+            }
+            render() {
+                const src = this.src();
+                if (!src || (Array.isArray(src) && src.length === 0))
+                    return null;
+                return super.render();
+            }
+        }
+        $$.$bog_ainews_app_feed_img = $bog_ainews_app_feed_img;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    const { rem } = $mol_style_unit;
+    $mol_style_define($.$$.$bog_ainews_app_feed_img, {
+        display: 'block',
+        objectFit: 'cover',
+        borderRadius: rem(0.5),
+        boxShadow: '0 2px 8px rgba(0,0,0,.08)',
+    });
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_cards) = class $mol_icon_cards extends ($.$mol_icon) {
+		path(){
+			return "M21.47,4.35L20.13,3.79V12.82L22.56,6.96C22.97,5.94 22.5,4.77 21.47,4.35M1.97,8.05L6.93,20C7.24,20.77 7.97,21.24 8.74,21.26C9,21.26 9.27,21.21 9.53,21.1L16.9,18.05C17.65,17.74 18.11,17 18.13,16.26C18.14,16 18.09,15.71 18,15.45L13,3.5C12.71,2.73 11.97,2.26 11.19,2.25C10.93,2.25 10.67,2.31 10.42,2.4L3.06,5.45C2.04,5.87 1.55,7.04 1.97,8.05M18.12,4.25A2,2 0 0,0 16.12,2.25H14.67L18.12,10.59";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_cards_heart) = class $mol_icon_cards_heart extends ($.$mol_icon) {
+		path(){
+			return "M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$bog_ainews_app_filters) = class $bog_ainews_app_filters extends ($.$bog_ainews_app_page) {
+		include_string_value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Include_string(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.include_string_value(next)));
+			(obj.hint) = () => ("Visual");
+			return obj;
+		}
+		include_string_clear_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Include_string_close_icon(){
+			const obj = new this.$.$mol_icon_close();
+			return obj;
+		}
+		Include_string_clear_button(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.click) = (next) => ((this.include_string_clear_click(next)));
+			(obj.sub) = () => ([(this.Include_string_close_icon())]);
+			return obj;
+		}
+		Include_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_filters_Include_labeler_title")));
+			(obj.content) = () => ([(this.Include_string()), (this.Include_string_clear_button())]);
+			return obj;
+		}
+		exclude_string_value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Exclude_string(){
+			const obj = new this.$.$mol_string();
+			(obj.value) = (next) => ((this.exclude_string_value(next)));
+			(obj.hint) = () => ("AI,II");
+			return obj;
+		}
+		exclude_string_clear_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Exclude_string_close_icon(){
+			const obj = new this.$.$mol_icon_close();
+			return obj;
+		}
+		Exclude_string_clear_button(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.click) = (next) => ((this.exclude_string_clear_click(next)));
+			(obj.sub) = () => ([(this.Exclude_string_close_icon())]);
+			return obj;
+		}
+		Excldue_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_filters_Excldue_labeler_title")));
+			(obj.content) = () => ([(this.Exclude_string()), (this.Exclude_string_clear_button())]);
+			return obj;
+		}
+		Tip(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_filters_Tip_title")));
+			return obj;
+		}
+		Tip_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_filters_Tip_labeler_title")));
+			(obj.content) = () => ([(this.Tip())]);
+			return obj;
+		}
+		title(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_filters_title"));
+		}
+		body(){
+			return [
+				(this.Include_labeler()), 
+				(this.Excldue_labeler()), 
+				(this.Tip_labeler())
+			];
+		}
+	};
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "include_string_value"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Include_string"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "include_string_clear_click"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Include_string_close_icon"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Include_string_clear_button"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Include_labeler"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "exclude_string_value"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Exclude_string"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "exclude_string_clear_click"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Exclude_string_close_icon"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Exclude_string_clear_button"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Excldue_labeler"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Tip"));
+	($mol_mem(($.$bog_ainews_app_filters.prototype), "Tip_labeler"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_ainews_app_filters extends $.$bog_ainews_app_filters {
+            include_string_value(next) {
+                if (next !== undefined)
+                    return $mol_state_local.value('include_string_value', next);
+                return $mol_state_local.value('include_string_value') ?? '';
+            }
+            exclude_string_value(next) {
+                if (next !== undefined)
+                    return $mol_state_local.value('exclude_string_value', next);
+                return $mol_state_local.value('exclude_string_value') ?? '';
+            }
+            include_string_clear_click() {
+                $mol_state_local.value('include_string_value', null);
+            }
+            exclude_string_clear_click() {
+                $mol_state_local.value('exclude_string_value', null);
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_filters.prototype, "include_string_value", null);
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_filters.prototype, "exclude_string_value", null);
+        $$.$bog_ainews_app_filters = $bog_ainews_app_filters;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_tick) = class $mol_icon_tick extends ($.$mol_icon) {
+		path(){
+			return "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_check_box) = class $mol_check_box extends ($.$mol_check) {
+		Icon(){
+			const obj = new this.$.$mol_icon_tick();
+			return obj;
+		}
+	};
+	($mol_mem(($.$mol_check_box.prototype), "Icon"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/box/box.view.css", "[mol_check_box_icon] {\n\tborder-radius: var(--mol_gap_round);\n\tbox-shadow: inset 0 0 0 1px var(--mol_theme_line);\n\tcolor: var(--mol_theme_shade);\n\theight: 1rem;\n\talign-self: center;\n}\n\n[mol_check]:not([mol_check_checked]) > [mol_check_box_icon] {\n\tfill: transparent;\n}\n\n[mol_check]:not([disabled]) > [mol_check_box_icon] {\n\tbackground: var(--mol_theme_field);\n\tcolor: var(--mol_theme_text);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_chevron_left) = class $mol_icon_chevron_left extends ($.$mol_icon) {
+		path(){
+			return "M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_chevron_right) = class $mol_icon_chevron_right extends ($.$mol_icon) {
+		path(){
+			return "M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_number) = class $mol_number extends ($.$mol_view) {
+		precision(){
+			return 1;
+		}
+		event_dec(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		event_inc(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		event_dec_boost(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		event_inc_boost(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Hotkey(){
+			const obj = new this.$.$mol_hotkey();
+			(obj.key) = () => ({
+				"down": (next) => (this.event_dec(next)), 
+				"up": (next) => (this.event_inc(next)), 
+				"pageDown": (next) => (this.event_dec_boost(next)), 
+				"pageUp": (next) => (this.event_inc_boost(next))
+			});
+			return obj;
+		}
+		dec_enabled(){
+			return (this.enabled());
+		}
+		dec_icon(){
+			const obj = new this.$.$mol_icon_chevron_left();
+			return obj;
+		}
+		Dec(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.event_click) = (next) => ((this.event_dec(next)));
+			(obj.enabled) = () => ((this.dec_enabled()));
+			(obj.sub) = () => ([(this.dec_icon())]);
+			return obj;
+		}
+		type(){
+			return "text";
+		}
+		value_string(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		hint(){
+			return " ";
+		}
+		string_enabled(){
+			return (this.enabled());
+		}
+		submit(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		String(){
+			const obj = new this.$.$mol_string();
+			(obj.type) = () => ((this.type()));
+			(obj.keyboard) = () => ("decimal");
+			(obj.value) = (next) => ((this.value_string(next)));
+			(obj.hint) = () => ((this.hint()));
+			(obj.enabled) = () => ((this.string_enabled()));
+			(obj.submit) = (next) => ((this.submit(next)));
+			return obj;
+		}
+		inc_enabled(){
+			return (this.enabled());
+		}
+		inc_icon(){
+			const obj = new this.$.$mol_icon_chevron_right();
+			return obj;
+		}
+		Inc(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.event_click) = (next) => ((this.event_inc(next)));
+			(obj.enabled) = () => ((this.inc_enabled()));
+			(obj.sub) = () => ([(this.inc_icon())]);
+			return obj;
+		}
+		precision_view(){
+			return (this.precision());
+		}
+		precision_change(){
+			return (this.precision());
+		}
+		boost(){
+			return 10;
+		}
+		value_min(){
+			return -Infinity;
+		}
+		value_max(){
+			return +Infinity;
+		}
+		value(next){
+			if(next !== undefined) return next;
+			return +NaN;
+		}
+		enabled(){
+			return true;
+		}
+		plugins(){
+			return [(this.Hotkey())];
+		}
+		sub(){
+			return [
+				(this.Dec()), 
+				(this.String()), 
+				(this.Inc())
+			];
+		}
+	};
+	($mol_mem(($.$mol_number.prototype), "event_dec"));
+	($mol_mem(($.$mol_number.prototype), "event_inc"));
+	($mol_mem(($.$mol_number.prototype), "event_dec_boost"));
+	($mol_mem(($.$mol_number.prototype), "event_inc_boost"));
+	($mol_mem(($.$mol_number.prototype), "Hotkey"));
+	($mol_mem(($.$mol_number.prototype), "dec_icon"));
+	($mol_mem(($.$mol_number.prototype), "Dec"));
+	($mol_mem(($.$mol_number.prototype), "value_string"));
+	($mol_mem(($.$mol_number.prototype), "submit"));
+	($mol_mem(($.$mol_number.prototype), "String"));
+	($mol_mem(($.$mol_number.prototype), "inc_icon"));
+	($mol_mem(($.$mol_number.prototype), "Inc"));
+	($mol_mem(($.$mol_number.prototype), "value"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/number/number.css", "[mol_number] {\n\tdisplay: flex;\n\tflex: 0 1 auto;\n\tposition: relative;\n\talign-items: stretch;\n\tmax-width: 100%;\n}\n\n[mol_number_string] {\n\tappearance: textfield;\n\tflex: 1 1 7rem;\n\twidth: 7rem;\n}\n\n[mol_number_string]::-webkit-inner-spin-button {\n\tdisplay: none;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_number extends $.$mol_number {
+            value_limited(val) {
+                if (Number.isNaN(val))
+                    return this.value(val);
+                if (val === undefined)
+                    return this.value();
+                const min = this.value_min();
+                const max = this.value_max();
+                if (val < min)
+                    return this.value(min);
+                if (val > max)
+                    return this.value(max);
+                return this.value(val);
+            }
+            event_dec(next) {
+                this.value_limited((this.value_limited() || 0) - this.precision_change());
+                next?.preventDefault();
+            }
+            event_inc(next) {
+                this.value_limited((this.value_limited() || 0) + this.precision_change());
+                next?.preventDefault();
+            }
+            event_dec_boost(next) {
+                this.value_limited((this.value_limited() || 0) - this.precision_change() * this.boost());
+                next?.preventDefault();
+            }
+            event_inc_boost(next) {
+                this.value_limited((this.value_limited() || 0) + this.precision_change() * this.boost());
+                next?.preventDefault();
+            }
+            round(val) {
+                if (Number.isNaN(val))
+                    return '';
+                if (val === 0)
+                    return '0';
+                if (!val)
+                    return '';
+                const precision_view = this.precision_view();
+                if (!precision_view)
+                    return val.toFixed();
+                if (precision_view >= 1) {
+                    return (val / precision_view).toFixed();
+                }
+                else {
+                    const fixed_number = Math.log10(1 / precision_view);
+                    return val.toFixed(Math.ceil(fixed_number));
+                }
+            }
+            value_string(next) {
+                const current = this.round(this.value_limited());
+                if (next === undefined)
+                    return current;
+                const precision = this.precision_view();
+                if (precision - Math.floor(precision) === 0)
+                    next = next.replace(/[.,]/g, '');
+                next = (this.value_min() < 0 && next.startsWith('-') ? '-' : '')
+                    + next.replace(/,/g, '.').replace(/[^\d\.]/g, '').replace(/^0{2,}/, '0');
+                let dot_pos = next.indexOf('.');
+                if (dot_pos !== -1) {
+                    const prev = $mol_wire_probe(() => this.value_string()) ?? '';
+                    const dot_pos_prev = prev.indexOf('.');
+                    if (dot_pos_prev === dot_pos)
+                        dot_pos = next.lastIndexOf('.');
+                    const frac = next.slice(dot_pos + 1).replace(/\./g, '');
+                    next = (next.slice(0, dot_pos) || '0').replace(/\./g, '') + '.' + frac;
+                }
+                if (Number.isNaN(Number(next)))
+                    return next;
+                if (next.endsWith('.'))
+                    return next;
+                if (next.endsWith('-'))
+                    return next;
+                this.value_limited(Number(next || Number.NaN));
+                return next;
+            }
+            dec_enabled() {
+                return this.enabled() && (!((this.value() || 0) <= this.value_min()));
+            }
+            inc_enabled() {
+                return this.enabled() && (!((this.value() || 0) >= this.value_max()));
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_number.prototype, "value_string", null);
+        __decorate([
+            $mol_mem
+        ], $mol_number.prototype, "dec_enabled", null);
+        __decorate([
+            $mol_mem
+        ], $mol_number.prototype, "inc_enabled", null);
+        $$.$mol_number = $mol_number;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_settings) = class $mol_icon_settings extends ($.$mol_icon) {
+		path(){
+			return "M12,15.5C10.07,15.5 8.5,13.93 8.5,12C8.5,10.07 10.07,8.5 12,8.5C13.93,8.5 15.5,10.07 15.5,12C15.5,13.93 13.93,15.5 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$bog_ainews_app_settings) = class $bog_ainews_app_settings extends ($.$bog_ainews_app_page) {
+		Interface_language_select(){
+			const obj = new this.$.$mol_locale_select();
+			(obj.dictionary) = () => ({
+				"ru": "Russian", 
+				"en": "English", 
+				"de": "Deutsch"
+			});
+			return obj;
+		}
+		Interface_language_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Interface_language_labeler_title")));
+			(obj.content) = () => ([(this.Interface_language_select())]);
+			return obj;
+		}
+		current_language_code(next){
+			if(next !== undefined) return next;
+			return "ru";
+		}
+		Translate_to_select(){
+			const obj = new this.$.$mol_select();
+			(obj.value) = (next) => ((this.current_language_code(next)));
+			(obj.dictionary) = () => ((this.langs_list()));
+			return obj;
+		}
+		Translate_to_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Translate_to_labeler_title")));
+			(obj.content) = () => ([(this.Translate_to_select())]);
+			return obj;
+		}
+		is_enable_auto_translate(next){
+			if(next !== undefined) return next;
+			return true;
+		}
+		Auto_translate(){
+			const obj = new this.$.$mol_check_box();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Auto_translate_title")));
+			(obj.checked) = (next) => ((this.is_enable_auto_translate(next)));
+			return obj;
+		}
+		Localization_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Localization_labeler_title")));
+			(obj.content) = () => ([(this.Auto_translate())]);
+			return obj;
+		}
+		description_count_limiter_value(next){
+			if(next !== undefined) return next;
+			return 256;
+		}
+		Description_count_limiter(){
+			const obj = new this.$.$mol_number();
+			(obj.value) = (next) => ((this.description_count_limiter_value(next)));
+			(obj.precision_change) = () => (20);
+			(obj.value_min) = () => (20);
+			return obj;
+		}
+		Description_count_limiter_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Description_count_limiter_labeler_title")));
+			(obj.content) = () => ([(this.Description_count_limiter())]);
+			return obj;
+		}
+		auto_open_spoiler_check_box_value(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Auto_open_spoiler_check_box(){
+			const obj = new this.$.$mol_check_box();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Auto_open_spoiler_check_box_title")));
+			(obj.checked) = (next) => ((this.auto_open_spoiler_check_box_value(next)));
+			return obj;
+		}
+		open_links_in_new_tabs_check_box_value(next){
+			if(next !== undefined) return next;
+			return true;
+		}
+		Open_links_in_new_tabs_check_box(){
+			const obj = new this.$.$mol_check_box();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Open_links_in_new_tabs_check_box_title")));
+			(obj.checked) = (next) => ((this.open_links_in_new_tabs_check_box_value(next)));
+			return obj;
+		}
+		Spoilers_labeler_list(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ([(this.Auto_open_spoiler_check_box()), (this.Open_links_in_new_tabs_check_box())]);
+			return obj;
+		}
+		Spoilers_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Spoilers_labeler_title")));
+			(obj.content) = () => ([(this.Spoilers_labeler_list())]);
+			return obj;
+		}
+		Install_button(){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Install_button_title")));
+			(obj.click) = (next) => ((this.install(next)));
+			return obj;
+		}
+		Install_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_settings_Install_labeler_title")));
+			(obj.content) = () => ([(this.Install_button())]);
+			return obj;
+		}
+		current_language(){
+			return "";
+		}
+		langs_list(){
+			return {
+				"ru": "Russian", 
+				"en": "English", 
+				"de": "Deutsch"
+			};
+		}
+		title(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_settings_title"));
+		}
+		Logo(){
+			const obj = new this.$.$mol_icon_settings();
+			return obj;
+		}
+		install(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		install_ios_instruction(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_settings_install_ios_instruction"));
+		}
+		install_chrome_instruction(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_settings_install_chrome_instruction"));
+		}
+		install_edge_instruction(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_settings_install_edge_instruction"));
+		}
+		install_unsupported_browser(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_settings_install_unsupported_browser"));
+		}
+		install_already_installed(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_settings_install_already_installed"));
+		}
+		body(){
+			return [
+				(this.Interface_language_labeler()), 
+				(this.Translate_to_labeler()), 
+				(this.Localization_labeler()), 
+				(this.Description_count_limiter_labeler()), 
+				(this.Spoilers_labeler()), 
+				(this.Install_labeler())
+			];
+		}
+	};
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Interface_language_select"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Interface_language_labeler"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "current_language_code"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Translate_to_select"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Translate_to_labeler"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "is_enable_auto_translate"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Auto_translate"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Localization_labeler"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "description_count_limiter_value"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Description_count_limiter"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Description_count_limiter_labeler"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "auto_open_spoiler_check_box_value"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Auto_open_spoiler_check_box"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "open_links_in_new_tabs_check_box_value"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Open_links_in_new_tabs_check_box"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Spoilers_labeler_list"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Spoilers_labeler"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Install_button"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Install_labeler"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "Logo"));
+	($mol_mem(($.$bog_ainews_app_settings.prototype), "install"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $$.$bog_ainews_app_settings_font_size_value = () => $mol_state_local.value('font_size_value') ? $mol_state_local.value('font_size_value') + 'rem' : '0.4rem';
+        class $bog_ainews_app_settings extends $.$bog_ainews_app_settings {
+            is_enable_auto_translate(next) {
+                if (next !== undefined)
+                    return $mol_state_local.value('is_enable_auto_translate', next);
+                return $mol_state_local.value('is_enable_auto_translate') ?? true;
+            }
+            description_count_limiter_value(next) {
+                if (next !== undefined)
+                    return $mol_state_local.value('description_count_limiter_value', next);
+                return $mol_state_local.value('description_count_limiter_value') ?? 256;
+            }
+            current_language_code(next) {
+                if (next !== undefined)
+                    return $mol_state_local.value('current_language', next);
+                return $mol_state_local.value('current_language') ?? 'ru';
+            }
+            current_language() {
+                return this.langs_list()[this.current_language_code()];
+            }
+            auto_open_spoiler_check_box_value(next) {
+                if (next !== undefined)
+                    return $mol_state_local.value('auto_open_spoiler_check_box_value', next);
+                return ($mol_state_local.value('auto_open_spoiler_check_box_value') ?? super.auto_open_spoiler_check_box_value());
+            }
+            open_links_in_new_tabs_check_box_value(next) {
+                if (next !== undefined)
+                    return $mol_state_local.value('open_links_in_new_tabs_check_box_value', next);
+                return ($mol_state_local.value('open_links_in_new_tabs_check_box_value') ??
+                    super.open_links_in_new_tabs_check_box_value());
+            }
+            deferredPrompt = null;
+            auto() {
+                super.auto();
+                window.addEventListener('beforeinstallprompt', e => {
+                    e.preventDefault();
+                    this.deferredPrompt = e;
+                });
+            }
+            install() {
+                if (!this.deferredPrompt) {
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                    const isDesktop = !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                    if (isIOS) {
+                        alert(this.install_ios_instruction());
+                    }
+                    else if (isDesktop) {
+                        const isChrome = navigator.userAgent.includes('Chrome') && !navigator.userAgent.includes('Edge');
+                        const isEdge = navigator.userAgent.includes('Edge');
+                        if (isChrome) {
+                            alert(this.install_chrome_instruction());
+                        }
+                        else if (isEdge) {
+                            alert(this.install_edge_instruction());
+                        }
+                        else {
+                            alert(this.install_unsupported_browser());
+                        }
+                    }
+                    else {
+                        alert(this.install_already_installed());
+                    }
+                    return;
+                }
+                this.deferredPrompt.prompt();
+                this.deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    this.deferredPrompt = null;
+                });
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_settings.prototype, "is_enable_auto_translate", null);
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_settings.prototype, "description_count_limiter_value", null);
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_settings.prototype, "current_language_code", null);
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_settings.prototype, "current_language", null);
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_settings.prototype, "auto_open_spoiler_check_box_value", null);
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_settings.prototype, "open_links_in_new_tabs_check_box_value", null);
+        __decorate([
+            $mol_action
+        ], $bog_ainews_app_settings.prototype, "install", null);
+        $$.$bog_ainews_app_settings = $bog_ainews_app_settings;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    const { rem } = $mol_style_unit;
+    $mol_style_define($bog_ainews_app_settings, {});
+})($ || ($ = {}));
+
+;
+	($.$bog_ainews_app_feed) = class $bog_ainews_app_feed extends ($.$bog_ainews_app_page) {
+		summary_all_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Summary_all_button(){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Summary_all_button_title")));
+			(obj.click) = (next) => ((this.summary_all_click(next)));
+			return obj;
+		}
+		summary_all_showed(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		summary_all_close_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Summary_all_close(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Summary_all_close_title")));
+			(obj.click) = (next) => ((this.summary_all_close_click(next)));
+			return obj;
+		}
+		summary_all_result(){
+			return "";
+		}
+		Summary_all_text(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.summary_all_result()));
+			return obj;
+		}
+		Summary_all_content(){
+			const obj = new this.$.$mol_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Summary_all_content_title")));
+			(obj.tools) = () => ([(this.Summary_all_close())]);
+			(obj.body) = () => ([(this.Summary_all_text())]);
+			return obj;
+		}
+		Summary_all_pop(){
+			const obj = new this.$.$mol_pop();
+			(obj.showed) = (next) => ((this.summary_all_showed(next)));
+			(obj.Anchor) = () => ((this.Summary_all_button()));
+			(obj.bubble_content) = () => ([(this.Summary_all_content())]);
+			return obj;
+		}
+		search_word(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		Searcher(){
+			const obj = new this.$.$mol_search();
+			(obj.query) = (next) => ((this.search_word(next)));
+			return obj;
+		}
+		Hot_fix(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Searcher())]);
+			return obj;
+		}
+		Categories(){
+			return [];
+		}
+		Tabs(){
+			const obj = new this.$.$mol_deck();
+			(obj.items) = () => ((this.Categories()));
+			return obj;
+		}
+		Welcome_block_p1_paragraph(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Welcome_block_p1_paragraph_title")));
+			(obj.dom_name) = () => ("h4");
+			return obj;
+		}
+		Welcome_block_p2_paragraph(){
+			const obj = new this.$.$mol_link();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Welcome_block_p2_paragraph_title")));
+			(obj.uri) = () => ("#!=sources");
+			return obj;
+		}
+		Welcome_block_p2(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Welcome_block_p2_paragraph())]);
+			return obj;
+		}
+		Welcome_block(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ([(this.Welcome_block_p1_paragraph()), (this.Welcome_block_p2())]);
+			return obj;
+		}
+		category_title(id){
+			return "blank category title";
+		}
+		category_summary_click(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Category_summary_button(id){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Category_summary_button_title")));
+			(obj.click) = (next) => ((this.category_summary_click(id, next)));
+			return obj;
+		}
+		category_summary_showed(id, next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		category_summary_close_click(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Category_summary_close(id){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Category_summary_close_title")));
+			(obj.click) = (next) => ((this.category_summary_close_click(id, next)));
+			return obj;
+		}
+		category_summary_result(id){
+			return "";
+		}
+		Category_summary_text(id){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.category_summary_result(id)));
+			return obj;
+		}
+		Category_summary_content(id){
+			const obj = new this.$.$mol_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Category_summary_content_title")));
+			(obj.tools) = () => ([(this.Category_summary_close(id))]);
+			(obj.body) = () => ([(this.Category_summary_text(id))]);
+			return obj;
+		}
+		Category_summary_pop(id){
+			const obj = new this.$.$mol_pop();
+			(obj.showed) = (next) => ((this.category_summary_showed(id, next)));
+			(obj.Anchor) = () => ((this.Category_summary_button(id)));
+			(obj.bubble_content) = () => ([(this.Category_summary_content(id))]);
+			return obj;
+		}
+		articles(id){
+			return [];
+		}
+		Items(id){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.articles(id)));
+			return obj;
+		}
+		openned_post(id, next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		article_title(id){
+			return "";
+		}
+		article_image_src(id){
+			return [];
+		}
+		Article_thumbnail(id){
+			const obj = new this.$.$bog_ainews_app_feed_img();
+			(obj.src) = () => ((this.article_image_src(id)));
+			(obj.alt) = () => ((this.article_title(id)));
+			(obj.width) = () => (192);
+			(obj.height) = () => (108);
+			return obj;
+		}
+		summary_description_click(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Article_description_summary_button(id){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Article_description_summary_button_title")));
+			(obj.click) = (next) => ((this.summary_description_click(id, next)));
+			return obj;
+		}
+		article_description(id){
+			return "";
+		}
+		Article_description(id){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.article_description(id)));
+			return obj;
+		}
+		open_in_new_tab(id){
+			return "_self";
+		}
+		article_link(id){
+			return "";
+		}
+		Article_link(id){
+			const obj = new this.$.$mol_link();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Article_link_title")));
+			(obj.target) = () => ((this.open_in_new_tab(id)));
+			(obj.uri_toggle) = () => ((this.article_link(id)));
+			return obj;
+		}
+		article_translated_link(id){
+			return "";
+		}
+		Article_translated_link(id){
+			const obj = new this.$.$mol_link();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Article_translated_link_title")));
+			(obj.target) = () => ((this.open_in_new_tab(id)));
+			(obj.uri_toggle) = () => ((this.article_translated_link(id)));
+			return obj;
+		}
+		translate_click(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Article_translate_text(id){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_feed_Article_translate_text_title")));
+			(obj.click) = (next) => ((this.translate_click(id, next)));
+			return obj;
+		}
+		Base_icon(id){
+			const obj = new this.$.$mol_icon_cards_heart();
+			return obj;
+		}
+		base_checked(id, next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Favorite(id){
+			const obj = new this.$.$mol_check_icon();
+			(obj.Icon) = () => ((this.Base_icon(id)));
+			(obj.checked) = (next) => ((this.base_checked(id, next)));
+			return obj;
+		}
+		Spoiler_tools(id){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Article_link(id)), 
+				(this.Article_translated_link(id)), 
+				(this.Article_translate_text(id)), 
+				(this.Favorite(id))
+			]);
+			return obj;
+		}
+		app_filters(){
+			const obj = new this.$.$bog_ainews_app_filters();
+			return obj;
+		}
+		app_settings(){
+			const obj = new this.$.$bog_ainews_app_settings();
+			return obj;
+		}
+		app_source(){
+			const obj = new this.$.$bog_ainews_app_sources();
+			return obj;
+		}
+		app_favorites(){
+			const obj = new this.$.$bog_ainews_app_favorites();
+			return obj;
+		}
+		title(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_feed_title"));
+		}
+		Logo(){
+			const obj = new this.$.$mol_icon_script_text();
+			return obj;
+		}
+		tools(){
+			return [(this.Summary_all_button()), (this.Summary_all_pop())];
+		}
+		body(){
+			return [
+				(this.Hot_fix()), 
+				(this.Tabs()), 
+				(this.Welcome_block())
+			];
+		}
+		Category_page(id){
+			const obj = new this.$.$mol_list();
+			(obj.title) = () => ((this.category_title(id)));
+			(obj.rows) = () => ([
+				(this.Category_summary_button(id)), 
+				(this.Category_summary_pop(id)), 
+				(this.Items(id))
+			]);
+			return obj;
+		}
+		Article(id){
+			const obj = new this.$.$mol_expander();
+			(obj.expanded) = (next) => ((this.openned_post(id, next)));
+			(obj.label) = () => ([(this.article_title(id))]);
+			(obj.content) = () => ([
+				(this.Article_thumbnail(id)), 
+				(this.Article_description_summary_button(id)), 
+				(this.Article_description(id))
+			]);
+			(obj.Tools) = () => ((this.Spoiler_tools(id)));
+			return obj;
+		}
+	};
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "summary_all_click"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Summary_all_button"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "summary_all_showed"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "summary_all_close_click"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Summary_all_close"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Summary_all_text"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Summary_all_content"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Summary_all_pop"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "search_word"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Searcher"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Hot_fix"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Tabs"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Welcome_block_p1_paragraph"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Welcome_block_p2_paragraph"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Welcome_block_p2"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Welcome_block"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "category_summary_click"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Category_summary_button"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "category_summary_showed"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "category_summary_close_click"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Category_summary_close"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Category_summary_text"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Category_summary_content"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Category_summary_pop"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Items"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "openned_post"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Article_thumbnail"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "summary_description_click"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Article_description_summary_button"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Article_description"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Article_link"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Article_translated_link"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "translate_click"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Article_translate_text"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Base_icon"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "base_checked"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Favorite"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Spoiler_tools"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "app_filters"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "app_settings"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "app_source"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "app_favorites"));
+	($mol_mem(($.$bog_ainews_app_feed.prototype), "Logo"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Category_page"));
+	($mol_mem_key(($.$bog_ainews_app_feed.prototype), "Article"));
+	($.$bog_ainews_app_feed_title) = class $bog_ainews_app_feed_title extends ($.$mol_paragraph) {
+		font_size_title(){
+			return "1.22rem";
+		}
+		style(){
+			return {...(super.style()), "font-size": (this.font_size_title())};
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $$.$bog_ainews_app_feed_proxy_url = 'https://proxy.kinsle.ru/proxy';
+        $$.$bog_ainews_app_feed_translate_url = 'https://proxy.kinsle.ru/translate';
+        $$.$bog_ainews_app_feed_summary_url = 'https://proxy.kinsle.ru/summary';
+        class $bog_ainews_app_feed extends $.$bog_ainews_app_feed {
+            translate_text(text, to_lang = this.app_settings().current_language()) {
+                if (!navigator.onLine)
+                    return text;
+                const payload = new URLSearchParams({
+                    text: text.substring(0, 512),
+                    to_lang,
+                });
+                return $mol_fetch.text($$.$bog_ainews_app_feed_translate_url + '?' + payload.toString());
+            }
+            summary_text(text, to_lang = this.app_settings().current_language()) {
+                if (!navigator.onLine)
+                    return text;
+                const payload = new URLSearchParams({
+                    text: text.substring(0, 1024),
+                    to_lang,
+                });
+                return $mol_fetch.text($$.$bog_ainews_app_feed_summary_url + '?' + payload.toString());
+            }
+            parse_rss(xml_doc) {
+                return Array.from(xml_doc.querySelectorAll('item')).map((item) => {
+                    const enclosure = item.querySelector('enclosure');
+                    const mediaContent = item.querySelector('media\\:content, content');
+                    const mediaThumbnail = item.querySelector('media\\:thumbnail, thumbnail');
+                    const description = item.querySelector('description')?.textContent || '';
+                    let image_src = enclosure?.getAttribute('url') ||
+                        mediaContent?.getAttribute('url') ||
+                        mediaThumbnail?.getAttribute('url') ||
+                        '';
+                    if (!image_src && description) {
+                        const imgMatch = description.match(/<img[^>]+src=["']([^"']+)["']/i);
+                        if (imgMatch) {
+                            image_src = imgMatch[1];
+                        }
+                    }
+                    if (!image_src && description) {
+                        const linkMatch = description.match(/<a[^>]+href=["']([^"']+\.(jpg|jpeg|png|gif|webp))["']/i);
+                        if (linkMatch) {
+                            image_src = linkMatch[1];
+                        }
+                    }
+                    return {
+                        title: item.querySelector('title')?.textContent,
+                        pubDate: item.querySelector('pubDate')?.textContent,
+                        description: description,
+                        link: item.querySelector('link')?.textContent,
+                        image_src: image_src,
+                    };
+                });
+            }
+            cache_image(url) {
+                if (!url)
+                    return url;
+                const cached = $mol_state_local.value(`img_cache_${url}`);
+                if (cached)
+                    return cached;
+                try {
+                    $mol_wire_solid();
+                    const response = $mol_fetch.response(url);
+                    const arrayBuffer = response.buffer();
+                    const buffer = new Uint8Array(arrayBuffer);
+                    let binary = '';
+                    const len = buffer.length;
+                    for (let i = 0; i < len; i++) {
+                        binary += String.fromCharCode(buffer[i]);
+                    }
+                    const base64 = 'data:image/jpeg;base64,' + btoa(binary);
+                    const cache_list_key = 'img_cache_list';
+                    const cache_list = $mol_state_local.value(cache_list_key) || [];
+                    const updated_list = [url, ...cache_list.filter(u => u !== url)].slice(0, 30);
+                    cache_list.forEach(old_url => {
+                        if (!updated_list.includes(old_url)) {
+                            $mol_state_local.value(`img_cache_${old_url}`, null);
+                        }
+                    });
+                    $mol_state_local.value(cache_list_key, updated_list);
+                    $mol_state_local.value(`img_cache_${url}`, base64);
+                    return base64;
+                }
+                catch (e) {
+                    return url;
+                }
+            }
+            make_proxy(url) {
+                return $$.$bog_ainews_app_feed_proxy_url + url;
+            }
+            make_translate(text) {
+                return $$.$bog_ainews_app_feed_translate_url + decodeURIComponent(text.substring(0, 256));
+            }
+            articles(category) {
+                const selected_sources = this.sources(category).map((url_id) => this.app_source().runtime_links()[category][url_id] ?? url_id);
+                return selected_sources.map((rss_link) => this.get_articles_from_sources(rss_link)).flat();
+            }
+            request_articles_from_sources(source_url) {
+                $mol_wire_solid();
+                const cached = $mol_state_local.value(`feed_cache_${source_url}`);
+                if (cached) {
+                    try {
+                        const cache_data = JSON.parse(cached);
+                        const cache_time = cache_data.timestamp || 0;
+                        const now = Date.now();
+                        const cache_ttl = 60 * 60 * 1000;
+                        if (now - cache_time < cache_ttl) {
+                            return cache_data.articles;
+                        }
+                    }
+                    catch (e) {
+                    }
+                }
+                const payload = new URLSearchParams({
+                    link: source_url,
+                });
+                const xml_doc = $mol_fetch.xml($$.$bog_ainews_app_feed_proxy_url + '?' + payload.toString());
+                const articles_list = this.parse_rss(xml_doc);
+                const feed_cache_list_key = 'feed_cache_list';
+                const feed_cache_list = $mol_state_local.value(feed_cache_list_key) || [];
+                const updated_feed_list = [source_url, ...feed_cache_list.filter(u => u !== source_url)].slice(0, 20);
+                feed_cache_list.forEach(old_url => {
+                    if (!updated_feed_list.includes(old_url)) {
+                        $mol_state_local.value(`feed_cache_${old_url}`, null);
+                    }
+                });
+                $mol_state_local.value(feed_cache_list_key, updated_feed_list);
+                const cache_data = {
+                    timestamp: Date.now(),
+                    articles: articles_list,
+                };
+                $mol_state_local.value(`feed_cache_${source_url}`, JSON.stringify(cache_data));
+                return articles_list;
+            }
+            get_articles_from_sources(source_url) {
+                const articles_list = this.request_articles_from_sources(source_url);
+                const filtered_list = this.filter_articles(articles_list);
+                return filtered_list.map((article) => this.Article(article));
+            }
+            filter_articles(articles_list) {
+                const include_string_value = this.app_filters().include_string_value();
+                const exclude_string_value = this.app_filters().exclude_string_value();
+                if (include_string_value !== null && include_string_value.trim() !== '') {
+                    const rules = include_string_value
+                        .split(',')
+                        .map(rule => rule.trim())
+                        .filter(rule => rule.trim() != '');
+                    articles_list = articles_list.filter((article) => {
+                        return rules.some(rule => {
+                            return new RegExp(rule, 'ig').test(article.title);
+                        });
+                    });
+                }
+                if (exclude_string_value !== null && exclude_string_value.trim() !== '') {
+                    const rules = exclude_string_value
+                        .split(',')
+                        .map(rule => rule.trim())
+                        .filter(rule => rule.trim() != '');
+                    console.log({ rules, exclude_string_value });
+                    articles_list = articles_list.filter((article) => {
+                        return (rules.some(rule => {
+                            console.log({ rule });
+                            return new RegExp(rule, 'ig').test(article.title);
+                        }) == false);
+                    });
+                }
+                if (this.search_word().trim() !== '')
+                    return articles_list.filter((item) => new RegExp(this.search_word(), 'ig').test(item.title));
+                return articles_list;
+            }
+            is_need_translate(text) {
+                function remove_from_string(words, str) {
+                    return words.reduce((result, word) => result.replace(new RegExp(word, 'gi'), ''), str);
+                }
+                const cyrillic_pattern = /^\p{Script=Cyrillic}+$/u;
+                let text_without_numbers = text.replace(/[\p{P}\d]+/gu, '');
+                text_without_numbers = remove_from_string([
+                    'KDE',
+                    'Plasma',
+                    'linux',
+                    'bsd',
+                    'router',
+                    'project',
+                    'Android',
+                    'Chrome',
+                    'Postgre',
+                    'elementary',
+                    'Ubuntu',
+                    ' ',
+                ], text_without_numbers);
+                const russian_chars = Array.from(text_without_numbers).filter(char => cyrillic_pattern.test(char)).length;
+                const length = text_without_numbers.length;
+                const persent_of_cyrilic_in_text = (russian_chars / length) * 100;
+                return persent_of_cyrilic_in_text < 55;
+            }
+            force_translate(article, next) {
+                if (next !== undefined)
+                    return next;
+                return false;
+            }
+            article_title(article) {
+                const should_translate = (this.app_settings().is_enable_auto_translate() && this.is_need_translate(article.title)) ||
+                    this.force_translate(article);
+                if (should_translate) {
+                    return this.translate_text(article.title);
+                }
+                return article.title;
+            }
+            article_description(article) {
+                function strip_html_tags(html) {
+                    let doc = new DOMParser().parseFromString(html, 'text/html');
+                    return doc.body.textContent || '';
+                }
+                const description_count_limiter_value = this.app_settings().description_count_limiter_value();
+                const description_without_html_tags = strip_html_tags(article.description);
+                const description_limited = description_without_html_tags.substring(0, description_count_limiter_value);
+                if (this.force_summary(article)) {
+                    return this.summary_text(description_without_html_tags);
+                }
+                const should_translate = (this.app_settings().is_enable_auto_translate() &&
+                    this.is_need_translate(description_without_html_tags)) ||
+                    this.force_translate(article);
+                if (should_translate) {
+                    return this.translate_text(description_without_html_tags);
+                }
+                else {
+                    return description_limited;
+                }
+            }
+            article_link(article) {
+                return article.link;
+            }
+            article_image_src(article) {
+                const src = article.image_src || '';
+                if (src.trim().length === 0)
+                    return [];
+                if (src.includes('.mp4') || src.includes('/mp4/') || src.includes('format/mp4')) {
+                    return [];
+                }
+                const cached = this.cache_image(src);
+                return cached ? [cached] : [];
+            }
+            article_translated_link(article) {
+                return `https://translate.google.com/translate?sl=auto&tl=ru-RU&u=${encodeURIComponent(article.link)}`;
+            }
+            article_translate_enable() {
+                return !this.app_settings().is_enable_auto_translate();
+            }
+            translate_click(article, next) {
+                if (next && navigator.onLine) {
+                    this.force_translate(article, true);
+                }
+                return next;
+            }
+            summary_description_click(article, next) {
+                if (next) {
+                    this.force_summary(article, true);
+                }
+                return next;
+            }
+            force_summary(article, next) {
+                if (next !== undefined)
+                    return next;
+                return false;
+            }
+            sources(id, next) {
+                if (next !== undefined)
+                    return $mol_state_local.value(id, next);
+                return $mol_state_local.value(id) ?? [];
+            }
+            Categories() {
+                return Object.keys(this.app_source().runtime_links())
+                    .filter(category => $mol_state_local.value(category) != null &&
+                    $mol_state_local.value(category).length > 0)
+                    .map(category => this.Category_page(category));
+            }
+            category_title(category) {
+                return category;
+            }
+            openned_post(id, next) {
+                if (this.app_settings().auto_open_spoiler_check_box_value()) {
+                    return true;
+                }
+                if (next !== undefined)
+                    return next;
+                return false;
+            }
+            open_in_new_tab(id, next) {
+                if (this.app_settings().open_links_in_new_tabs_check_box_value()) {
+                    return '_blank';
+                }
+                return '_self';
+            }
+            body() {
+                if (this.Categories().length == 0) {
+                    return [this.Welcome_block()];
+                }
+                else {
+                    return [this.Hot_fix(), this.Tabs()];
+                }
+            }
+            Spoiler_tools(id) {
+                const obj = new this.$.$mol_view();
+                obj.sub = () => [
+                    this.Article_link(id),
+                    this.Article_translated_link(id),
+                    this.is_need_translate(id.title) ? this.Article_translate_text(id) : null,
+                    this.Favorite(id),
+                ];
+                return obj;
+            }
+            base_checked(id, next) {
+                if (next !== undefined) {
+                    if (next == true)
+                        this.app_favorites().add_post(id);
+                    if (next == false)
+                        this.app_favorites().remove_post(id);
+                    return next;
+                }
+                return this.app_favorites().posts().includes(id);
+            }
+            summary_all_click(next) {
+                if (next) {
+                    this.summary_all_showed(!this.summary_all_showed());
+                }
+                return next;
+            }
+            summary_all_close_click(next) {
+                if (next) {
+                    this.summary_all_showed(false);
+                }
+                return next;
+            }
+            summary_all_result() {
+                if (!this.summary_all_showed())
+                    return '';
+                const all_categories = Object.keys(this.app_source().runtime_links()).filter(category => $mol_state_local.value(category) != null &&
+                    $mol_state_local.value(category).length > 0);
+                const raw_articles = [];
+                all_categories.forEach((category) => {
+                    const selected_sources = this.sources(category).map((url_id) => this.app_source().runtime_links()[category][url_id] ?? url_id);
+                    selected_sources.forEach((rss_link) => {
+                        const articles_from_source = this.request_articles_from_sources(rss_link);
+                        const filtered = this.filter_articles(articles_from_source);
+                        raw_articles.push(...filtered);
+                    });
+                });
+                const texts = raw_articles
+                    .map((article) => {
+                    const title = article.title || '';
+                    const description = article.description || '';
+                    return `${title}\n${description}`.substring(0, 500);
+                })
+                    .join('\n\n');
+                if (!navigator.onLine)
+                    return 'No internet connection';
+                if (texts.length === 0)
+                    return 'No news for summary';
+                return this.summary_text(texts.substring(0, 10000));
+            }
+            category_summary_click(category, next) {
+                if (next) {
+                    this.category_summary_showed(category, !this.category_summary_showed(category));
+                }
+                return next;
+            }
+            category_summary_close_click(category, next) {
+                if (next) {
+                    this.category_summary_showed(category, false);
+                }
+                return next;
+            }
+            category_summary_text(category, text) {
+                if (!navigator.onLine)
+                    return text;
+                const to_lang = this.app_settings().current_language();
+                const payload = new URLSearchParams({
+                    text: text.substring(0, 1000),
+                    to_lang,
+                });
+                const url = $$.$bog_ainews_app_feed_summary_url + '?' + payload.toString();
+                const result = $mol_fetch.text(url);
+                return result;
+            }
+            category_summary_result(category) {
+                if (!this.category_summary_showed(category))
+                    return '';
+                const selected_sources = this.sources(category).map((url_id) => this.app_source().runtime_links()[category][url_id] ?? url_id);
+                const raw_articles = [];
+                selected_sources.forEach((rss_link) => {
+                    const articles_from_source = this.request_articles_from_sources(rss_link);
+                    const filtered = this.filter_articles(articles_from_source);
+                    raw_articles.push(...filtered);
+                });
+                const texts = raw_articles
+                    .map((article) => {
+                    const title = article.title || '';
+                    const description = article.description || '';
+                    return `${title}\n${description}`.substring(0, 500);
+                })
+                    .join('\n\n');
+                if (!navigator.onLine)
+                    return 'No internet connection';
+                if (texts.length === 0)
+                    return 'No news for summary';
+                return this.category_summary_text(category, texts);
+            }
+        }
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "translate_text", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "cache_image", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "request_articles_from_sources", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "get_articles_from_sources", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "force_translate", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "article_title", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "article_description", null);
+        __decorate([
+            $mol_action
+        ], $bog_ainews_app_feed.prototype, "summary_description_click", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "force_summary", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "sources", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "openned_post", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "open_in_new_tab", null);
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_feed.prototype, "Spoiler_tools", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "base_checked", null);
+        __decorate([
+            $mol_action
+        ], $bog_ainews_app_feed.prototype, "summary_all_click", null);
+        __decorate([
+            $mol_action
+        ], $bog_ainews_app_feed.prototype, "summary_all_close_click", null);
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_feed.prototype, "summary_all_result", null);
+        __decorate([
+            $mol_action
+        ], $bog_ainews_app_feed.prototype, "category_summary_click", null);
+        __decorate([
+            $mol_action
+        ], $bog_ainews_app_feed.prototype, "category_summary_close_click", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "category_summary_text", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_feed.prototype, "category_summary_result", null);
+        $$.$bog_ainews_app_feed = $bog_ainews_app_feed;
+        class $bog_ainews_app_feed_title extends $.$bog_ainews_app_feed_title {
+            font_size_title() {
+                return $bog_ainews_app_settings_font_size_value();
+            }
+        }
+        $$.$bog_ainews_app_feed_title = $bog_ainews_app_feed_title;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    const { rem } = $mol_style_unit;
+    $mol_style_define($bog_ainews_app_feed, {
+        Article: {
+            background: {
+                color: $mol_theme.card,
+            },
+            border: {
+                radius: rem(0.75),
+            },
+            padding: rem(0.5),
+            margin: {
+                bottom: rem(0.7),
+            },
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+            ':hover': {
+                boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+                transform: 'translateY(-2px)',
+                transition: 'all 0.2s ease',
+            },
+        },
+        Article_description: {
+            font: {
+                size: rem(0.875),
+            },
+            lineHeight: '1.5',
+            color: $mol_theme.text,
+            margin: {
+                bottom: rem(1),
+            },
+        },
+        Article_link: {
+            font: {
+                size: rem(0.75),
+            },
+            color: $mol_theme.shade,
+            textDecoration: 'none',
+            ':hover': {
+                textDecoration: 'underline',
+            },
+        },
+        Article_translated_link: {
+            font: {
+                size: rem(0.75),
+            },
+            color: $mol_theme.shade,
+            textDecoration: 'none',
+            margin: {
+                left: rem(1),
+            },
+            ':hover': {
+                textDecoration: 'underline',
+            },
+        },
+        Article_translate_text: {
+            font: {
+                size: rem(0.75),
+            },
+            color: $mol_theme.shade,
+            margin: {
+                left: rem(1),
+            },
+            ':hover': {
+                textDecoration: 'underline',
+            },
+        },
+        Article_description_summary_button: {
+            color: $mol_theme.shade,
+        },
+        Category_summary_content: {
+            maxWidth: '65vw',
+            maxHeight: '80vh',
+            width: 'fit-content',
+            height: 'fit-content',
+        },
+        Category_summary_text: {
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+            whiteSpace: 'pre-wrap',
+            maxWidth: '100%',
+        },
+        Summary_all_content: {
+            maxWidth: '65vw',
+            maxHeight: '80vh',
+            width: 'fit-content',
+            height: 'fit-content',
+        },
+        Summary_all_text: {
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+            whiteSpace: 'pre-wrap',
+            maxWidth: '100%',
+        },
+    });
+})($ || ($ = {}));
+
+;
+	($.$bog_ainews_app_favorites) = class $bog_ainews_app_favorites extends ($.$bog_ainews_app_feed) {
+		title(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_favorites_title"));
+		}
+		category_title(id){
+			return " ";
+		}
+		add_post(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		remove_post(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		posts(){
+			return [];
+		}
+	};
+	($mol_mem(($.$bog_ainews_app_favorites.prototype), "add_post"));
+	($mol_mem(($.$bog_ainews_app_favorites.prototype), "remove_post"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $$.$bog_ainews_app_favorites_key = 'favorites';
+        class $bog_ainews_app_favorites extends $.$bog_ainews_app_favorites {
+            Categories() {
+                return [this.Category_page('favorites')];
+            }
+            articles(category) {
+                const articles = this.app_source().custom_sources($$.$bog_ainews_app_favorites_key);
+                const filtered_articles = this.filter_articles(articles);
+                return filtered_articles.map((article) => this.Article(article));
+            }
+            add_post(post) {
+                const current_list = this.app_source().custom_sources($$.$bog_ainews_app_favorites_key);
+                if (current_list.includes(post)) {
+                    return;
+                }
+                const new_list = [...current_list, post];
+                this.app_source().custom_sources($$.$bog_ainews_app_favorites_key, new_list);
+            }
+            remove_post(id) {
+                const current_list = this.app_source().custom_sources($$.$bog_ainews_app_favorites_key);
+                const new_list = current_list.filter((item) => item != id);
+                this.app_source().custom_sources($$.$bog_ainews_app_favorites_key, new_list);
+            }
+            posts() {
+                return this.app_source().custom_sources($$.$bog_ainews_app_favorites_key);
+            }
+            filter_articles(articles_list) {
+                if (this.search_word().trim() !== '')
+                    return articles_list.filter((item) => new RegExp(this.search_word(), 'ig').test(item.title));
+                return articles_list;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $bog_ainews_app_favorites.prototype, "posts", null);
+        $$.$bog_ainews_app_favorites = $bog_ainews_app_favorites;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_newspaper) = class $mol_icon_newspaper extends ($.$mol_icon) {
+		path(){
+			return "M20,11H4V8H20M20,15H13V13H20M20,19H13V17H20M11,19H4V13H11M20.33,4.67L18.67,3L17,4.67L15.33,3L13.67,4.67L12,3L10.33,4.67L8.67,3L7,4.67L5.33,3L3.67,4.67L2,3V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V3L20.33,4.67Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$bog_ainews_app) = class $bog_ainews_app extends ($.$mol_book2_catalog) {
 		Lights(){
 			const obj = new this.$.$mol_lights_toggle();
 			return obj;
 		}
 		Theme(){
 			const obj = new this.$.$bog_theme_auto();
+			(obj.themes) = () => (["$mol_theme_ainews_light", "$mol_theme_ainews_dark"]);
+			(obj.theme_light) = () => ("$mol_theme_ainews_light");
+			(obj.theme_dark) = () => ("$mol_theme_ainews_dark");
+			return obj;
+		}
+		Feed(){
+			const obj = new this.$.$bog_ainews_app_feed();
+			return obj;
+		}
+		Favorite(){
+			const obj = new this.$.$bog_ainews_app_favorites();
+			return obj;
+		}
+		Sources(){
+			const obj = new this.$.$bog_ainews_app_sources();
+			return obj;
+		}
+		Filters(){
+			const obj = new this.$.$bog_ainews_app_filters();
+			return obj;
+		}
+		Settings(){
+			const obj = new this.$.$bog_ainews_app_settings();
+			return obj;
+		}
+		Feat_1(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_Feat_1_title")));
+			return obj;
+		}
+		Feat_2(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_Feat_2_title")));
+			return obj;
+		}
+		Features(){
+			const obj = new this.$.$mol_page();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_Features_title")));
+			(obj.body) = () => ([(this.Feat_1()), (this.Feat_2())]);
+			return obj;
+		}
+		Placeholder(){
+			return null;
+		}
+		Menu_logo(){
+			const obj = new this.$.$mol_icon_newspaper();
+			return obj;
+		}
+		menu_title(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_menu_title"));
+		}
+		menu_tools(){
+			return [(this.Lights())];
+		}
+		plugins(){
+			return [(this.Theme())];
+		}
+		spreads(){
+			return {
+				"": (this.Feed()), 
+				"favorite": (this.Favorite()), 
+				"sources": (this.Sources()), 
+				"filters": (this.Filters()), 
+				"settings": (this.Settings()), 
+				"features": (this.Features())
+			};
+		}
+	};
+	($mol_mem(($.$bog_ainews_app.prototype), "Lights"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Theme"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Feed"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Favorite"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Sources"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Filters"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Settings"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Feat_1"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Feat_2"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Features"));
+	($mol_mem(($.$bog_ainews_app.prototype), "Menu_logo"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $bog_ainews_app extends $.$bog_ainews_app {
+        }
+        $$.$bog_ainews_app = $bog_ainews_app;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    const { rem } = $mol_style_unit;
+    $mol_style_define($bog_ainews_app, {});
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_plus) = class $mol_icon_plus extends ($.$mol_icon) {
+		path(){
+			return "M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_select_list) = class $mol_select_list extends ($.$mol_view) {
+		Badges(){
+			return [];
+		}
+		badge_title(id){
+			return "badge";
+		}
+		remove(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		badge_hint(){
+			return (this.$.$mol_locale.text("$mol_select_list_badge_hint"));
+		}
+		enabled(){
+			return true;
+		}
+		drop_enabled(){
+			return (this.enabled());
+		}
+		event_select(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		align_hor(){
+			return "right";
+		}
+		options(){
+			return [];
+		}
+		options_pickable(){
+			return (this.options());
+		}
+		pick(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+		option_title(id){
+			return "";
+		}
+		pick_enabled(){
+			return (this.enabled());
+		}
+		pick_hint(){
+			return (this.$.$mol_locale.text("$mol_select_list_pick_hint"));
+		}
+		filter_pattern(next){
+			return (this.Pick().filter_pattern(next));
+		}
+		Pick_icon(){
+			const obj = new this.$.$mol_icon_plus();
+			return obj;
+		}
+		Pick(){
+			const obj = new this.$.$mol_select();
+			(obj.event_select) = (id, next) => ((this.event_select(id, next)));
+			(obj.align_hor) = () => ((this.align_hor()));
+			(obj.options) = () => ((this.options_pickable()));
+			(obj.value) = (next) => ((this.pick(next)));
+			(obj.option_label) = (id) => ((this.option_title(id)));
+			(obj.trigger_enabled) = () => ((this.pick_enabled()));
+			(obj.hint) = () => ((this.pick_hint()));
+			(obj.Trigger_icon) = () => ((this.Pick_icon()));
+			return obj;
+		}
+		value(next){
+			if(next !== undefined) return next;
+			return [];
+		}
+		dictionary(){
+			return {};
+		}
+		badges_list(){
+			return (this.Badges());
+		}
+		Badge(id){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ((this.badge_title(id)));
+			(obj.click) = (next) => ((this.remove(id, next)));
+			(obj.hint) = () => ((this.badge_hint()));
+			(obj.enabled) = () => ((this.drop_enabled()));
+			return obj;
+		}
+		sub(){
+			return [(this.Pick()), ...(this.badges_list())];
+		}
+	};
+	($mol_mem_key(($.$mol_select_list.prototype), "remove"));
+	($mol_mem_key(($.$mol_select_list.prototype), "event_select"));
+	($mol_mem(($.$mol_select_list.prototype), "pick"));
+	($mol_mem(($.$mol_select_list.prototype), "Pick_icon"));
+	($mol_mem(($.$mol_select_list.prototype), "Pick"));
+	($mol_mem(($.$mol_select_list.prototype), "value"));
+	($mol_mem_key(($.$mol_select_list.prototype), "Badge"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_select_list extends $.$mol_select_list {
+            value(val) {
+                return super.value(val);
+            }
+            pick(key) {
+                if (!key)
+                    return '';
+                this.value([...this.value(), key]);
+                return '';
+            }
+            event_select(id, event) {
+                event?.preventDefault();
+                this.pick(id);
+            }
+            options() {
+                return Object.keys(this.dictionary());
+            }
+            options_pickable() {
+                if (!this.enabled())
+                    return [];
+                const exists = new Set(this.value());
+                return this.options().filter(key => !exists.has(key));
+            }
+            option_title(key) {
+                const value = this.dictionary()[key];
+                return value == null ? key : value;
+            }
+            badge_title(key) {
+                return this.option_title(key);
+            }
+            pick_enabled() {
+                return this.options_pickable().length > 0;
+            }
+            Badges() {
+                return this.value()
+                    .map(id => this.Badge(id))
+                    .reverse();
+            }
+            title() {
+                return this.value().map(key => this.option_title(key)).join(' + ');
+            }
+            remove(key) {
+                this.value(this.value().filter(id => id !== key));
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_select_list.prototype, "pick", null);
+        __decorate([
+            $mol_mem
+        ], $mol_select_list.prototype, "options", null);
+        __decorate([
+            $mol_mem
+        ], $mol_select_list.prototype, "options_pickable", null);
+        __decorate([
+            $mol_mem
+        ], $mol_select_list.prototype, "pick_enabled", null);
+        __decorate([
+            $mol_mem
+        ], $mol_select_list.prototype, "title", null);
+        __decorate([
+            $mol_action
+        ], $mol_select_list.prototype, "remove", null);
+        $$.$mol_select_list = $mol_select_list;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const { rem } = $mol_style_unit;
+        $mol_style_define($mol_select_list, {
+            flex: {
+                wrap: 'wrap',
+                shrink: 1,
+                grow: 1,
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_open_source_initiative) = class $mol_icon_open_source_initiative extends ($.$mol_icon) {
+		path(){
+			return "M15.41,22C15.35,22 15.28,22 15.22,22C15.1,21.95 15,21.85 14.96,21.73L12.74,15.93C12.65,15.69 12.77,15.42 13,15.32C13.71,15.06 14.28,14.5 14.58,13.83C15.22,12.4 14.58,10.73 13.15,10.09C11.72,9.45 10.05,10.09 9.41,11.5C9.11,12.21 9.09,13 9.36,13.69C9.66,14.43 10.25,15 11,15.28C11.24,15.37 11.37,15.64 11.28,15.89L9,21.69C8.96,21.81 8.87,21.91 8.75,21.96C8.63,22 8.5,22 8.39,21.96C3.24,19.97 0.67,14.18 2.66,9.03C4.65,3.88 10.44,1.31 15.59,3.3C18.06,4.26 20.05,6.15 21.13,8.57C22.22,11 22.29,13.75 21.33,16.22C20.32,18.88 18.23,21 15.58,22C15.5,22 15.47,22 15.41,22M12,3.59C7.03,3.46 2.9,7.39 2.77,12.36C2.68,16.08 4.88,19.47 8.32,20.9L10.21,16C8.38,15 7.69,12.72 8.68,10.89C9.67,9.06 11.96,8.38 13.79,9.36C15.62,10.35 16.31,12.64 15.32,14.47C14.97,15.12 14.44,15.65 13.79,16L15.68,20.93C17.86,19.95 19.57,18.16 20.44,15.93C22.28,11.31 20.04,6.08 15.42,4.23C14.33,3.8 13.17,3.58 12,3.59Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$bog_ainews_app_sources) = class $bog_ainews_app_sources extends ($.$bog_ainews_app_page) {
+		My_rss_feeds(){
+			return [];
+		}
+		My(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.My_rss_feeds()));
+			return obj;
+		}
+		Add_feed_string(){
+			const obj = new this.$.$mol_string();
+			return obj;
+		}
+		add_custom_feed_click(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Add_feed_button(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_sources_Add_feed_button_title")));
+			(obj.click) = (next) => ((this.add_custom_feed_click(next)));
+			return obj;
+		}
+		My_sources_labeler_content(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ([
+				(this.My()), 
+				(this.Add_feed_string()), 
+				(this.Add_feed_button())
+			]);
+			return obj;
+		}
+		My_sources_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_sources_My_sources_labeler_title")));
+			(obj.content) = () => ([(this.My_sources_labeler_content())]);
+			return obj;
+		}
+		Categories(){
+			return [];
+		}
+		Tabs(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.Categories()));
+			return obj;
+		}
+		Sources_labeler(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_ainews_app_sources_Sources_labeler_title")));
+			(obj.content) = () => ([(this.Tabs())]);
+			return obj;
+		}
+		category_title(id){
+			return "blank category title";
+		}
+		sources(id, next){
+			if(next !== undefined) return next;
+			return [];
+		}
+		suggestions(id){
+			return [];
+		}
+		Sources(id){
+			const obj = new this.$.$mol_select_list();
+			(obj.value) = (next) => ((this.sources(id, next)));
+			(obj.dictionary) = () => ((this.suggestions(id)));
+			return obj;
+		}
+		articles(id){
+			return [];
+		}
+		Items(id){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.articles(id)));
+			return obj;
+		}
+		my_rss_title(id){
+			return "";
+		}
+		RSS_title(id){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.my_rss_title(id)));
+			return obj;
+		}
+		Delete_close_icon(id){
+			const obj = new this.$.$mol_icon_close();
+			return obj;
+		}
+		delete_custom_feed_click(id, next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Delete_my_feed_button(id){
+			const obj = new this.$.$mol_button_major();
+			(obj.sub) = () => ([(this.Delete_close_icon(id))]);
+			(obj.click) = (next) => ((this.delete_custom_feed_click(id, next)));
+			return obj;
+		}
+		runtime_links(){
+			return null;
+		}
+		custom_sources(id, next){
+			if(next !== undefined) return next;
+			return [];
+		}
+		title(){
+			return (this.$.$mol_locale.text("$bog_ainews_app_sources_title"));
+		}
+		Logo(){
+			const obj = new this.$.$mol_icon_open_source_initiative();
+			return obj;
+		}
+		body(){
+			return [(this.My_sources_labeler()), (this.Sources_labeler())];
+		}
+		Category_page(id){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.category_title(id)));
+			(obj.content) = () => ([(this.Sources(id)), (this.Items(id))]);
+			return obj;
+		}
+		My_rss_item(id){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.RSS_title(id)), (this.Delete_my_feed_button(id))]);
+			return obj;
+		}
+	};
+	($mol_mem(($.$bog_ainews_app_sources.prototype), "My"));
+	($mol_mem(($.$bog_ainews_app_sources.prototype), "Add_feed_string"));
+	($mol_mem(($.$bog_ainews_app_sources.prototype), "add_custom_feed_click"));
+	($mol_mem(($.$bog_ainews_app_sources.prototype), "Add_feed_button"));
+	($mol_mem(($.$bog_ainews_app_sources.prototype), "My_sources_labeler_content"));
+	($mol_mem(($.$bog_ainews_app_sources.prototype), "My_sources_labeler"));
+	($mol_mem(($.$bog_ainews_app_sources.prototype), "Tabs"));
+	($mol_mem(($.$bog_ainews_app_sources.prototype), "Sources_labeler"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "sources"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "Sources"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "Items"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "RSS_title"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "Delete_close_icon"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "delete_custom_feed_click"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "Delete_my_feed_button"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "custom_sources"));
+	($mol_mem(($.$bog_ainews_app_sources.prototype), "Logo"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "Category_page"));
+	($mol_mem_key(($.$bog_ainews_app_sources.prototype), "My_rss_item"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const $bog_ainews_app_sources_custom_rss_feeds = 'my';
+        const $bog_ainews_app_source_links = {
+            tech: [
+                'https://devblogs.microsoft.com/landingpage/',
+                'https://blogs.unity3d.com/feed/',
+                'https://www.opennet.ru/opennews/opennews_all.rss',
+                'https://devblogs.microsoft.com/ifdef-windows/feed/',
+                'https://www.zdnet.com/news/rss.xml',
+                'https://habr.com/ru/rss/all/all/?fl=ru',
+                'https://habr.com/ru/rss/news/',
+            ],
+            shared: ['https://critter.blog/rss', 'https://news.ycombinator.com/rss'],
+            russia: [
+                'https://daily.afisha.ru/rss/',
+                'https://dtf.ru/rss',
+                'https://feeds.bbci.co.uk/russian/rss.xml',
+                'https://habr.com/ru/rss/news/',
+                'https://holod.media/feed',
+                'https://istories.media/rss/all.xml',
+                'https://meduza.io/rss/all',
+                'https://novayagazeta.eu/feed/rss',
+                'https://novayagazeta.ru/feed/rss',
+                'https://paperpaper.io/feed/',
+                'https://rss.dw.com/rdf/rss-ru-all',
+                'https://rtvi.com/rss',
+                'https://secretmag.ru/exports/rss.xml',
+                'https://semnasem.org/rss/default.xml',
+                'https://sota.vision/feed/',
+                'https://theins.ru/api/rss/ru/default',
+                'https://tvrain.tv/export/rss/all.xml',
+                'https://vc.ru/rss',
+                'https://www.currenttime.tv/api/zgbip_l-vomx-tpe-v_py',
+                'https://www.dekoder.org/rss_ru_all.xml',
+                'https://www.proekt.media/feed/',
+                'https://www.sibreal.org/api/',
+                'https://www.sova-center.ru/search/?rss=1&lg=1',
+                'https://www.svoboda.org/api/z-pqpil-vomx-tper-ipp',
+                'https://zona.media/rss',
+            ],
+            AI: [
+                'http://bair.berkeley.edu/blog/feed.xml',
+                'http://blog.evjang.com/feeds/posts/default?alt=rss',
+                'http://distill.pub/rss.xml',
+                'http://magenta.tensorflow.org/feed.xml',
+                'http://news.mit.edu/rss/topic/artificial-intelligence2',
+                'http://newsletter.ruder.io/?format=rss',
+                'https://aidisruptor.ai/feed',
+                'https://aiweekly.co/issues.rss',
+                'https://bensbites.com/blog/rss.xml',
+                'https://blog.ml.cmu.edu/feed/',
+                'https://evjang.com/feed',
+                'https://garymarcus.substack.com/feed',
+                'https://jalammar.github.io/feed.xml',
+                'https://lastweekin.ai/feed',
+                'https://lilianweng.github.io/index.xml',
+                'https://lilianweng.github.io/lil-log/feed.xml',
+                'https://machinelearning.apple.com/rss.xml',
+                'https://news.google.com/rss/topics/CAAqIAgKIhpDQkFTRFFvSEwyMHZNRzFyZWhJQ1pXNG9BQVAB?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqIggKIhxDQkFTRHdvSkwyMHZNREZvZVdoZkVnSmxiaWdBUAE?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqJAgKIh5DQkFTRUFvSEwyMHZNRzFyZWhJRlpXNHRSMElvQUFQAQ?hl=en-CA&gl=CA&ceid=CA%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqJAgKIh5DQkFTRUFvSEwyMHZNRzFyZWhJRlpXNHRSMElvQUFQAQ?hl=en-US&ceid=CA%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqLAgKIiZDQkFTRmdvTkwyY3ZNVEZpZUdNMk5UWjJOaElGWlc0dFIwSW9BQVAB?hl=en-CA&gl=CA&ceid=CA%3Aen&oc=11',
+                'https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml',
+                'https://news.mit.edu/topic/mitmachine-learning-rss.xml',
+                'https://rss.beehiiv.com/feeds/2R3C6Bt5wj.xml',
+                'https://rss.beehiiv.com/feeds/4EFsI5UmM7.xml',
+                'https://rss.beehiiv.com/feeds/GcFiF2T4I5.xml',
+                'https://rss.beehiiv.com/feeds/gtwKcGOtrm.xml',
+                'https://rss.beehiiv.com/feeds/lvG7CGESX1.xml',
+                'https://rss.beehiiv.com/feeds/vGKavlVUFO.xml',
+                'https://simonwillison.net/atom/everything/',
+                'https://syncedreview.com/feed/',
+                'https://techcrunch.com/category/artificial-intelligence/feed/',
+                'https://techxplore.com/rss-feed/breaking/machine-learning-ai-news/',
+                'https://techxplore.com/rss-feed/machine-learning-ai-news/',
+                'https://the-decoder.com/feed/',
+                'https://theconversation.com/us/topics/machine-learning-8332/articles.atom',
+                'https://thegradient.pub/rss/',
+                'https://towardsdatascience.com/feed',
+                'https://venturebeat.com/category/ai/feed/',
+                'https://www.ai-supremacy.com/feed',
+                'https://www.amazon.science/index.rss',
+                'https://www.exponentialview.co/feed',
+                'https://www.interconnects.ai/feed',
+                'https://www.latent.space/feed',
+                'https://www.louisbouchard.ai/rss/',
+                'https://www.nextomoro.com/rss/',
+                'https://www.reddit.com/r/Anthropic/.rss',
+                'https://www.reddit.com/r/ChatGPT/.rss',
+                'https://www.reddit.com/r/ChatGPTCoding/.rss',
+                'https://www.reddit.com/r/DeepSeek/.rss',
+                'https://www.reddit.com/r/LocalLLaMA/.rss',
+                'https://www.reddit.com/r/MachineLearning/.rss',
+                'https://www.reddit.com/r/MachineLearning/top/.rss',
+                'https://www.reddit.com/r/OpenAI/.rss',
+                'https://www.reddit.com/r/agi/.rss',
+                'https://www.reddit.com/r/artificial/.rss',
+                'https://www.sciencedaily.com/rss/computers_math/artificial_intelligence.xml',
+                'https://www.swyx.io/rss.xml',
+                'https://www.theverge.com/rss/ai-artificial-intelligence/index.xml',
+                'https://www.tostring.ai/feed',
+                'https://www.unite.ai/feed/',
+                'https://www.wired.com/feed/rss',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UC5Wz4fFacYuON6IKbhSa7Zw',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCCKx8mAHiFus-XYQLy_WnaA',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCDZfn935vwaahDabsfylfIQ',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCDq7SjbgRKty5TgGafW8Clg',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCEAbqW0HFB_UxZoUDO0kJBw',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCPocEocBKqXv5rzQYWugHMQ',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCZHmQk67mSJgfCCTn7xBfew',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCcIXc5mJsHVYTZR1maL5l9w',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UChpleBmo18P08aKCIgti38g',
+            ],
+            Asia: [
+                'http://feeds.bbci.co.uk/news/world/asia/rss.xml',
+                'https://feeds.npr.org/1125/rss.xml',
+                'https://rss.dw.com/rdf/rss-en-asia',
+                'https://rss.nytimes.com/services/xml/rss/nyt/AsiaPacific.xml',
+                'https://www.economist.com/asia/rss.xml',
+                'https://www.euronews.com/rss?level=program&name=asia-news',
+                'https://www.ft.com/world/asia-pacific?format=rss',
+                'https://www.scmp.com/rss/3/feed',
+                'https://www.theguardian.com/world/asia/rss',
+            ],
+            Autos: ['https://www.sfgate.com/rss/feed/car-news-rss-feed-441.php'],
+            Bay: [
+                'http://www.smdailyjournal.com/search/?f=rss&t=article&c=news/local&l=50&s=start_time&sd=desc',
+                'https://48hills.org/feed/',
+                'https://abc7news.com/feed/',
+                'https://calmatters.org/feed/',
+                'https://hoodline.com/news/bay-area/rss/',
+                'https://localnewsmatters.org/feed/',
+                'https://lookout.co/feed/',
+                'https://midpenpost.org/feed/',
+                'https://missionlocal.org/feed/',
+                'https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRFp3ZG5JU0FtVnVLQUFQAQ?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://oaklandside.org/feed/',
+                'https://pacificsun.com/feed/',
+                'https://padailypost.com/feed/',
+                'https://sanjosespotlight.com/feed/',
+                'https://sf.eater.com/rss/index.xml',
+                'https://sfbayca.com/feed/',
+                'https://sfbaytimes.com/feed/',
+                'https://sfbayview.com/feed/',
+                'https://sfist.com/rss/',
+                'https://sfnews.us/rss/',
+                'https://sfstandard.com/feed/',
+                'https://sftimes.com/feed/',
+                'https://whatnow.com/san-francisco/feed/',
+                'https://www.almanacnews.com/feed/',
+                'https://www.cbsnews.com/sanfrancisco/latest/rss/local-news',
+                'https://www.eastbaytimes.com/location/california/bay-area/feed/',
+                'https://www.kron4.com/feed/',
+                'https://www.kron4.com/news/app-feed',
+                'https://www.ktvu.com/rss/category/local-news',
+                'https://www.marinij.com/local-news/feed/',
+                'https://www.mercurynews.com/location/california/bay-area/feed/',
+                'https://www.mercurynews.com/location/california/bay-area/peninsula/feed/',
+                'https://www.nbcbayarea.com/news/local/feed/',
+                'https://www.paloaltoonline.com/feed/',
+                'https://www.reddit.com/r/bayarea/.rss',
+                'https://www.reddit.com/r/sanfrancisco/.rss',
+                'https://www.sfgate.com/bayarea/feed/bay-area-news-429.php',
+                'https://www.sfpublicpress.org/category/news/feed/',
+                'https://www.siliconvalley.com/feed/',
+                'https://www.thesfnews.com/feed',
+            ],
+            Books: [
+                'https://feeds.feedburner.com/nybooks',
+                'https://www.goodreads.com/blog/list_rss',
+                'https://www.nytimes.com/section/books/review/rss.xml',
+                'https://www.nytimes.com/svc/collections/v1/publish/',
+                'https://www.theguardian.com/books/booksblog/rss',
+            ],
+            Business: [
+                'http://feeds.benzinga.com/benzinga',
+                'http://feeds.feedburner.com/AtlanticBusinessChannel',
+                'http://feeds.feedburner.com/CalculatedRisk',
+                'http://feeds.feedburner.com/TheBigPicture',
+                'http://feeds2.feedburner.com/businessinsider',
+                'http://fortune.com/feed/',
+                'http://freakonomics.com//feed/',
+                'http://www.economist.com/rss/the_world_this_week_rss.xml',
+                'http://www.marketwatch.com/rss/topstories/',
+                'http://www.metafilter.com/tags/business/rss',
+                'http://www.metafilter.com/tags/economics/rss',
+                'http://www.sbnonline.com/feed/',
+                'http://www.thenonprofittimes.com/feed/',
+                'https://abcnews.go.com/abcnews/moneyheadlines',
+                'https://api.axios.com/feed/business',
+                'https://economictimes.indiatimes.com/rssfeedsdefault.cms',
+                'https://feeds.a.dj.com/rss/RSSMarketsMain.xml',
+                'https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml',
+                'https://feeds.bbci.co.uk/news/business/rss.xml',
+                'https://feeds.bloomberg.com/business/news.rss',
+                'https://feeds.bloomberg.com/economics/news.rss',
+                'https://feeds.bloomberg.com/markets/news.rss',
+                'https://feeds.bloomberg.com/wealth/news.rss',
+                'https://feeds.elpais.com/mrss-s/list/ep/site/english.elpais.com/section/economy-and-business',
+                'https://feeds.feedburner.com/Mixergy-main-podcast',
+                'https://feeds.npr.org/1006/rss.xml',
+                'https://feeds.npr.org/1017/rss.xml',
+                'https://feeds.washingtonpost.com/rss/business',
+                'https://finance.yahoo.com/news/rssindex',
+                'https://fortune.com/feed',
+                'https://homebusinessmag.com/feed/',
+                'https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNR1J5Y1hBU0FtVnVLQUFQAQ?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNREpmTjNRU0FtVnVLQUFQAQ?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx6TVdZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqKAgKIiJDQkFTRXdvSkwyMHZNR2RtY0hNekVnWmxjeTAwTVRrb0FBUAE?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://openrss.org/apnews.com/business',
+                'https://openrss.org/www.reuters.com/business/',
+                'https://qz.com/rss',
+                'https://rss.dw.com/rdf/rss-en-bus',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Business.xml',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml',
+                'https://seekingalpha.com/feed.xml',
+                'https://seekingalpha.com/listing/most-popular-articles.xml',
+                'https://seekingalpha.com/market_currents.xml',
+                'https://seekingalpha.com/tag/editors-picks.xml',
+                'https://soylentnews.org/index.rss',
+                'https://theconversation.com/us/business/articles.atom',
+                'https://tim.blog/feed/',
+                'https://time.com/business/feed',
+                'https://www.cbsnews.com/latest/rss/moneywatch',
+                'https://www.chicagotribune.com/business/feed/',
+                'https://www.cnbc.com/id/100003114/device/rss/rss.html',
+                'https://www.economist.com/finance-and-economics/rss.xml',
+                'https://www.euronews.com/rss?level=vertical&name=business',
+                'https://www.firstpost.com/commonfeeds/v1/mfp/rss/business.xml',
+                'https://www.ft.com/companies?format=rss',
+                'https://www.ft.com/markets?format=rss',
+                'https://www.ft.com/rss/home',
+                'https://www.ft.com/rss/home/international',
+                'https://www.ft.com/technology?format=rss',
+                'https://www.gobankingrates.com/feed/',
+                'https://www.investing.com/rss/news.rss',
+                'https://www.latimes.com/business/rss2.0.xml',
+                'https://www.mckinsey.com/insights/rss.aspx',
+                'https://www.pbs.org/newshour/feeds/rss/economy',
+                'https://www.reddit.com/r/Economics/.rss',
+                'https://www.reddit.com/r/GlobalMarkets/.rss',
+                'https://www.reddit.com/r/business/.rss',
+                'https://www.reddit.com/r/economy/.rss',
+                'https://www.reddit.com/r/finance/.rss',
+                'https://www.reddit.com/r/investing/.rss',
+                'https://www.rt.com/rss/business/',
+                'https://www.scmp.com/rss/92/feed',
+                'https://www.seattletimes.com/business/feed/',
+                'https://www.sfgate.com/rss/feed/business-and-technology-news-448.php',
+                'https://www.spiegel.de/international/business/index.rss',
+                'https://www.theguardian.com/uk/business/rss',
+                'https://www.theguardian.com/uk/money/rss',
+                'https://www.wired.com/feed/category/business/latest/rss',
+                'https://www.youtube.com/feeds/videos.xml?user=Bloomberg',
+                'https://www.youtube.com/feeds/videos.xml?user=businessinsider',
+            ],
+            'Celebs and Movies': [
+                'http://entertainmentweekly.tumblr.com/rss',
+                'http://www.tmz.com/rss.xml',
+                'https://feeds2.feedburner.com/slashfilm',
+                'https://www.avclub.com/rss',
+            ],
+            Culture: [
+                'http://feeds.feedburner.com/99pi',
+                'http://feeds.kottke.org/main',
+                'https://aeon.co/feed.rss',
+                'https://feeds.feedburner.com/damninteresting/all',
+                'https://feeds.npr.org/1008/rss.xml',
+                'https://feeds.npr.org/1045/rss.xml',
+                'https://feeds.npr.org/1048/rss.xml',
+                'https://quillette.com/tag/art-and-culture/rss/',
+                'https://rss.csmonitor.com/feeds/theculture',
+                'https://rss.dw.com/rdf/rss-en-cul',
+                'https://theconversation.com/us/arts/articles.atom',
+                'https://www.atlasobscura.com/feeds/latest',
+                'https://www.boston.com/category/culture/feed/',
+                'https://www.euronews.com/rss?level=vertical&name=culture',
+                'https://www.firstpost.com/commonfeeds/v1/mfp/rss/art-and-culture.xml',
+                'https://www.latimes.com/entertainment-arts/rss2.0.xml',
+                'https://www.openculture.com/feed',
+                'https://www.pbs.org/newshour/feeds/rss/arts',
+                'https://www.pbs.org/newshour/feeds/rss/education',
+                'https://www.scmp.com/rss/318202/feed',
+                'https://www.scmp.com/rss/322296/feed',
+                'https://www.sfgate.com/rss/feed/culture-530.php',
+                'https://www.wired.com/feed/category/culture/latest/rss',
+            ],
+            Design: [
+                'http://airbnb.design/feed/',
+                'http://boxesandarrows.com/rss/',
+                'http://feeds.feedburner.com/uxmovement',
+                'https://feeds.feedburner.com/CssTricks',
+                'https://feeds.feedburner.com/JustCreativeDesignBlog',
+                'https://feeds.npr.org/1047/rss.xml',
+                'https://interaction-design.org/rss/site_news.xml',
+                'https://slack.design/feed/',
+                'https://usabilitygeek.com/feed/',
+                'https://uxdesign.cc/feed',
+                'https://uxmatters.com/index.xml',
+                'https://uxmovement.com/feed/',
+                'https://uxplanet.org/feed',
+                'https://uxstudioteam.com/ux-blog/feed/',
+                'https://web.dev/feed.xml',
+                'https://www.invisionapp.com/inside-design/feed',
+                'https://www.nngroup.com/feed/rss/',
+                'https://www.smashingmagazine.com/feed',
+                'https://www.smashingmagazine.com/feed/',
+            ],
+            Food: [
+                'http://feeds.feedburner.com/seriouseatsfeaturesvideos',
+                'http://feeds.feedburner.com/smittenkitchen',
+                'https://www.101cookbooks.com/feed',
+                'https://www.sfgate.com/rss/feed/food-dining-550.php',
+                'https://www.skinnytaste.com/feed/',
+            ],
+            'Freedom From Accounts': ['http://beeple.tumblr.com/rss', 'https://vimeo.com/user36872580/videos/rss'],
+            Gaming: [
+                'http://feeds.arstechnica.com/arstechnica/gaming/',
+                'http://feeds.feedburner.com/RockPaperShotgun',
+                'http://feeds.feedburner.com/TheAncientGamingNoob',
+                'http://feeds.feedburner.com/psblog',
+                'http://feeds.ign.com/ign/all',
+                'http://feeds.ign.com/ign/games-all',
+                'http://indiegamesplus.com/feed',
+                'http://itrunsdoom.tumblr.com/rss',
+                'http://news.xbox.com/feed',
+                'http://rss.slashdot.org/Slashdot/slashdotGames',
+                'http://tinycartridge.com/rss',
+                'http://toucharcade.com/feed/',
+                'http://www.metafilter.com/tags/games/rss',
+                'http://www.metafilter.com/tags/gaming/rss',
+                'http://www.newgamernation.com/feed/',
+                'http://www.nintendolife.com/feeds/latest',
+                'http://www.pushsquare.com/feeds/latest',
+                'http://www.vg247.com/feed/',
+                'https://80.lv/feed',
+                'https://arstechnica.com/gaming/feed/',
+                'https://dotesports.com/feed',
+                'https://esports.gg/api/feed/',
+                'https://esportsinsider.com/feed',
+                'https://feeds.feedburner.com/Co-optimus',
+                'https://feeds.feedburner.com/GeekNative',
+                'https://galyonk.in/feed',
+                'https://gamerant.com/feed/',
+                'https://gameranx.com/feed/',
+                'https://games.mxdwn.com/feed/',
+                'https://gematsu.com/feed',
+                'https://indiegamecloud.com/feed/',
+                'https://insider-gaming.com/feed/',
+                'https://kotaku.com/rss',
+                'https://majornelson.com/feed/',
+                'https://mynintendonews.com/feed',
+                'https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNREZ0ZHpFU0FtVnVLQUFQAQ?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqIggKIhxDQkFTRHdvSkwyMHZNREp4YURjNUVnSnlkU2dBUAE?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqIggKIhxDQkFTRHdvSkwyMHZNRFkxYTNKNkVnSmxiaWdBUAE?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.xbox.com/en-us/feed/',
+                'https://nichegamer.com/feed/',
+                'https://nowrongwaytoplay.tumblr.com/rss',
+                'https://retrododo.com/feed/',
+                'https://store.steampowered.com/feeds/news.xml',
+                'https://tagn.wordpress.com/feed/',
+                'https://techaeris.com/feed/',
+                'https://techiemag.co.uk/category/gaming/feed/',
+                'https://toucharcade.com/feed/',
+                'https://wccftech.com/feed/',
+                'https://www.cgchannel.com/feed/',
+                'https://www.destructoid.com/feed/',
+                'https://www.esports.net/feed/',
+                'https://www.eurogamer.net/?format=rss',
+                'https://www.eurogamer.net/feed',
+                'https://www.eventhubs.com/news/feed/frontpage/',
+                'https://www.gamesindustry.biz/feed',
+                'https://www.gamespot.com/feeds/mashup/',
+                'https://www.gamesradar.com/feeds.xml',
+                'https://www.gamewatcher.com/feeds/rss',
+                'https://www.gematsu.com/feed',
+                'https://www.giantbomb.com/feeds/mashup',
+                'https://www.indieretronews.com/feeds/posts/default',
+                'https://www.inoreader.com/stream/user/1004847564/tag/Gaming%20Company%20Feeds',
+                'https://www.makeupandbeautyblog.com/feed/',
+                'https://www.mmorpg.com/rss',
+                'https://www.only-gaming.com/feed/',
+                'https://www.operationsports.com/feed/',
+                'https://www.pcgamer.com/feeds.xml/',
+                'https://www.pcgamesn.com/mainrss.xml',
+                'https://www.pcinvasion.com/feed/',
+                'https://www.pcworld.com/gaming/news/feed',
+                'https://www.penny-arcade.com/feed',
+                'https://www.polygon.com/rss/index.xml',
+                'https://www.reddit.com/r/Games/.rss',
+                'https://www.reddit.com/r/NintendoSwitch/.rss',
+                'https://www.reddit.com/r/PS5/.rss',
+                'https://www.reddit.com/r/XboxSeriesX/.rss',
+                'https://www.reddit.com/r/consoles/.rss',
+                'https://www.reddit.com/r/esports/.rss',
+                'https://www.reddit.com/r/gamers/.rss',
+                'https://www.reddit.com/r/gaming.rss',
+                'https://www.reddit.com/r/indiegames/.rss',
+                'https://www.reddit.com/r/pcgaming/.rss',
+                'https://www.reddit.com/r/playstation/.rss',
+                'https://www.reddit.com/r/retrogaming/.rss',
+                'https://www.retrogarden.co.uk/feed/',
+                'https://www.retronews.com/feed/',
+                'https://www.rockpapershotgun.com/feed/',
+                'https://www.siliconera.com/feed/',
+                'https://www.thegamer.com/feed/',
+                'https://www.theguardian.com/games/rss',
+                'https://www.timeextension.com/feeds/latest',
+                'https://www.tomshardware.com/feeds/tag/pc-gaming',
+                'https://www.vg247.com/feed/',
+            ],
+            Guns: [
+                'https://homemadeguns.wordpress.com/feed/',
+                'https://www.forgottenweapons.com/feed/',
+                'https://www.nrablog.com/rss',
+                'https://www.thefirearmblog.com/blog/feed/',
+            ],
+            Linux: [
+                'http://feeds.feedburner.com/UbuntuhandbookNewsTutorialsHowtosForUbuntuLinux',
+                'https://linuxconfig.org/feed',
+                'https://linuxhandbook.com/rss/',
+                'https://linuxhint.com/feed/',
+                'https://tecadmin.net/feed/',
+                'https://www.cyberciti.com/feed/',
+                'https://www.omgubuntu.co.uk/feed',
+                'https://www.rosehosting.com/blog/feed/',
+                'https://www.tecmint.com/feed/',
+            ],
+            'Middle East': [
+                'https://feeds.npr.org/1009/rss.xml',
+                'https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml',
+                'https://www.lemonde.fr/middle-east/rss_full.xml',
+                'https://www.scmp.com/rss/322264/feed',
+            ],
+            Music: [
+                'https://3hive.com/feed/',
+                'https://daily.bandcamp.com/feed/',
+                'https://pitchfork.com/rss/reviews/best/albums/',
+                'https://www.nme.com/feed',
+                'https://www.stereogum.com/feed/',
+            ],
+            Podcasts: [
+                'http://rss.acast.com/themagnusarchives',
+                'http://www.uncannyjapan.com/feed/podcast/',
+                'https://darknetdiaries.com/podcast.xml',
+                'https://rss.acast.com/plumbingthedeathstar',
+                'https://www.lorepodcast.com/episodes?format=RSS',
+            ],
+            Science: [
+                'http://feeds.bbci.co.uk/news/science_and_environment/rss.xml',
+                'http://feeds.feedburner.com/AllDiscovermagazinecomContent',
+                'http://feeds.feedburner.com/BodyHorrors',
+                'http://rss.cnn.com/rss/edition_space.rss',
+                'http://rss.sciam.com/ScientificAmerican-Global',
+                'http://rss.sciam.com/ScientificAmerican-Global?format=xml',
+                'http://www.futurity.org/feed/',
+                'http://www.metafilter.com/tags/science/rss',
+                'http://www.nature.com/nature/current_issue/rss',
+                'http://www.quantamagazine.org/feed/',
+                'http://www.twis.org/feed/',
+                'https://api.axios.com/feed/science',
+                'https://charmingscience.com/feed/',
+                'https://cosmosmagazine.com/feed/',
+                'https://eos.org/feed',
+                'https://feeds.bbci.co.uk/news/science_and_environment/rss.xml',
+                'https://feeds.elpais.com/mrss-s/list/ep/site/english.elpais.com/section/climate',
+                'https://feeds.elpais.com/mrss-s/list/ep/site/english.elpais.com/section/health',
+                'https://feeds.elpais.com/mrss-s/list/ep/site/english.elpais.com/section/science-tech',
+                'https://feeds.feedburner.com/AllDiscovermagazinecomContent',
+                'https://feeds.newscientist.com/home',
+                'https://feeds.npr.org/1007/rss.xml',
+                'https://feeds.npr.org/1025/rss.xml',
+                'https://feeds.npr.org/1026/rss.xml',
+                'https://feeds.npr.org/1028/rss.xml',
+                'https://feeds.science.org/rss/science.xml',
+                'https://feeds.simplecast.com/y1LF_sn2',
+                'https://flowingdata.com/feed',
+                'https://futurism.com/feed',
+                'https://gizmodo.com/tag/science/rss',
+                'https://grist.org/feed/',
+                'https://nautil.us/feed/',
+                'https://news.climate.columbia.edu/feed/',
+                'https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRE0yWHpJU0FtbDBLQUFQAQ?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRFZ4YW5RU0FtVnVLQUFQAQ?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqIggKIhxDQkFTRHdvSkwyMHZNR1F3TmpOMkVnSmxiaWdBUAE?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqIggKIhxDQkFTRHdvSkwyMHZNREU0TXpOM0VnSmxiaWdBUAE?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqIggKIhxDQkFTRHdvSkwyMHZNREp3ZVRBNUVnSmxiaWdBUAE?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqJQgKIh9DQkFTRVFvSUwyMHZNREUxTkRBU0JXVnVMVWRDS0FBUAE?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp0Y1RjU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news.mit.edu/rss/research',
+                'https://news.mit.edu/rss/topic/science-technology-and-society',
+                'https://openrss.org/apnews.com/science',
+                'https://pa.tedcdn.com/feeds/talks.rss',
+                'https://phys.org/rss-feed/',
+                'https://phys.org/rss-feed/breaking/',
+                'https://podcasts.files.bbci.co.uk/b00snr0w.rss',
+                'https://podcasts.files.bbci.co.uk/p002w557.rss',
+                'https://quillette.com/tag/science-tech/rss',
+                'https://reddit.com/r/science/.rss',
+                'https://rss.dw.com/xml/rss_en_environment',
+                'https://rss.dw.com/xml/rss_en_science',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Climate.xml',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Science.xml',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Space.xml',
+                'https://sciencealert.com/feed/gn/',
+                'https://sciencebasedmedicine.org/feed/',
+                'https://scienceblog.com/feed/',
+                'https://sciencefeatured.com/feed/',
+                'https://scitechdaily.com/feed/',
+                'https://sciworthy.com/feed/',
+                'https://singularityhub.com/feed/',
+                'https://soylentnews.org/index.rss',
+                'https://theconversation.com/us/technology/articles.atom',
+                'https://thelumberjack.org/category/science/feed/',
+                'https://time.com/science/feed/',
+                'https://undark.org/feed/',
+                'https://what-if.xkcd.com/feed.atom',
+                'https://www.advancedsciencenews.com/feed/',
+                'https://www.aljazeera.com/xml/rss/all.xml',
+                'https://www.anthropocenemagazine.org/feed/',
+                'https://www.astro.gla.ac.uk/users/eduard/cesra/?feed=rss2',
+                'https://www.economist.com/science-and-technology/rss.xml',
+                'https://www.kolabtree.com/blog/feed/',
+                'https://www.latimes.com/science/rss2.0.xml',
+                'https://www.livescience.com/feeds.xml',
+                'https://www.nasa.gov/feed/',
+                'https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss',
+                'https://www.nature.com/nature.rss',
+                'https://www.nsf.gov/rss/rss_www_news.xml',
+                'https://www.pbs.org/newshour/feeds/rss/science',
+                'https://www.popsci.com/rss.xml',
+                'https://www.psypost.org/feed/',
+                'https://www.reddit.com/r/Anthropology/.rss',
+                'https://www.reddit.com/r/EarthScience/.rss',
+                'https://www.reddit.com/r/Futurism/.rss',
+                'https://www.reddit.com/r/Futurology/.rss',
+                'https://www.reddit.com/r/Physics/.rss',
+                'https://www.reddit.com/r/biology/.rss',
+                'https://www.reddit.com/r/chemistry/.rss',
+                'https://www.reddit.com/r/climate/.rss',
+                'https://www.reddit.com/r/environment/.rss',
+                'https://www.reddit.com/r/environmental_science/.rss',
+                'https://www.reddit.com/r/hardscience/.rss',
+                'https://www.reddit.com/r/science/.rss',
+                'https://www.reddit.com/r/space/.rss',
+                'https://www.sci.news/feed',
+                'https://www.scidev.net/global/rss.xml/?type=header',
+                'https://www.science.org/rss/news_current.xml',
+                'https://www.sciencealert.com/rss',
+                'https://www.sciencedaily.com/rss/all.xml',
+                'https://www.sciencenews.org/feed',
+                'https://www.scientificamerican.com/platform/syndication/rss/',
+                'https://www.scimex.org/rss',
+                'https://www.smithsonianmag.com/rss/science-nature/',
+                'https://www.snexplores.org/feed',
+                'https://www.space.com/feeds/all',
+                'https://www.technologynetworks.com/applied-sciences/news/rss',
+                'https://www.the-scientist.com/rss/feed-the-scientist.xml',
+                'https://www.theguardian.com/environment/climate-crisis/rss',
+                'https://www.theguardian.com/science/rss',
+                'https://www.thehindu.com/sci-tech/science/feeder/default.rss',
+                'https://www.wired.com/feed/category/science/latest/rss',
+                'https://www.yahoo.com/news/rss/science',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCqZQJ4600a9wIfMPbYc60OQ',
+                'https://www.zmescience.com/feed/',
+            ],
+            Sports: [
+                'http://feeds.bbci.co.uk/sport/rss.xml',
+                'http://feeds.bbci.co.uk/sport/rss.xml?edition=int#',
+                'http://feeds.skynews.com/feeds/rss/sports.xml',
+                'http://newsrss.bbc.co.uk/rss/sportonline_world_edition/front_page/rss.xml',
+                'http://rss.cnn.com/rss/edition_sport.rss',
+                'http://www.espn.com/espn/rss/news',
+                'https://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU',
+                'https://e00-marca.uecdn.es/rss/en/index.xml',
+                'https://feeds.elpais.com/mrss-s/list/ep/site/english.elpais.com/section/sports',
+                'https://feeds.washingtonpost.com/rss/sports',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB/sections/CAQiQkNCQVNLd29JTDIwdk1EWnVkR29TQW1WdUdnSlZVeUlPQ0FRYUNnb0lMMjB2TURVNWVXb3FCd29GRWdOT1Jrd29BQSoqCAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVABUAE?hl=en-US&gl=US&ceid=US%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB/sections/CAQiR0NCQVNMd29JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlJT0NBUWFDZ29JTDIwdk1ETTNhSG9xQ0FvR0VnUkhiMnhtS0FBKi4IACoqCAoiJENCQVNGUW9JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlnQVABUAE?hl=en-GB&gl=GB&ceid=GB%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB/sections/CAQiRENCQVNMUW9JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlJT0NBUWFDZ29JTDIwdk1ESjRlaklxQmdvRUVnSkdNU2dBKi4IACoqCAoiJENCQVNGUW9JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlnQVABUAE?hl=en-GB&gl=GB&ceid=GB%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB/sections/CAQiS0NCQVNNZ29JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlJT0NBUWFDZ29JTDIwdk1ERnpaMndxQ3dvSkVnZERlV05zYVc1bktBQSouCAAqKggKIiRDQkFTRlFvSUwyMHZNRFp1ZEdvU0JXVnVMVWRDR2dKSFFpZ0FQAVAB?hl=en-GB&gl=GB&ceid=GB%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB/sections/CAQiS0NCQVNNZ29JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlJT0NBUWFDZ29JTDIwdk1EbDRjRjhxQ3dvSkVnZERjbWxqYTJWMEtBQSouCAAqKggKIiRDQkFTRlFvSUwyMHZNRFp1ZEdvU0JXVnVMVWRDR2dKSFFpZ0FQAVAB?hl=en-GB&gl=GB&ceid=GB%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB/sections/CAQiSENCQVNNQW9JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlJT0NBUWFDZ29JTDIwdk1EWmljV1FxQ1FvSEVnVlNkV2RpZVNnQSouCAAqKggKIiRDQkFTRlFvSUwyMHZNRFp1ZEdvU0JXVnVMVWRDR2dKSFFpZ0FQAVAB?hl=en-GB&gl=GB&ceid=GB%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB/sections/CAQiSkNCQVNNUW9JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlJT0NBUWFDZ29JTDIwdk1EZGljekFxQ2dvSUVnWlVaVzV1YVhNb0FBKi4IACoqCAoiJENCQVNGUW9JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlnQVABUAE?hl=en-GB&gl=GB&ceid=GB%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB/sections/CAQiSkNCQVNNUW9JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlJT0NBUWFDZ29JTDIwdk1HcDRlSFFxQ2dvSUVnWlNZV05wYm1jb0FBKi4IACoqCAoiJENCQVNGUW9JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlnQVABUAE?hl=en-GB&gl=GB&ceid=GB%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB/sections/CAQiTENCQVNNd29JTDIwdk1EWnVkR29TQldWdUxVZENHZ0pIUWlJT0NBUWFDZ29JTDIwdk1ESjJlRFFxREFvS0VnaEdiMjkwWW1Gc2JDZ0EqLggAKioICiIkQ0JBU0ZRb0lMMjB2TURadWRHb1NCV1Z1TFVkQ0dnSkhRaWdBUAFQAQ?hl=en-GB&gl=GB&ceid=GB%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB?hl=en-GB&gl=GB&ceid=GB%3Aen',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp1ZEdvU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://openrss.org/www.inquirer.com/sports/',
+                'https://rss.dw.com/rdf/rss-en-sports',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml',
+                'https://sports.yahoo.com/rss/',
+                'https://time.com/sports/feed/',
+                'https://www.cbssports.com/rss/headlines/',
+                'https://www.chicagotribune.com/sports/feed/',
+                'https://www.dawn.com/feeds/sport/',
+                'https://www.espn.com/espn/rss/news',
+                'https://www.football365.com/rss',
+                'https://www.foxsports.com/feedout/syndicatedContent?categoryId=117',
+                'https://www.independent.co.uk/sport/rss',
+                'https://www.latimes.com/sports/rss2.0.xml',
+                'https://www.reddit.com/r/CFB.rss',
+                'https://www.reddit.com/r/formula1.rss',
+                'https://www.reddit.com/r/indepthsports.rss',
+                'https://www.reddit.com/r/mlb.rss',
+                'https://www.reddit.com/r/nba.rss',
+                'https://www.reddit.com/r/nfl.rss',
+                'https://www.reddit.com/r/soccer.rss',
+                'https://www.reddit.com/r/sports.rss',
+                'https://www.scmp.com/rss/95/feed',
+                'https://www.seattletimes.com/sports/feed/',
+                'https://www.sfgate.com/rss/feed/top-sports-stories-rss-feed-487.php',
+                'https://www.skysports.com/rss/12040',
+                'https://www.sportskeeda.com/feed',
+                'https://www.teamtalk.com/rss',
+                'https://www.theguardian.com/sport/rss',
+                'https://www.theguardian.com/uk/sport/rss',
+                'https://www.thehindu.com/sport/feeder/default.rss',
+                'https://www.triathlonmag.com.au/rss',
+                'https://www.westhesportsguy.com/feeds/posts/default',
+            ],
+            Technology: [
+                'http://anandtech.com/rss/',
+                'http://atomicsupermen.wordpress.com/feed/',
+                'http://bloggingthemonkey.blogspot.com/feeds/posts/default',
+                'http://boingboing.net/feed',
+                'http://feeds.arstechnica.com/arstechnica/index',
+                'http://feeds.feedburner.com/AllDiscovermagazinecomContent?format=xml',
+                'http://feeds.feedburner.com/IeeeSpectrumFullText',
+                'http://feeds.feedburner.com/IntoMobile?format=xml',
+                'http://feeds.feedburner.com/KhronosorgNews',
+                'http://feeds.feedburner.com/Liliputing?format=xml',
+                'http://feeds.feedburner.com/Medgadget',
+                'http://feeds.feedburner.com/NanotechwebTechUpdate',
+                'http://feeds.feedburner.com/RedmondPie',
+                'http://feeds.feedburner.com/Techcrunch',
+                'http://feeds.feedburner.com/armdevices?format=xml',
+                'http://feeds.feedburner.com/cnx-software/blog?format=xml',
+                'http://feeds.feedburner.com/igyaan',
+                'http://feeds.feedburner.com/oled-info',
+                'http://feeds.feedburner.com/reason/AllArticles',
+                'http://feeds.feedburner.com/ubergizmo',
+                'http://feeds.feedburner.com/venturebeat/SZYF',
+                'http://feeds.mashable.com/Mashable',
+                'http://freegamer.blogspot.com/feeds/posts/default',
+                'http://gliden64.blogspot.com/feeds/posts/default',
+                'http://gpuopen.com/feed/',
+                'http://lwn.net/headlines/newrss',
+                'http://makezine.com/feed/',
+                'http://mobilesemi.blogspot.com/feeds/posts/default',
+                'http://rss.cnn.com/rss/cnn_tech.rss',
+                'http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml',
+                'http://rss.slashdot.org/Slashdot/slashdot',
+                'http://rss.slashdot.org/Slashdot/slashdotMain',
+                'http://semiaccurate.com/feed/',
+                'http://semiengineering.com/feed/',
+                'http://sreweekly.com/feed/',
+                'http://stratechery.com/feed/',
+                'http://thehackernews.com/feeds/posts/default',
+                'http://www.androidauthority.com/feed',
+                'http://www.androidpolice.com/feed',
+                'http://www.cancelledscifi.com/feed/',
+                'http://www.computerweekly.com/rss/All-Computer-Weekly-content.xml',
+                'http://www.cringely.com/feed/',
+                'http://www.digitimes.com/rss/daily.xml',
+                'http://www.engadget.com/rss.xml',
+                'http://www.extremetech.com/feed',
+                'http://www.fark.com/fark.rss',
+                'http://www.fudzilla.com/?format=feed',
+                'http://www.jeffq.com/blog/feed/',
+                'http://www.lakka.tv/articles/feed.xml',
+                'http://www.libretro.com/index.php/feed/',
+                'http://www.macrumors.com/macrumors.xml',
+                'http://www.metafilter.com/tags/apple/rss',
+                'http://www.metafilter.com/tags/computers/rss',
+                'http://www.metafilter.com/tags/google/rss',
+                'http://www.metafilter.com/tags/internet/rss',
+                'http://www.metafilter.com/tags/technology/rss',
+                'http://www.metafilter.com/tags/web/rss',
+                'http://www.mondo2000.com/feed/',
+                'http://www.phdcomics.com/gradfeed.php',
+                'http://www.phoronix.com/phoronix-rss.php',
+                'http://www.pocketables.com/feed',
+                'http://www.sammobile.com/feed/',
+                'http://www.smbc-comics.com/rss.php',
+                'http://www.techcentral.ie/feed/',
+                'http://www.techradar.com/rss',
+                'http://www.theregister.co.uk/headlines.atom',
+                'http://www.theverge.com/rss/full.xml',
+                'http://www.tomshardware.com/feeds/rss2/all.xml',
+                'http://www.umpcportal.com/feed/',
+                'http://www.wired.com/feed/',
+                'http://www.xda-developers.com/feed/',
+                'http://www.zdnet.com/news/rss.xml',
+                'http://xenia.jp/feed.xml',
+                'https://512pixels.net/feed/',
+                'https://9to5google.com/feed',
+                'https://9to5mac.com/feed/',
+                'https://abcnews.go.com/abcnews/technologyheadlines',
+                'https://androidpctv.com/feed/',
+                'https://api.axios.com/feed/technology',
+                'https://appleinsider.com/rss/news/',
+                'https://atp.fm/rss',
+                'https://betanews.com/feed/',
+                'https://cloudseclist.com/feed.xml',
+                'https://digitechbytes.com/feed/',
+                'https://electrek.co/feed/',
+                'https://feeds.bbci.co.uk/news/technology/rss.xml',
+                'https://feeds.elpais.com/mrss-s/list/ep/site/english.elpais.com/section/science-tech',
+                'https://feeds.elpais.com/mrss-s/list/ep/site/english.elpais.com/section/technology',
+                'https://feeds.feedblitz.com/newatlas',
+                'https://feeds.feedburner.com/ausdroid/feed',
+                'https://feeds.feedburner.com/codinghorror',
+                'https://feeds.feedburner.com/ndtvnews-top-stories',
+                'https://feeds.feedburner.com/thenextweb',
+                'https://feeds.macrumors.com/MacRumors-All',
+                'https://feeds.npr.org/1019/rss.xml',
+                'https://feeds.twit.tv/twit.xml',
+                'https://feeds.washingtonpost.com/rss/business/technology',
+                'https://flipshope.com/blog/feed',
+                'https://futurefive.co.nz/feed',
+                'https://futurism.com/feed',
+                'https://gigaom.com/feed/?x=1',
+                'https://gizmodo.com/feed',
+                'https://gizmodo.com/rss',
+                'https://hackaday.com/feed/',
+                'https://insiderpaper.com/feed/',
+                'https://knowtechie.com/feed/',
+                'https://krebsonsecurity.com/feed/',
+                'https://kubernetes.io/feed.xml',
+                'https://latesttechno.in/feed/',
+                'https://lobste.rs/rss',
+                'https://mobilesyrup.com/feed',
+                'https://moviecode.tumblr.com/rss',
+                'https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml',
+                'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGRqTVhZU0FtVnVHZ0pWVXlnQVAB?hl=en-US&gl=US&ceid=US%3Aen&oc=11',
+                'https://news969.com/feed/',
+                'https://nocamels.com/feed/',
+                'https://openrss.org/www.reuters.com/technology/',
+                'https://osmc.tv/rss',
+                'https://randomascii.wordpress.com/feed/',
+                'https://readwrite.com/feed/',
+                'https://restic.net/blog/index.xml',
+                'https://retropie.org.uk/feed/',
+                'https://rss.nytimes.com/services/xml/rss/nyt/PersonalTech.xml',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml',
+                'https://rss.politico.com/technology.xml',
+                'https://rthackersnews.blogspot.com/feeds/posts/default?alt=rss',
+                'https://soylentnews.org/index.rss',
+                'https://spectrum.ieee.org/feeds/feed.rss',
+                'https://spider760.blogspot.com/feeds/posts/default?alt=rss',
+                'https://stallman.org/rss/rss.xml',
+                'https://techcavit.com/feed/',
+                'https://techcrunch.com/feed/',
+                'https://technode.com/feed/',
+                'https://techviral.net/feed/',
+                'https://techxplore.com/rss-feed/',
+                'https://themarkup.org/feeds/rss.xml',
+                'https://thenextweb.com/feed/',
+                'https://tildes.net/topics.rss',
+                'https://time.com/tech/feed/',
+                'https://www.404media.co/rss/',
+                'https://www.aclu.org/taxonomy/channel-term/1/feed',
+                'https://www.androidauthority.com/feed/',
+                'https://www.androidheadlines.com/feed',
+                'https://www.antifraudnews.com/feed/',
+                'https://www.betechwise.com/feed/',
+                'https://www.bleepingcomputer.com/feed/',
+                'https://www.blogger.com/feeds/4457929370096894305/posts/default',
+                'https://www.chinatechnews.com/feed',
+                'https://www.cnet.com/rss/news/',
+                'https://www.codeofhonor.com/blog/feed',
+                'https://www.cultofmac.com/feed/',
+                'https://www.dawn.com/feeds/tech/',
+                'https://www.developer-tech.com/feed',
+                'https://www.digitaltrends.com/feed/',
+                'https://www.droid-life.com/feed',
+                'https://www.eff.org/rss/pressrelease',
+                'https://www.engadget.com/rss.xml',
+                'https://www.eweek.com/feed/',
+                'https://www.extremetech.com/feed',
+                'https://www.fastcompany.com/latest/rss?truncated=true',
+                'https://www.firstpost.com/commonfeeds/v1/mfp/rss/tech.xml',
+                'https://www.gadgetsinnepal.com.np/feed/',
+                'https://www.geekwire.com/feed',
+                'https://www.ghacks.net/feed/',
+                'https://www.lastweekinaws.com/feed',
+                'https://www.latimes.com/business/technology/rss2.0.xml',
+                'https://www.lighthome.in/feed/',
+                'https://www.macobserver.com/feed/',
+                'https://www.macsparky.com/feed/',
+                'https://www.macworld.com/en-us/feed',
+                'https://www.macworld.com/index.rss',
+                'https://www.mercurynews.com/tag/siliconbeat/feed/',
+                'https://www.microled-info.com/rss.xml',
+                'https://www.nature.com/nature.rss',
+                'https://www.naval-technology.com/feed/',
+                'https://www.newskart.com/feed',
+                'https://www.nextgov.com/rss/all/',
+                'https://www.pcmag.com/feeds/rss/latest',
+                'https://www.pcworld.com/index.rss',
+                'https://www.platformexecutive.com/feed',
+                'https://www.popularmechanics.com/rss/default.xml',
+                'https://www.quantamagazine.org/feed',
+                'https://www.raspberrypi.org/feed/',
+                'https://www.rayarena.com/feed',
+                'https://www.reddit.com/r/Apple/.rss',
+                'https://www.reddit.com/r/Google/.rss',
+                'https://www.reddit.com/r/gadgets/.rss',
+                'https://www.reddit.com/r/hardware/.rss',
+                'https://www.reddit.com/r/iphone/.rss',
+                'https://www.reddit.com/r/technology/.rss',
+                'https://www.relay.fm/analogue/feed',
+                'https://www.relay.fm/clockwise/feed',
+                'https://www.relay.fm/rocket/feed',
+                'https://www.researchsnipers.com/feed/',
+                'https://www.schneier.com/feed/atom',
+                'https://www.scmp.com/rss/36/feed',
+                'https://www.securityweek.com/feed/',
+                'https://www.servethehome.com/feed/',
+                'https://www.siliconrepublic.com/feed',
+                'https://www.slashgear.com/feed/',
+                'https://www.techdirt.com/techdirt_rss.xml',
+                'https://www.techfeeddata.com/feed',
+                'https://www.techinasia.com/feed',
+                'https://www.techjuice.pk/feed/',
+                'https://www.techmeme.com/feed.xml',
+                'https://www.technews.city/feeds/posts/default?alt=rss',
+                'https://www.technewsworld.com/perl/syndication/rssfull.pl',
+                'https://www.technologydrift.com/feed/',
+                'https://www.technologyreview.com/feed',
+                'https://www.techpout.com/feed/',
+                'https://www.techrepublic.com/rssfeeds/articles/?feedType=rssfeeds&sort=latest',
+                'https://www.techspot.com/backend.xml',
+                'https://www.theblackweb.in/feed/',
+                'https://www.theguardian.com/uk/technology/rss',
+                'https://www.theverge.com/rss/frontpage',
+                'https://www.theverge.com/rss/index.xml',
+                'https://www.vox.com/rss/technology/index.xml',
+                'https://www.wired.com/feed/rss',
+                'https://www.wired.com/feed/tag/ai/latest/rss',
+                'https://www.youtube.com/feeds/videos.xml?user=CNETTV',
+                'https://www.youtube.com/feeds/videos.xml?user=LinusTechTips',
+                'https://www.youtube.com/feeds/videos.xml?user=TheVerge',
+                'https://www.youtube.com/feeds/videos.xml?user=marquesbrownlee',
+                'https://www.youtube.com/feeds/videos.xml?user=unboxtherapy',
+                'https://xkcd.com/rss.xml',
+            ],
+            Travel: [
+                'http://rss.cnn.com/rss/cnn_travel.rss',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Travel.xml',
+                'https://thepointsguy.com/feed/',
+                'https://www.adventure-journal.com/feed/',
+                'https://www.cntraveler.com/feed/rss',
+                'https://www.euronews.com/rss?level=vertical&name=travel',
+                'https://www.latimes.com/travel/rss2.0.xml',
+                'https://www.lonelyplanet.com/blog/feed/atom/',
+                'https://www.sfgate.com/rss/feed/travel-news-and-features-520.php',
+                'https://www.theguardian.com/travel/rss',
+                'https://www.thehindu.com/life-and-style/travel/feeder/default.rss',
+            ],
+            USA: [
+                'http://dailysignal.com//feed/',
+                'http://feeds.feedburner.com/Davidthompson',
+                'http://feeds.foxnews.com/foxnews/national',
+                'http://rss.cnn.com/rss/cnn_allpolitics.rss',
+                'http://rss.cnn.com/rss/edition_us.rss',
+                'http://rss.slashdot.org/Slashdot/slashdotPolitics',
+                'http://www.marketwatch.com/rss/topstories/',
+                'http://www.metafilter.com/tags/us/rss',
+                'http://www.metafilter.com/tags/uspolitics/rss',
+                'http://www.newyorker.com/services/rss/feeds/everything.xml',
+                'http://www.slate.com/articles/news_and_politics.fulltext.all.10.rss',
+                'http://www.slate.com/articles/news_and_politics/politics.teaser.all.10.rss/',
+                'https://abcnews.go.com/abcnews/politicsheadlines',
+                'https://abcnews.go.com/abcnews/usheadlines',
+                'https://api.axios.com/feed/politics',
+                'https://feeds.elpais.com/mrss-s/list/ep/site/english.elpais.com/section/usa',
+                'https://feeds.feedburner.com/Popehat',
+                'https://feeds.nbcnews.com/msnbc/public/news',
+                'https://feeds.npr.org/1014/rss.xml',
+                'https://feeds.washingtonpost.com/rss/national',
+                'https://feeds.washingtonpost.com/rss/rss_fact-checker',
+                'https://feeds.washingtonpost.com/rss/rss_the-fix',
+                'https://fivethirtyeight.com/features/feed/',
+                'https://justthenews.com/rss.xml',
+                'https://nypost.com/politics/feed/',
+                'https://nypost.com/us-news/feed/',
+                'https://openrss.org/apnews.com/politics',
+                'https://openrss.org/apnews.com/us-news',
+                'https://openrss.org/www.axios.com',
+                'https://openrss.org/www.inquirer.com/politics/',
+                'https://pjmedia.com/news-and-politics/feed',
+                'https://politicalwire.com/feed/',
+                'https://prospect.org/api/rss/content.rss',
+                'https://quillette.com/tag/politics/rss',
+                'https://reason.com/feed/',
+                'https://reason.com/volokh/atom.xml',
+                'https://rss.csmonitor.com/feeds/usa',
+                'https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml',
+                'https://rss.nytimes.com/services/xml/rss/nyt/US.xml',
+                'https://status451.com/feed/',
+                'https://theconversation.com/us/articles.atom',
+                'https://theconversation.com/us/politics/articles.atom',
+                'https://thehill.com/homenews/campaign/feed/',
+                'https://thehill.com/homenews/feed/',
+                'https://thehill.com/homenews/media/feed/',
+                'https://thehill.com/lobbying/feed/',
+                'https://thehill.com/regulation/feed/',
+                'https://theintercept.com/feed/',
+                'https://time.com/politics/feed',
+                'https://time.com/us/feed',
+                'https://www.allsides.com/rss/news',
+                'https://www.alternet.org/feeds/feed.rss',
+                'https://www.astralcodexten.com/feed',
+                'https://www.boston.com/tag/politics/feed/',
+                'https://www.cbsnews.com/latest/rss/politics',
+                'https://www.chicagotribune.com/news/politics/feed/',
+                'https://www.compactmag.com/rss/',
+                'https://www.latimes.com/politics/rss2.0.xml',
+                'https://www.lemonde.fr/united-states/rss_full.xml',
+                'https://www.nationalreview.com/corner/feed/',
+                'https://www.nationalreview.com/feed/',
+                'https://www.pbs.org/newshour/feeds/rss/politics',
+                'https://www.pewresearch.org/feed/',
+                'https://www.propublica.org/feeds/propublica/main',
+                'https://www.reddit.com/r/AmericanPolitics/.rss',
+                'https://www.reddit.com/r/NeutralPolitics/.rss',
+                'https://www.reddit.com/r/politics/.rss',
+                'https://www.riskhedge.com/rss',
+                'https://www.rollingstone.com/politics/feed/',
+                'https://www.salon.com/feed/',
+                'https://www.scmp.com/rss/322262/feed',
+                'https://www.seattletimes.com/nation/feed/',
+                'https://www.spiked-online.com/topic/usa/feed/',
+                'https://www.theatlantic.com/feed/best-of/',
+                'https://www.themarshallproject.org/rss/recent',
+                'https://www.thenation.com/feed/?post_type=article',
+                'https://www.vox.com/rss/politics/index.xml',
+                'https://www.washingtonexaminer.com/section/politics/feed/',
+                'https://www.yahoo.com/news/rss/politics',
+                'https://www.yahoo.com/news/rss/us',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCDRIjKy6eZOvKtOELtTdeUA',
+            ],
+            'Web Comics': [
+                'http://nedroid.com/feed/atom/',
+                'http://www.harkavagrant.com/rssfeed.php',
+                'http://www.marycagle.com/rss.php',
+                'http://www.threepanelsoul.com/rss.php',
+                'https://killsixbilliondemons.com/feed/',
+                'https://www.foxtrot.com/feed/',
+                'https://xkcd.com/atom.xml',
+            ],
+            World: [
+                'http://tass.com/rss/v2.xml',
+                'https://abcnews.go.com/abcnews/internationalheadlines',
+                'https://acleddata.com/feed/',
+                'https://aljazeera.com/xml/rss/all.xml',
+                'https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf',
+                'https://en.mercopress.com/rss/',
+                'https://feeds.a.dj.com/rss/RSSOpinion.xml',
+                'https://feeds.a.dj.com/rss/RSSWorldNews.xml',
+                'https://feeds.bbci.co.uk/news/world/rss.xml',
+                'https://feeds.elpais.com/mrss-s/list/ep/site/english.elpais.com/section/international',
+                'https://feeds.elpais.com/mrss-s/pages/ep/site/english.elpais.com/portada',
+                'https://feeds.feedburner.com/ndtvnews-world-news',
+                'https://feeds.npr.org/1004/rss.xml',
+                'https://feeds.washingtonpost.com/rss/world',
+                'https://foreignpolicy.com/category/world-brief/feed/',
+                'https://foreignpolicy.com/feed/',
+                'https://jacobin.com/feed/',
+                'https://japantoday.com/category/world/feed',
+                'https://meduza.io/rss/en/all',
+                'https://michaelwest.com.au/feed/',
+                'https://novaramedia.com/category/articles/feed/',
+                'https://novaramedia.com/feed/',
+                'https://openrss.org/apnews.com/world-news',
+                'https://openrss.org/www.reuters.com/world/',
+                'https://restofworld.org/feed/latest',
+                'https://rss.csmonitor.com/feeds/all',
+                'https://rss.dw.com/rdf/rss-en-all',
+                'https://rss.dw.com/rdf/rss-en-world',
+                'https://rss.nytimes.com/services/xml/rss/nyt/World.xml',
+                'https://thespectator.com/feed/',
+                'https://theweek.com/feeds.xml',
+                'https://time.com/world/feed',
+                'https://www.abc.net.au/news/feed/45910/rss.xml',
+                'https://www.al-monitor.com/rss',
+                'https://www.allsides.com/blog',
+                'https://www.allsides.com/rss/news',
+                'https://www.arabnews.com/taxonomy/term/3/feed',
+                'https://www.boston.com/tag/world-news/feed/',
+                'https://www.cbsnews.com/latest/rss/world',
+                'https://www.compactmag.com/rss/',
+                'https://www.dawn.com/feeds/world/',
+                'https://www.economist.com/asia/rss.xml',
+                'https://www.economist.com/britain/rss.xml',
+                'https://www.economist.com/china/rss.xml',
+                'https://www.economist.com/europe/rss.xml',
+                'https://www.economist.com/international/rss.xml',
+                'https://www.economist.com/middle-east-and-africa/rss.xml',
+                'https://www.economist.com/the-americas/rss.xml',
+                'https://www.euronews.com/rss?level=vertical&name=news',
+                'https://www.firstpost.com/commonfeeds/v1/mfp/rss/world.xml',
+                'https://www.foreignaffairs.com/rss.xml',
+                'https://www.france24.com/en/rss',
+                'https://www.ft.com/rss/home/international',
+                'https://www.ft.com/world?format=rss',
+                'https://www.globalissues.org/news/feed',
+                'https://www.lemonde.fr/en/rss/une.xml',
+                'https://www.lemonde.fr/opinion/rss_full.xml',
+                'https://www.mintpressnews.com/feed/',
+                'https://www.newarab.com/rss',
+                'https://www.pbs.org/newshour/feeds/rss/world',
+                'https://www.pewresearch.org/feed/',
+                'https://www.politico.eu/feed/',
+                'https://www.reddit.com/r/UpliftingNews/.rss',
+                'https://www.reddit.com/r/inthenews/.rss',
+                'https://www.reddit.com/r/truenews/.rss',
+                'https://www.reddit.com/r/worldnews/.rss',
+                'https://www.rferl.org/api/zbqiml-vomx-tpeqkmy',
+                'https://www.rfi.fr/en/international/rss',
+                'https://www.rt.com/rss/',
+                'https://www.rt.com/rss/news/',
+                'https://www.scmp.com/rss/5/feed',
+                'https://www.scmp.com/rss/91/feed',
+                'https://www.semafor.com/rss.xml',
+                'https://www.spiegel.de/international/index.rss',
+                'https://www.spiegel.de/international/world/index.rss',
+                'https://www.spiked-online.com/topic/world/feed/',
+                'https://www.straitstimes.com/news/world/rss.xml',
+                'https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/world/',
+                'https://www.theguardian.com/world/rss',
+                'https://www.thehindu.com/news/international/feeder/default.rss',
+                'https://www.timesofisrael.com/feed/',
+                'https://www.voanews.com/api/',
+                'https://www.wsws.org/en/rss.xml',
+                'https://www.youtube.com/feeds/videos.xml?channel_id=UCQfwfsi5VrQ8yKZ-UWmAEFg',
+            ],
+        };
+        class $bog_ainews_app_sources extends $.$bog_ainews_app_sources {
+            runtime_links() {
+                const custom_rss = this.custom_sources($bog_ainews_app_sources_custom_rss_feeds);
+                return { ...$bog_ainews_app_source_links, my: custom_rss };
+            }
+            Categories() {
+                return Object.keys($bog_ainews_app_source_links).map(category => this.Category_page(category));
+            }
+            category_title(category) {
+                return category;
+            }
+            suggestions(category) {
+                const urls = $bog_ainews_app_source_links[category];
+                return urls.reduce((acc, url) => {
+                    try {
+                        const domain = new URL(url).hostname.replace('www.', '');
+                        acc[url] = domain;
+                    }
+                    catch {
+                        acc[url] = url;
+                    }
+                    return acc;
+                }, {});
+            }
+            sources(id, next) {
+                if (next !== undefined)
+                    return $mol_state_local.value(id, next);
+                return $mol_state_local.value(id) ?? [];
+            }
+            custom_sources(id, next) {
+                if (next !== undefined)
+                    return $mol_state_local.value(id, next);
+                return $mol_state_local.value(id) ?? [];
+            }
+            My_rss_feeds() {
+                const my_rss = $mol_state_local.value($bog_ainews_app_sources_custom_rss_feeds) ?? [];
+                return my_rss.map((category) => this.My_rss_item(category));
+            }
+            add_custom_feed_click() {
+                const new_url = this.Add_feed_string().value();
+                const current_list = this.custom_sources($bog_ainews_app_sources_custom_rss_feeds);
+                if (current_list.includes(new_url)) {
+                    return;
+                }
+                if (new_url !== null && new_url.trim() !== '') {
+                    if (new_url.includes('https://') == false && new_url.includes('http://') == false) {
+                        throw 'Need valid http url!';
+                    }
+                }
+                const new_list = [...current_list, new_url];
+                this.custom_sources($bog_ainews_app_sources_custom_rss_feeds, new_list);
+                $mol_state_local.value($bog_ainews_app_sources_custom_rss_feeds, new_list);
+                this.Add_feed_string().value('');
+            }
+            my_rss_title(id) {
+                return id;
+            }
+            delete_custom_feed_click(id) {
+                const current_list = this.custom_sources($bog_ainews_app_sources_custom_rss_feeds);
+                const new_list = current_list.filter((item) => item != id);
+                this.custom_sources($bog_ainews_app_sources_custom_rss_feeds, new_list);
+                $mol_state_local.value($bog_ainews_app_sources_custom_rss_feeds, new_list);
+            }
+        }
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_sources.prototype, "custom_sources", null);
+        __decorate([
+            $mol_mem_key
+        ], $bog_ainews_app_sources.prototype, "my_rss_title", null);
+        $$.$bog_ainews_app_sources = $bog_ainews_app_sources;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$bog_dobro_app) = class $bog_dobro_app extends ($.$mol_book2_catalog) {
+		Theme_toggle(){
+			const obj = new this.$.$bog_theme_toggle();
+			(obj.theme_auto) = () => ((this.Theme()));
+			return obj;
+		}
+		Theme(){
+			const obj = new this.$.$bog_theme_auto();
+			(obj.theme_light) = () => ("$mol_theme_light");
+			(obj.theme_dark) = () => ("$mol_theme_dark");
 			return obj;
 		}
 		Bot(){
@@ -14293,19 +18518,26 @@ var $;
 			const obj = new this.$.$bog_dobro_app_vaka();
 			return obj;
 		}
+		Ainews(){
+			const obj = new this.$.$bog_ainews_app();
+			(obj.menu_tools) = () => ([]);
+			(obj.param) = () => (null);
+			(obj.Theme) = () => (null);
+			return obj;
+		}
 		Placeholder(){
 			return null;
 		}
 		Menu_logo(){
 			const obj = new this.$.$mol_image();
-			(obj.uri) = () => ("bog/prof/assets/job.png");
+			(obj.uri) = () => ("bog/dobro/assets/icon.jpg");
 			return obj;
 		}
 		menu_title(){
 			return (this.$.$mol_locale.text("$bog_dobro_app_menu_title"));
 		}
 		menu_tools(){
-			return [(this.Lights())];
+			return [(this.Theme_toggle())];
 		}
 		plugins(){
 			return [(this.Theme())];
@@ -14315,16 +18547,18 @@ var $;
 				"\t": (this.Bot()), 
 				"prof": (this.Prof()), 
 				"settings": (this.Settings()), 
-				"vaka": (this.Vaka())
+				"vaka": (this.Vaka()), 
+				"ainews": (this.Ainews())
 			};
 		}
 	};
-	($mol_mem(($.$bog_dobro_app.prototype), "Lights"));
+	($mol_mem(($.$bog_dobro_app.prototype), "Theme_toggle"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Theme"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Bot"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Prof"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Settings"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Vaka"));
+	($mol_mem(($.$bog_dobro_app.prototype), "Ainews"));
 	($mol_mem(($.$bog_dobro_app.prototype), "Menu_logo"));
 
 
@@ -14349,6 +18583,19 @@ var $;
                 return prof
                     ? `${base}\nТы сейчас отвечаешь как ${prof}. Если пользователь поздоровается и попросит рассказать о себе, ответь и распиши типичный день человека на этой професии : \"я ${prof}\ ".`
                     : base;
+            }
+            Ainews() {
+                const app = super.Ainews();
+                const feed = app.Feed?.();
+                if (feed && feed.Welcome_block_p2_paragraph) {
+                    const orig = feed.Welcome_block_p2_paragraph.bind(feed);
+                    feed.Welcome_block_p2_paragraph = () => {
+                        const link = orig();
+                        link.uri = () => '#!=ainews/null=sources';
+                        return link;
+                    };
+                }
+                return app;
             }
         }
         $$.$bog_dobro_app = $bog_dobro_app;

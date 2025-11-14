@@ -2688,54 +2688,14 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	export class $mol_check extends $mol_button_minor {
-		checked( next?: boolean ): boolean
-		aria_checked( ): string
-		aria_role( ): string
-		Icon( ): any
-		title( ): string
-		Title( ): $mol_view
-		label( ): readonly(any)[]
-		attr( ): ({ 
-			'mol_check_checked': ReturnType< $mol_check['checked'] >,
-			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
-			'role': ReturnType< $mol_check['aria_role'] >,
-		})  & ReturnType< $mol_button_minor['attr'] >
-		sub( ): readonly($mol_view_content)[]
-	}
-	
-}
-
-//# sourceMappingURL=check.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check extends $.$mol_check {
-        click(next?: Event): void;
-        sub(): readonly $mol_view_content[];
-        label(): readonly any[];
-        aria_checked(): string;
-    }
+    const $bog_theme: Record<"image" | "line" | "text" | "field" | "focus" | "back" | "hover" | "card" | "current" | "special" | "control" | "shade" | "spirit", $mol_style_func<"var", unknown>>;
+    const $bog_theme_names: readonly ["$mol_theme_light", "$mol_theme_dark", "$mol_theme_upwork", "$mol_theme_ainews_light", "$mol_theme_ainews_dark"];
+    type $bog_theme_name = (typeof $bog_theme_names)[number];
 }
 
 declare namespace $ {
 }
 
-declare namespace $ {
-
-	export class $mol_check_icon extends $mol_check {
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_icon_brightness_4 extends $mol_icon {
@@ -2747,38 +2707,12 @@ declare namespace $ {
 //# sourceMappingURL=4.view.tree.d.ts.map
 declare namespace $ {
 
-	export class $mol_lights_toggle extends $mol_check_icon {
-		Lights_icon( ): $mol_icon_brightness_4
-		lights( next?: boolean ): boolean
-		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
-		hint( ): string
-		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
-	}
-	
-}
-
-//# sourceMappingURL=toggle.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_lights_toggle extends $.$mol_lights_toggle {
-        lights(next?: boolean): boolean;
-    }
-}
-
-declare namespace $ {
-    const $bog_theme: Record<"image" | "line" | "text" | "field" | "focus" | "back" | "hover" | "card" | "current" | "special" | "control" | "shade" | "spirit", $mol_style_func<"var", unknown>>;
-    const $bog_theme_names: readonly ["$mol_theme_light", "$mol_theme_dark", "$mol_theme_upwork"];
-    type $bog_theme_name = (typeof $bog_theme_names)[number];
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
 	export class $bog_theme_auto extends $mol_plugin {
 		themes_default( ): readonly(any)[]
 		theme( ): string
 		themes( ): ReturnType< $bog_theme_auto['themes_default'] >
+		theme_light( ): string
+		theme_dark( ): string
 		theme_next( next?: any ): any
 		theme_prev( next?: any ): any
 		theme_set( next?: any ): any
@@ -2800,6 +2734,207 @@ declare namespace $.$$ {
         theme_prev(): void;
         theme_set(index: number): void;
     }
+}
+
+declare namespace $ {
+
+	export class $bog_theme_picker_row extends $mol_button_minor {
+		focused_str( ): string
+		hover( next?: any ): any
+		theme_name( ): string
+		title( ): ReturnType< $bog_theme_picker_row['theme_name'] >
+		attr( ): ({ 
+			'bog_theme_picker_row_focused': ReturnType< $bog_theme_picker_row['focused_str'] >,
+		})  & ReturnType< $mol_button_minor['attr'] >
+		event( ): ({ 
+			pointerenter( next?: ReturnType< $bog_theme_picker_row['hover'] > ): ReturnType< $bog_theme_picker_row['hover'] >,
+		})  & ReturnType< $mol_button_minor['event'] >
+	}
+	
+}
+
+//# sourceMappingURL=row.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_theme_picker_row extends $.$bog_theme_picker_row {
+        focused_str(): "" | "true";
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_string__value_bog_theme_picker_1 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['query'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_theme_picker_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_list__rows_bog_theme_picker_3 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_rows'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_list__rows_bog_theme_picker_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $bog_theme_picker_row__theme_name_bog_theme_picker_5 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_name'] >
+		,
+		ReturnType< $bog_theme_picker_row['theme_name'] >
+	>
+	type $bog_theme_picker_row__focused_bog_theme_picker_6 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_focused'] >
+		,
+		ReturnType< $bog_theme_picker_row['focused'] >
+	>
+	type $bog_theme_picker_row__click_bog_theme_picker_7 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_select'] >
+		,
+		ReturnType< $bog_theme_picker_row['click'] >
+	>
+	type $bog_theme_picker_row__hover_bog_theme_picker_8 = $mol_type_enforce<
+		ReturnType< $bog_theme_picker['theme_hover'] >
+		,
+		ReturnType< $bog_theme_picker_row['hover'] >
+	>
+	export class $bog_theme_picker extends $mol_scroll {
+		theme_name( id: any): string
+		theme_focused( id: any): boolean
+		theme_select( id: any, next?: any ): any
+		theme_hover( id: any, next?: any ): any
+		Search( ): $mol_string
+		theme_rows( ): readonly(any)[]
+		Theme_list( ): $mol_list
+		Content( ): $mol_list
+		key_down( next?: any ): any
+		theme_auto( ): $bog_theme_auto
+		close( next?: any ): any
+		query( next?: string ): string
+		focused_index( next?: number ): number
+		Theme_row( id: any): $bog_theme_picker_row
+		sub( ): readonly(any)[]
+		event( ): ({ 
+			keydown( next?: ReturnType< $bog_theme_picker['key_down'] > ): ReturnType< $bog_theme_picker['key_down'] >,
+		})  & ReturnType< $mol_scroll['event'] >
+	}
+	
+}
+
+//# sourceMappingURL=picker.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_theme_picker extends $.$bog_theme_picker {
+        theme_rows(): $.$bog_theme_picker_row[];
+        filtered_themes(): ("$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_upwork" | "$mol_theme_ainews_light" | "$mol_theme_ainews_dark")[];
+        theme_name(index: number): "$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_upwork" | "$mol_theme_ainews_light" | "$mol_theme_ainews_dark";
+        theme_focused(index: number): boolean;
+        theme_select(index: number, event?: MouseEvent): null;
+        theme_hover(index: number, event?: PointerEvent): null;
+        key_down(event?: KeyboardEvent): null;
+        private select_theme;
+        private preview_theme;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_view__event_bog_theme_toggle_1 = $mol_type_enforce<
+		({ 
+			click( next?: ReturnType< $bog_theme_toggle['backdrop_click'] > ): ReturnType< $bog_theme_toggle['backdrop_click'] >,
+		}) 
+		,
+		ReturnType< $mol_view['event'] >
+	>
+	type $bog_theme_picker__theme_auto_bog_theme_toggle_2 = $mol_type_enforce<
+		ReturnType< $bog_theme_toggle['theme_auto'] >
+		,
+		ReturnType< $bog_theme_picker['theme_auto'] >
+	>
+	type $bog_theme_picker__close_bog_theme_toggle_3 = $mol_type_enforce<
+		ReturnType< $bog_theme_toggle['picker_close'] >
+		,
+		ReturnType< $bog_theme_picker['close'] >
+	>
+	type $mol_button_minor__sub_bog_theme_toggle_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_button_minor__hint_bog_theme_toggle_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__click_bog_theme_toggle_6 = $mol_type_enforce<
+		ReturnType< $bog_theme_toggle['clicked'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__event_bog_theme_toggle_7 = $mol_type_enforce<
+		({ 
+			pointerdown( next?: ReturnType< $bog_theme_toggle['press_start'] > ): ReturnType< $bog_theme_toggle['press_start'] >,
+			pointermove( next?: ReturnType< $bog_theme_toggle['press_move'] > ): ReturnType< $bog_theme_toggle['press_move'] >,
+			pointerup( next?: ReturnType< $bog_theme_toggle['press_end'] > ): ReturnType< $bog_theme_toggle['press_end'] >,
+			pointercancel( next?: ReturnType< $bog_theme_toggle['press_cancel'] > ): ReturnType< $bog_theme_toggle['press_cancel'] >,
+			lostpointercapture( next?: ReturnType< $bog_theme_toggle['press_lost'] > ): ReturnType< $bog_theme_toggle['press_lost'] >,
+		})  & ReturnType< $mol_pop['Anchor'] >
+		,
+		ReturnType< $mol_button_minor['event'] >
+	>
+	export class $bog_theme_toggle extends $mol_pop {
+		Icon( ): $mol_icon_brightness_4
+		clicked( next?: any ): any
+		press_start( next?: any ): any
+		press_move( next?: any ): any
+		press_end( next?: any ): any
+		press_cancel( next?: any ): any
+		press_lost( next?: any ): any
+		backdrop_click( next?: any ): any
+		Backdrop( ): $mol_view
+		picker_close( next?: any ): any
+		Picker( ): $bog_theme_picker
+		theme_auto( ): $bog_theme_auto
+		showed( next?: boolean ): boolean
+		align( ): string
+		Anchor( ): $mol_button_minor
+		bubble_content( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=toggle.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_theme_toggle extends $.$bog_theme_toggle {
+        long_press_delay: number;
+        move_threshold: number;
+        private press_timer;
+        private press_start_x;
+        private press_start_y;
+        private is_long_press;
+        clicked(event?: MouseEvent): null;
+        press_start(event?: PointerEvent): null;
+        press_move(event?: PointerEvent): null;
+        press_end(event?: PointerEvent): null;
+        press_cancel(event?: PointerEvent): null;
+        press_lost(event?: Event): null;
+        private clear_press_timer;
+        private on_long_press;
+        picker_close(): void;
+        backdrop_click(event?: MouseEvent): null;
+    }
+}
+
+declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -3365,6 +3500,44 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=float.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_check extends $mol_button_minor {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		Icon( ): any
+		title( ): string
+		Title( ): $mol_view
+		label( ): readonly(any)[]
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $mol_check['checked'] >,
+			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
+			'role': ReturnType< $mol_check['aria_role'] >,
+		})  & ReturnType< $mol_button_minor['attr'] >
+		sub( ): readonly($mol_view_content)[]
+	}
+	
+}
+
+//# sourceMappingURL=check.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check extends $.$mol_check {
+        click(next?: Event): void;
+        sub(): readonly $mol_view_content[];
+        label(): readonly any[];
+        aria_checked(): string;
+    }
+}
+
 declare namespace $ {
 
 	export class $mol_icon_chevron extends $mol_icon {
@@ -4607,6 +4780,36 @@ declare namespace $ {
 
 //# sourceMappingURL=support.view.tree.d.ts.map
 declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_check_icon extends $mol_check {
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_lights_toggle extends $mol_check_icon {
+		Lights_icon( ): $mol_icon_brightness_4
+		lights( next?: boolean ): boolean
+		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
+		hint( ): string
+		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
+	}
+	
+}
+
+//# sourceMappingURL=toggle.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_lights_toggle extends $.$mol_lights_toggle {
+        lights(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
     type $mol_data_value<Input = any, Output = any> = (val: Input) => Output;
 }
 
@@ -4749,7 +4952,7 @@ declare namespace $ {
     class $mol_fetch_response extends $mol_object {
         readonly native: Response;
         readonly request: $mol_fetch_request;
-        status(): "unknown" | "success" | "inform" | "redirect" | "wrong" | "failed";
+        status(): "success" | "unknown" | "inform" | "redirect" | "wrong" | "failed";
         code(): number;
         ok(): boolean;
         message(): string;
@@ -4804,8 +5007,8 @@ declare namespace $ {
                 name: string;
                 arguments: string;
             };
-            id: string;
             type: "function";
+            id: string;
         }[] | undefined;
         role: "assistant";
         content: string | null;
@@ -4822,8 +5025,8 @@ declare namespace $ {
                 name: string;
                 arguments: string;
             }>;
-            id: string;
             type: "function";
+            id: string;
         }>[] | undefined;
         role: "assistant";
         content: string | null;
@@ -4841,8 +5044,8 @@ declare namespace $ {
                     name: string;
                     arguments: string;
                 };
-                id: string;
                 type: "function";
+                id: string;
             }[] | undefined;
             role: "assistant";
             content: string | null;
@@ -4852,8 +5055,8 @@ declare namespace $ {
                     name: string;
                     arguments: string;
                 }>;
-                id: string;
                 type: "function";
+                id: string;
             }>[] | undefined;
             role: "assistant";
             content: string | null;
@@ -4872,15 +5075,15 @@ declare namespace $ {
                         name: string;
                         arguments: string;
                     };
-                    id: string;
                     type: "function";
+                    id: string;
                 }[] | undefined) => readonly Readonly<{
                     function: Readonly<{
                         name: string;
                         arguments: string;
                     }>;
-                    id: string;
                     type: "function";
+                    id: string;
                 }>[] | undefined) & {
                     config: {
                         sub: ((val: readonly {
@@ -4888,30 +5091,30 @@ declare namespace $ {
                                 name: string;
                                 arguments: string;
                             };
-                            id: string;
                             type: "function";
+                            id: string;
                         }[]) => readonly Readonly<{
                             function: Readonly<{
                                 name: string;
                                 arguments: string;
                             }>;
-                            id: string;
                             type: "function";
+                            id: string;
                         }>[]) & {
                             config: ((val: {
                                 function: {
                                     name: string;
                                     arguments: string;
                                 };
-                                id: string;
                                 type: "function";
+                                id: string;
                             }) => Readonly<{
                                 function: Readonly<{
                                     name: string;
                                     arguments: string;
                                 }>;
-                                id: string;
                                 type: "function";
+                                id: string;
                             }>) & {
                                 config: {
                                     type: ((val: "function") => "function") & {
@@ -4941,8 +5144,8 @@ declare namespace $ {
                                         name: string;
                                         arguments: string;
                                     }>;
-                                    id: string;
                                     type: "function";
+                                    id: string;
                                 }>;
                             };
                             Value: readonly Readonly<{
@@ -4950,8 +5153,8 @@ declare namespace $ {
                                     name: string;
                                     arguments: string;
                                 }>;
-                                id: string;
                                 type: "function";
+                                id: string;
                             }>[];
                         };
                         fallback: (() => readonly Readonly<{
@@ -4959,8 +5162,8 @@ declare namespace $ {
                                 name: string;
                                 arguments: string;
                             }>;
-                            id: string;
                             type: "function";
+                            id: string;
                         }>[]) | undefined;
                     };
                     Value: readonly Readonly<{
@@ -4968,8 +5171,8 @@ declare namespace $ {
                             name: string;
                             arguments: string;
                         }>;
-                        id: string;
                         type: "function";
+                        id: string;
                     }>[] | undefined;
                 };
             };
@@ -4979,8 +5182,8 @@ declare namespace $ {
                         name: string;
                         arguments: string;
                     }>;
-                    id: string;
                     type: "function";
+                    id: string;
                 }>[] | undefined;
                 role: "assistant";
                 content: string | null;
@@ -5032,8 +5235,8 @@ declare namespace $ {
                     name: string;
                     arguments: string;
                 }>;
-                id: string;
                 type: "function";
+                id: string;
             }>[] | undefined;
             role: "assistant";
             content: string | null;
@@ -5075,8 +5278,8 @@ declare namespace $ {
                     name: string;
                     arguments: string;
                 }>;
-                id: string;
                 type: "function";
+                id: string;
             }>[] | undefined;
             role: "assistant";
             content: string | null;
@@ -5102,8 +5305,8 @@ declare namespace $ {
                             name: string;
                             arguments: string;
                         }>;
-                        id: string;
                         type: "function";
+                        id: string;
                     }>[] | undefined;
                     role: "assistant";
                     content: string | null;
@@ -6711,44 +6914,1538 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+}
 
-	type $gd_bot__Space_bog_dobro_app_1 = $mol_type_enforce<
+declare namespace $ {
+
+	export class $bog_ainews_app_page extends $mol_page {
+	}
+	
+}
+
+//# sourceMappingURL=page.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_checked'] >
+		,
+		ReturnType< $mol_check['checked'] >
+	>
+	type $mol_check__label_mol_check_list_2 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_label'] >
+		,
+		ReturnType< $mol_check['label'] >
+	>
+	type $mol_check__enabled_mol_check_list_3 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_enabled'] >
+		,
+		ReturnType< $mol_check['enabled'] >
+	>
+	type $mol_check__hint_mol_check_list_4 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_hint'] >
+		,
+		ReturnType< $mol_check['hint'] >
+	>
+	type $mol_check__minimal_height_mol_check_list_5 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_check['minimal_height'] >
+	>
+	export class $mol_check_list extends $mol_view {
+		option_checked( id: any, next?: boolean ): boolean
+		option_title( id: any): string
+		option_label( id: any): readonly(any)[]
+		enabled( ): boolean
+		option_enabled( id: any): ReturnType< $mol_check_list['enabled'] >
+		option_hint( id: any): string
+		items( ): readonly($mol_check)[]
+		dictionary( ): Record<string, any>
+		Option( id: any): $mol_check
+		options( ): Record<string, any>
+		keys( ): readonly(string)[]
+		sub( ): ReturnType< $mol_check_list['items'] >
+	}
+	
+}
+
+//# sourceMappingURL=list.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check_list extends $.$mol_check_list {
+        options(): {
+            [key: string]: string;
+        };
+        dictionary(next?: Record<string, boolean>): Record<string, boolean>;
+        option_checked(id: string, next?: boolean | null): boolean;
+        keys(): readonly string[];
+        items(): $.$mol_check[];
+        option_title(key: string): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_switch extends $mol_check_list {
+		value( next?: string ): string
+	}
+	
+}
+
+//# sourceMappingURL=switch.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_switch extends $.$mol_switch {
+        value(next?: string): string;
+        option_checked(key: string, next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
+
+	type $mol_switch__value_mol_deck_1 = $mol_type_enforce<
+		ReturnType< $mol_deck['current'] >
+		,
+		ReturnType< $mol_switch['value'] >
+	>
+	type $mol_switch__options_mol_deck_2 = $mol_type_enforce<
+		ReturnType< $mol_deck['switch_options'] >
+		,
+		ReturnType< $mol_switch['options'] >
+	>
+	export class $mol_deck extends $mol_list {
+		current( next?: string ): string
+		switch_options( ): Record<string, any>
+		Switch( ): $mol_switch
+		Content( ): $mol_view
+		items( ): readonly($mol_view)[]
+		rows( ): readonly($mol_view)[]
+	}
+	
+}
+
+//# sourceMappingURL=deck.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_deck extends $.$mol_deck {
+        current(next?: string): string;
+        switch_options(): Record<string, string>;
+        Content(): $mol_view;
+    }
+}
+
+declare namespace $ {
+
+	export class $bog_ainews_app_feed_img extends $mol_view {
+		src( next?: any ): any
+		alt( next?: any ): any
+		width( next?: any ): any
+		height( next?: any ): any
+	}
+	
+}
+
+//# sourceMappingURL=img.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_ainews_app_feed_img extends $.$bog_ainews_app_feed_img {
+        dom_name(): "img";
+        attr(): any;
+        render(): void | null;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_cards extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=cards.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_cards_heart extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=heart.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_string__value_bog_ainews_app_filters_1 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_filters['include_string_value'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_ainews_app_filters_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_button_minor__click_bog_ainews_app_filters_3 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_filters['include_string_clear_click'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_bog_ainews_app_filters_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_filters_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_filters_6 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_string__value_bog_ainews_app_filters_7 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_filters['exclude_string_value'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_bog_ainews_app_filters_8 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_button_minor__click_bog_ainews_app_filters_9 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_filters['exclude_string_clear_click'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__sub_bog_ainews_app_filters_10 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_filters_11 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_filters_12 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_paragraph__title_bog_ainews_app_filters_13 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_filters_14 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_filters_15 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	export class $bog_ainews_app_filters extends $bog_ainews_app_page {
+		include_string_value( next?: string ): string
+		Include_string( ): $mol_string
+		include_string_clear_click( next?: any ): any
+		Include_string_close_icon( ): $mol_icon_close
+		Include_string_clear_button( ): $mol_button_minor
+		Include_labeler( ): $mol_labeler
+		exclude_string_value( next?: string ): string
+		Exclude_string( ): $mol_string
+		exclude_string_clear_click( next?: any ): any
+		Exclude_string_close_icon( ): $mol_icon_close
+		Exclude_string_clear_button( ): $mol_button_minor
+		Excldue_labeler( ): $mol_labeler
+		Tip( ): $mol_paragraph
+		Tip_labeler( ): $mol_labeler
+		title( ): string
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=filters.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_ainews_app_filters extends $.$bog_ainews_app_filters {
+        include_string_value(next?: any): any;
+        exclude_string_value(next?: any): any;
+        include_string_clear_click(): void;
+        exclude_string_clear_click(): void;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_icon_tick extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=tick.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_check_box extends $mol_check {
+		Icon( ): $mol_icon_tick
+	}
+	
+}
+
+//# sourceMappingURL=box.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_chevron_left extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=left.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_chevron_right extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=right.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_hotkey__key_mol_number_1 = $mol_type_enforce<
+		({ 
+			down( next?: ReturnType< $mol_number['event_dec'] > ): ReturnType< $mol_number['event_dec'] >,
+			up( next?: ReturnType< $mol_number['event_inc'] > ): ReturnType< $mol_number['event_inc'] >,
+			pageDown( next?: ReturnType< $mol_number['event_dec_boost'] > ): ReturnType< $mol_number['event_dec_boost'] >,
+			pageUp( next?: ReturnType< $mol_number['event_inc_boost'] > ): ReturnType< $mol_number['event_inc_boost'] >,
+		}) 
+		,
+		ReturnType< $mol_hotkey['key'] >
+	>
+	type $mol_button_minor__event_click_mol_number_2 = $mol_type_enforce<
+		ReturnType< $mol_number['event_dec'] >
+		,
+		ReturnType< $mol_button_minor['event_click'] >
+	>
+	type $mol_button_minor__enabled_mol_number_3 = $mol_type_enforce<
+		ReturnType< $mol_number['dec_enabled'] >
+		,
+		ReturnType< $mol_button_minor['enabled'] >
+	>
+	type $mol_button_minor__sub_mol_number_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	type $mol_string__type_mol_number_5 = $mol_type_enforce<
+		ReturnType< $mol_number['type'] >
+		,
+		ReturnType< $mol_string['type'] >
+	>
+	type $mol_string__keyboard_mol_number_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_string['keyboard'] >
+	>
+	type $mol_string__value_mol_number_7 = $mol_type_enforce<
+		ReturnType< $mol_number['value_string'] >
+		,
+		ReturnType< $mol_string['value'] >
+	>
+	type $mol_string__hint_mol_number_8 = $mol_type_enforce<
+		ReturnType< $mol_number['hint'] >
+		,
+		ReturnType< $mol_string['hint'] >
+	>
+	type $mol_string__enabled_mol_number_9 = $mol_type_enforce<
+		ReturnType< $mol_number['string_enabled'] >
+		,
+		ReturnType< $mol_string['enabled'] >
+	>
+	type $mol_string__submit_mol_number_10 = $mol_type_enforce<
+		ReturnType< $mol_number['submit'] >
+		,
+		ReturnType< $mol_string['submit'] >
+	>
+	type $mol_button_minor__event_click_mol_number_11 = $mol_type_enforce<
+		ReturnType< $mol_number['event_inc'] >
+		,
+		ReturnType< $mol_button_minor['event_click'] >
+	>
+	type $mol_button_minor__enabled_mol_number_12 = $mol_type_enforce<
+		ReturnType< $mol_number['inc_enabled'] >
+		,
+		ReturnType< $mol_button_minor['enabled'] >
+	>
+	type $mol_button_minor__sub_mol_number_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_minor['sub'] >
+	>
+	export class $mol_number extends $mol_view {
+		precision( ): number
+		event_dec( next?: any ): any
+		event_inc( next?: any ): any
+		event_dec_boost( next?: any ): any
+		event_inc_boost( next?: any ): any
+		Hotkey( ): $mol_hotkey
+		dec_enabled( ): ReturnType< $mol_number['enabled'] >
+		dec_icon( ): $mol_icon_chevron_left
+		Dec( ): $mol_button_minor
+		type( ): string
+		value_string( next?: string ): string
+		hint( ): string
+		string_enabled( ): ReturnType< $mol_number['enabled'] >
+		submit( next?: any ): any
+		String( ): $mol_string
+		inc_enabled( ): ReturnType< $mol_number['enabled'] >
+		inc_icon( ): $mol_icon_chevron_right
+		Inc( ): $mol_button_minor
+		precision_view( ): ReturnType< $mol_number['precision'] >
+		precision_change( ): ReturnType< $mol_number['precision'] >
+		boost( ): number
+		value_min( ): number
+		value_max( ): number
+		value( next?: number ): number
+		enabled( ): boolean
+		plugins( ): readonly(any)[]
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=number.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_number extends $.$mol_number {
+        value_limited(val?: number): number;
+        event_dec(next?: Event): void;
+        event_inc(next?: Event): void;
+        event_dec_boost(next?: Event): void;
+        event_inc_boost(next?: Event): void;
+        round(val: number): string;
+        value_string(next?: string): string;
+        dec_enabled(): boolean;
+        inc_enabled(): boolean;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_icon_settings extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=settings.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_locale_select__dictionary_bog_ainews_app_settings_1 = $mol_type_enforce<
+		({ 
+			'ru': string,
+			'en': string,
+			'de': string,
+		}) 
+		,
+		ReturnType< $mol_locale_select['dictionary'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_settings_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_settings_3 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_select__value_bog_ainews_app_settings_4 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_settings['current_language_code'] >
+		,
+		ReturnType< $mol_select['value'] >
+	>
+	type $mol_select__dictionary_bog_ainews_app_settings_5 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_settings['langs_list'] >
+		,
+		ReturnType< $mol_select['dictionary'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_settings_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_settings_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_check_box__title_bog_ainews_app_settings_8 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_check_box['title'] >
+	>
+	type $mol_check_box__checked_bog_ainews_app_settings_9 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_settings['is_enable_auto_translate'] >
+		,
+		ReturnType< $mol_check_box['checked'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_settings_10 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_settings_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_number__value_bog_ainews_app_settings_12 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_settings['description_count_limiter_value'] >
+		,
+		ReturnType< $mol_number['value'] >
+	>
+	type $mol_number__precision_change_bog_ainews_app_settings_13 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_number['precision_change'] >
+	>
+	type $mol_number__value_min_bog_ainews_app_settings_14 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_number['value_min'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_settings_15 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_settings_16 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_check_box__title_bog_ainews_app_settings_17 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_check_box['title'] >
+	>
+	type $mol_check_box__checked_bog_ainews_app_settings_18 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_settings['auto_open_spoiler_check_box_value'] >
+		,
+		ReturnType< $mol_check_box['checked'] >
+	>
+	type $mol_check_box__title_bog_ainews_app_settings_19 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_check_box['title'] >
+	>
+	type $mol_check_box__checked_bog_ainews_app_settings_20 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_settings['open_links_in_new_tabs_check_box_value'] >
+		,
+		ReturnType< $mol_check_box['checked'] >
+	>
+	type $mol_list__rows_bog_ainews_app_settings_21 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_settings_22 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_settings_23 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_button_major__title_bog_ainews_app_settings_24 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__click_bog_ainews_app_settings_25 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_settings['install'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_settings_26 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_settings_27 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	export class $bog_ainews_app_settings extends $bog_ainews_app_page {
+		Interface_language_select( ): $mol_locale_select
+		Interface_language_labeler( ): $mol_labeler
+		current_language_code( next?: string ): string
+		Translate_to_select( ): $mol_select
+		Translate_to_labeler( ): $mol_labeler
+		is_enable_auto_translate( next?: boolean ): boolean
+		Auto_translate( ): $mol_check_box
+		Localization_labeler( ): $mol_labeler
+		description_count_limiter_value( next?: number ): number
+		Description_count_limiter( ): $mol_number
+		Description_count_limiter_labeler( ): $mol_labeler
+		auto_open_spoiler_check_box_value( next?: boolean ): boolean
+		Auto_open_spoiler_check_box( ): $mol_check_box
+		open_links_in_new_tabs_check_box_value( next?: boolean ): boolean
+		Open_links_in_new_tabs_check_box( ): $mol_check_box
+		Spoilers_labeler_list( ): $mol_list
+		Spoilers_labeler( ): $mol_labeler
+		Install_button( ): $mol_button_major
+		Install_labeler( ): $mol_labeler
+		current_language( ): string
+		langs_list( ): ({ 
+			'ru': string,
+			'en': string,
+			'de': string,
+		}) 
+		title( ): string
+		Logo( ): $mol_icon_settings
+		install( next?: any ): any
+		install_ios_instruction( ): string
+		install_chrome_instruction( ): string
+		install_edge_instruction( ): string
+		install_unsupported_browser( ): string
+		install_already_installed( ): string
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=settings.view.tree.d.ts.map
+declare namespace $.$$ {
+    const $bog_ainews_app_settings_font_size_value: () => string;
+    class $bog_ainews_app_settings extends $.$bog_ainews_app_settings {
+        is_enable_auto_translate(next?: any): any;
+        description_count_limiter_value(next?: any): any;
+        current_language_code(next?: any): any;
+        current_language(): any;
+        auto_open_spoiler_check_box_value(next?: any): any;
+        open_links_in_new_tabs_check_box_value(next?: any): any;
+        deferredPrompt: any;
+        auto(): void;
+        install(): void;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_button_major__title_bog_ainews_app_feed_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__click_bog_ainews_app_feed_2 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['summary_all_click'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_button_minor__title_bog_ainews_app_feed_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['title'] >
+	>
+	type $mol_button_minor__click_bog_ainews_app_feed_4 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['summary_all_close_click'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_paragraph__title_bog_ainews_app_feed_5 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['summary_all_result'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_page__title_bog_ainews_app_feed_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_page['title'] >
+	>
+	type $mol_page__tools_bog_ainews_app_feed_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['tools'] >
+	>
+	type $mol_page__body_bog_ainews_app_feed_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['body'] >
+	>
+	type $mol_pop__showed_bog_ainews_app_feed_9 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['summary_all_showed'] >
+		,
+		ReturnType< $mol_pop['showed'] >
+	>
+	type $mol_pop__Anchor_bog_ainews_app_feed_10 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['Summary_all_button'] >
+		,
+		ReturnType< $mol_pop['Anchor'] >
+	>
+	type $mol_pop__bubble_content_bog_ainews_app_feed_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_pop['bubble_content'] >
+	>
+	type $mol_search__query_bog_ainews_app_feed_12 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['search_word'] >
+		,
+		ReturnType< $mol_search['query'] >
+	>
+	type $mol_view__sub_bog_ainews_app_feed_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_deck__items_bog_ainews_app_feed_14 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['Categories'] >
+		,
+		ReturnType< $mol_deck['items'] >
+	>
+	type $mol_paragraph__title_bog_ainews_app_feed_15 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__dom_name_bog_ainews_app_feed_16 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['dom_name'] >
+	>
+	type $mol_link__title_bog_ainews_app_feed_17 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__uri_bog_ainews_app_feed_18 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_view__sub_bog_ainews_app_feed_19 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_list__rows_bog_ainews_app_feed_20 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_button_major__title_bog_ainews_app_feed_21 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_major['title'] >
+	>
+	type $mol_button_major__click_bog_ainews_app_feed_22 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['category_summary_click'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_button_minor__title_bog_ainews_app_feed_23 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['title'] >
+	>
+	type $mol_button_minor__click_bog_ainews_app_feed_24 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['category_summary_close_click'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_paragraph__title_bog_ainews_app_feed_25 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['category_summary_result'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_page__title_bog_ainews_app_feed_26 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_page['title'] >
+	>
+	type $mol_page__tools_bog_ainews_app_feed_27 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['tools'] >
+	>
+	type $mol_page__body_bog_ainews_app_feed_28 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['body'] >
+	>
+	type $mol_pop__showed_bog_ainews_app_feed_29 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['category_summary_showed'] >
+		,
+		ReturnType< $mol_pop['showed'] >
+	>
+	type $mol_pop__Anchor_bog_ainews_app_feed_30 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['Category_summary_button'] >
+		,
+		ReturnType< $mol_pop['Anchor'] >
+	>
+	type $mol_pop__bubble_content_bog_ainews_app_feed_31 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_pop['bubble_content'] >
+	>
+	type $mol_list__rows_bog_ainews_app_feed_32 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['articles'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $bog_ainews_app_feed_img__src_bog_ainews_app_feed_33 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['article_image_src'] >
+		,
+		ReturnType< $bog_ainews_app_feed_img['src'] >
+	>
+	type $bog_ainews_app_feed_img__alt_bog_ainews_app_feed_34 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['article_title'] >
+		,
+		ReturnType< $bog_ainews_app_feed_img['alt'] >
+	>
+	type $bog_ainews_app_feed_img__width_bog_ainews_app_feed_35 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $bog_ainews_app_feed_img['width'] >
+	>
+	type $bog_ainews_app_feed_img__height_bog_ainews_app_feed_36 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $bog_ainews_app_feed_img['height'] >
+	>
+	type $mol_button_minor__title_bog_ainews_app_feed_37 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['title'] >
+	>
+	type $mol_button_minor__click_bog_ainews_app_feed_38 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['summary_description_click'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_paragraph__title_bog_ainews_app_feed_39 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['article_description'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_link__title_bog_ainews_app_feed_40 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__target_bog_ainews_app_feed_41 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['open_in_new_tab'] >
+		,
+		ReturnType< $mol_link['target'] >
+	>
+	type $mol_link__uri_toggle_bog_ainews_app_feed_42 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['article_link'] >
+		,
+		ReturnType< $mol_link['uri_toggle'] >
+	>
+	type $mol_link__title_bog_ainews_app_feed_43 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__target_bog_ainews_app_feed_44 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['open_in_new_tab'] >
+		,
+		ReturnType< $mol_link['target'] >
+	>
+	type $mol_link__uri_toggle_bog_ainews_app_feed_45 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['article_translated_link'] >
+		,
+		ReturnType< $mol_link['uri_toggle'] >
+	>
+	type $mol_button_minor__title_bog_ainews_app_feed_46 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['title'] >
+	>
+	type $mol_button_minor__click_bog_ainews_app_feed_47 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['translate_click'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_check_icon__Icon_bog_ainews_app_feed_48 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['Base_icon'] >
+		,
+		ReturnType< $mol_check_icon['Icon'] >
+	>
+	type $mol_check_icon__checked_bog_ainews_app_feed_49 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['base_checked'] >
+		,
+		ReturnType< $mol_check_icon['checked'] >
+	>
+	type $mol_view__sub_bog_ainews_app_feed_50 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_list__title_bog_ainews_app_feed_51 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['category_title'] >
+		,
+		ReturnType< $mol_list['title'] >
+	>
+	type $mol_list__rows_bog_ainews_app_feed_52 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_expander__expanded_bog_ainews_app_feed_53 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['openned_post'] >
+		,
+		ReturnType< $mol_expander['expanded'] >
+	>
+	type $mol_expander__label_bog_ainews_app_feed_54 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_expander['label'] >
+	>
+	type $mol_expander__content_bog_ainews_app_feed_55 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_expander['content'] >
+	>
+	type $mol_expander__Tools_bog_ainews_app_feed_56 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_feed['Spoiler_tools'] >
+		,
+		ReturnType< $mol_expander['Tools'] >
+	>
+	export class $bog_ainews_app_feed extends $bog_ainews_app_page {
+		summary_all_click( next?: any ): any
+		Summary_all_button( ): $mol_button_major
+		summary_all_showed( next?: boolean ): boolean
+		summary_all_close_click( next?: any ): any
+		Summary_all_close( ): $mol_button_minor
+		summary_all_result( ): string
+		Summary_all_text( ): $mol_paragraph
+		Summary_all_content( ): $mol_page
+		Summary_all_pop( ): $mol_pop
+		search_word( next?: string ): string
+		Searcher( ): $mol_search
+		Hot_fix( ): $mol_view
+		Categories( ): readonly(any)[]
+		Tabs( ): $mol_deck
+		Welcome_block_p1_paragraph( ): $mol_paragraph
+		Welcome_block_p2_paragraph( ): $mol_link
+		Welcome_block_p2( ): $mol_view
+		Welcome_block( ): $mol_list
+		category_title( id: any): string
+		category_summary_click( id: any, next?: any ): any
+		Category_summary_button( id: any): $mol_button_major
+		category_summary_showed( id: any, next?: boolean ): boolean
+		category_summary_close_click( id: any, next?: any ): any
+		Category_summary_close( id: any): $mol_button_minor
+		category_summary_result( id: any): string
+		Category_summary_text( id: any): $mol_paragraph
+		Category_summary_content( id: any): $mol_page
+		Category_summary_pop( id: any): $mol_pop
+		articles( id: any): readonly(any)[]
+		Items( id: any): $mol_list
+		openned_post( id: any, next?: boolean ): boolean
+		article_title( id: any): string
+		article_image_src( id: any): readonly(any)[]
+		Article_thumbnail( id: any): $bog_ainews_app_feed_img
+		summary_description_click( id: any, next?: any ): any
+		Article_description_summary_button( id: any): $mol_button_minor
+		article_description( id: any): string
+		Article_description( id: any): $mol_paragraph
+		open_in_new_tab( id: any): string
+		article_link( id: any): string
+		Article_link( id: any): $mol_link
+		article_translated_link( id: any): string
+		Article_translated_link( id: any): $mol_link
+		translate_click( id: any, next?: any ): any
+		Article_translate_text( id: any): $mol_button_minor
+		Base_icon( id: any): $mol_icon_cards_heart
+		base_checked( id: any, next?: boolean ): boolean
+		Favorite( id: any): $mol_check_icon
+		Spoiler_tools( id: any): $mol_view
+		app_filters( ): $bog_ainews_app_filters
+		app_settings( ): $bog_ainews_app_settings
+		app_source( ): $bog_ainews_app_sources
+		app_favorites( ): $bog_ainews_app_favorites
+		title( ): string
+		Logo( ): $mol_icon_script_text
+		tools( ): readonly(any)[]
+		body( ): readonly(any)[]
+		Category_page( id: any): $mol_list
+		Article( id: any): $mol_expander
+	}
+	
+	export class $bog_ainews_app_feed_title extends $mol_paragraph {
+		font_size_title( ): string
+		style( ): ({ 
+			'font-size': ReturnType< $bog_ainews_app_feed_title['font_size_title'] >,
+		})  & ReturnType< $mol_paragraph['style'] >
+	}
+	
+}
+
+//# sourceMappingURL=feed.view.tree.d.ts.map
+declare namespace $.$$ {
+    const $bog_ainews_app_feed_proxy_url = "https://proxy.kinsle.ru/proxy";
+    const $bog_ainews_app_feed_translate_url = "https://proxy.kinsle.ru/translate";
+    const $bog_ainews_app_feed_summary_url = "https://proxy.kinsle.ru/summary";
+    class $bog_ainews_app_feed extends $.$bog_ainews_app_feed {
+        translate_text(text: string, to_lang?: string): string;
+        summary_text(text: string, to_lang?: string): string;
+        parse_rss(xml_doc: Document): {
+            title: string | undefined;
+            pubDate: string | undefined;
+            description: string;
+            link: string | undefined;
+            image_src: string;
+        }[];
+        cache_image(url: string): string;
+        make_proxy(url: string): string;
+        make_translate(text: string): string;
+        articles(category: string): any;
+        request_articles_from_sources(source_url: string): any;
+        get_articles_from_sources(source_url: string): any;
+        filter_articles(articles_list: any): any;
+        is_need_translate(text: string): boolean;
+        force_translate(article: any, next?: boolean): boolean;
+        article_title(article: any): any;
+        article_description(article: any): string;
+        article_link(article: any): any;
+        article_image_src(article: any): string[];
+        article_translated_link(article: any): string;
+        article_translate_enable(): boolean;
+        translate_click(article: any, next?: Event): Event | undefined;
+        summary_description_click(article: any, next: any): any;
+        force_summary(article: any, next?: boolean): boolean;
+        sources(id: string, next?: any): any;
+        Categories(): $.$mol_list[];
+        category_title(category: any): any;
+        openned_post(id: any, next?: any): any;
+        open_in_new_tab(id: any, next?: any): "_self" | "_blank";
+        body(): $mol_view[];
+        Spoiler_tools(id: any): $mol_view;
+        base_checked(id: any, next?: any): any;
+        summary_all_click(next?: Event): Event | undefined;
+        summary_all_close_click(next?: Event): Event | undefined;
+        summary_all_result(): string;
+        category_summary_click(category: string, next?: Event): Event | undefined;
+        category_summary_close_click(category: string, next?: Event): Event | undefined;
+        category_summary_text(category: string, text: string): string;
+        category_summary_result(category: string): string;
+    }
+    class $bog_ainews_app_feed_title extends $.$bog_ainews_app_feed_title {
+        font_size_title(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $bog_ainews_app_favorites extends $bog_ainews_app_feed {
+		title( ): string
+		category_title( id: any): string
+		add_post( next?: any ): any
+		remove_post( next?: any ): any
+		posts( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=favorite.view.tree.d.ts.map
+declare namespace $.$$ {
+    const $bog_ainews_app_favorites_key = "favorites";
+    class $bog_ainews_app_favorites extends $.$bog_ainews_app_favorites {
+        Categories(): $.$mol_list[];
+        articles(category: string): any;
+        add_post(post: any): void;
+        remove_post(id: string): void;
+        posts(): readonly any[];
+        filter_articles(articles_list: any): any;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_icon_newspaper extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=newspaper.view.tree.d.ts.map
+declare namespace $ {
+
+	type $bog_theme_auto__themes_bog_ainews_app_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $bog_theme_auto['themes'] >
+	>
+	type $bog_theme_auto__theme_light_bog_ainews_app_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_theme_auto['theme_light'] >
+	>
+	type $bog_theme_auto__theme_dark_bog_ainews_app_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_theme_auto['theme_dark'] >
+	>
+	type $mol_paragraph__title_bog_ainews_app_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_bog_ainews_app_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_page__title_bog_ainews_app_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_page['title'] >
+	>
+	type $mol_page__body_bog_ainews_app_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_page['body'] >
+	>
+	export class $bog_ainews_app extends $mol_book2_catalog {
+		Lights( ): $mol_lights_toggle
+		Theme( ): $bog_theme_auto
+		Feed( ): $bog_ainews_app_feed
+		Favorite( ): $bog_ainews_app_favorites
+		Sources( ): $bog_ainews_app_sources
+		Filters( ): $bog_ainews_app_filters
+		Settings( ): $bog_ainews_app_settings
+		Feat_1( ): $mol_paragraph
+		Feat_2( ): $mol_paragraph
+		Features( ): $mol_page
+		Placeholder( ): any
+		Menu_logo( ): $mol_icon_newspaper
+		menu_title( ): string
+		menu_tools( ): readonly(any)[]
+		plugins( ): readonly(any)[]
+		spreads( ): ({ 
+			'': ReturnType< $bog_ainews_app['Feed'] >,
+			'favorite': ReturnType< $bog_ainews_app['Favorite'] >,
+			'sources': ReturnType< $bog_ainews_app['Sources'] >,
+			'filters': ReturnType< $bog_ainews_app['Filters'] >,
+			'settings': ReturnType< $bog_ainews_app['Settings'] >,
+			'features': ReturnType< $bog_ainews_app['Features'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=app.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_ainews_app extends $.$bog_ainews_app {
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_plus extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=plus.view.tree.d.ts.map
+declare namespace $ {
+
+	type __mol_select_list_1 = $mol_type_enforce<
+		Parameters< $mol_select_list['filter_pattern'] >[0]
+		,
+		Parameters< ReturnType< $mol_select_list['Pick'] >['filter_pattern'] >[0]
+	>
+	type $mol_select__event_select_mol_select_list_2 = $mol_type_enforce<
+		ReturnType< $mol_select_list['event_select'] >
+		,
+		ReturnType< $mol_select['event_select'] >
+	>
+	type $mol_select__align_hor_mol_select_list_3 = $mol_type_enforce<
+		ReturnType< $mol_select_list['align_hor'] >
+		,
+		ReturnType< $mol_select['align_hor'] >
+	>
+	type $mol_select__options_mol_select_list_4 = $mol_type_enforce<
+		ReturnType< $mol_select_list['options_pickable'] >
+		,
+		ReturnType< $mol_select['options'] >
+	>
+	type $mol_select__value_mol_select_list_5 = $mol_type_enforce<
+		ReturnType< $mol_select_list['pick'] >
+		,
+		ReturnType< $mol_select['value'] >
+	>
+	type $mol_select__option_label_mol_select_list_6 = $mol_type_enforce<
+		ReturnType< $mol_select_list['option_title'] >
+		,
+		ReturnType< $mol_select['option_label'] >
+	>
+	type $mol_select__trigger_enabled_mol_select_list_7 = $mol_type_enforce<
+		ReturnType< $mol_select_list['pick_enabled'] >
+		,
+		ReturnType< $mol_select['trigger_enabled'] >
+	>
+	type $mol_select__hint_mol_select_list_8 = $mol_type_enforce<
+		ReturnType< $mol_select_list['pick_hint'] >
+		,
+		ReturnType< $mol_select['hint'] >
+	>
+	type $mol_select__Trigger_icon_mol_select_list_9 = $mol_type_enforce<
+		ReturnType< $mol_select_list['Pick_icon'] >
+		,
+		ReturnType< $mol_select['Trigger_icon'] >
+	>
+	type $mol_button_minor__title_mol_select_list_10 = $mol_type_enforce<
+		ReturnType< $mol_select_list['badge_title'] >
+		,
+		ReturnType< $mol_button_minor['title'] >
+	>
+	type $mol_button_minor__click_mol_select_list_11 = $mol_type_enforce<
+		ReturnType< $mol_select_list['remove'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_button_minor__hint_mol_select_list_12 = $mol_type_enforce<
+		ReturnType< $mol_select_list['badge_hint'] >
+		,
+		ReturnType< $mol_button_minor['hint'] >
+	>
+	type $mol_button_minor__enabled_mol_select_list_13 = $mol_type_enforce<
+		ReturnType< $mol_select_list['drop_enabled'] >
+		,
+		ReturnType< $mol_button_minor['enabled'] >
+	>
+	type $mol_select_list_sub__14 = $mol_type_enforce<
+		ReturnType< $mol_select_list['badges_list'] >[number]
+		,
+		$mol_view
+	>
+	export class $mol_select_list extends $mol_view {
+		Badges( ): readonly($mol_view)[]
+		badge_title( id: any): string
+		remove( id: any, next?: any ): any
+		badge_hint( ): string
+		enabled( ): boolean
+		drop_enabled( ): ReturnType< $mol_select_list['enabled'] >
+		event_select( id: any, next?: any ): any
+		align_hor( ): string
+		options( ): readonly(string)[]
+		options_pickable( ): ReturnType< $mol_select_list['options'] >
+		pick( next?: string ): string
+		option_title( id: any): string
+		pick_enabled( ): ReturnType< $mol_select_list['enabled'] >
+		pick_hint( ): string
+		filter_pattern( next?: ReturnType< ReturnType< $mol_select_list['Pick'] >['filter_pattern'] > ): ReturnType< ReturnType< $mol_select_list['Pick'] >['filter_pattern'] >
+		Pick_icon( ): $mol_icon_plus
+		Pick( ): $mol_select
+		value( next?: readonly(string)[] ): readonly(string)[]
+		dictionary( ): Record<string, any>
+		badges_list( ): ReturnType< $mol_select_list['Badges'] >
+		Badge( id: any): $mol_button_minor
+		sub( ): readonly($mol_view)[]
+	}
+	
+}
+
+//# sourceMappingURL=list.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_select_list extends $.$mol_select_list {
+        value(val?: readonly string[]): readonly string[];
+        pick(key?: string): string;
+        event_select(id: string, event?: MouseEvent): void;
+        options(): readonly string[];
+        options_pickable(): readonly string[];
+        option_title(key: string): string;
+        badge_title(key: string): string;
+        pick_enabled(): boolean;
+        Badges(): $mol_button_minor[];
+        title(): string;
+        remove(key: string): void;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	export class $mol_icon_open_source_initiative extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=initiative.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_list__rows_bog_ainews_app_sources_1 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_sources['My_rss_feeds'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_button_minor__title_bog_ainews_app_sources_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_button_minor['title'] >
+	>
+	type $mol_button_minor__click_bog_ainews_app_sources_3 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_sources['add_custom_feed_click'] >
+		,
+		ReturnType< $mol_button_minor['click'] >
+	>
+	type $mol_list__rows_bog_ainews_app_sources_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_sources_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_sources_6 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_list__rows_bog_ainews_app_sources_7 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_sources['Categories'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_sources_8 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_sources_9 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_select_list__value_bog_ainews_app_sources_10 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_sources['sources'] >
+		,
+		ReturnType< $mol_select_list['value'] >
+	>
+	type $mol_select_list__dictionary_bog_ainews_app_sources_11 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_sources['suggestions'] >
+		,
+		ReturnType< $mol_select_list['dictionary'] >
+	>
+	type $mol_list__rows_bog_ainews_app_sources_12 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_sources['articles'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_paragraph__title_bog_ainews_app_sources_13 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_sources['my_rss_title'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_button_major__sub_bog_ainews_app_sources_14 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_button_major['sub'] >
+	>
+	type $mol_button_major__click_bog_ainews_app_sources_15 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_sources['delete_custom_feed_click'] >
+		,
+		ReturnType< $mol_button_major['click'] >
+	>
+	type $mol_labeler__title_bog_ainews_app_sources_16 = $mol_type_enforce<
+		ReturnType< $bog_ainews_app_sources['category_title'] >
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_ainews_app_sources_17 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_view__sub_bog_ainews_app_sources_18 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $bog_ainews_app_sources extends $bog_ainews_app_page {
+		My_rss_feeds( ): readonly(any)[]
+		My( ): $mol_list
+		Add_feed_string( ): $mol_string
+		add_custom_feed_click( next?: any ): any
+		Add_feed_button( ): $mol_button_minor
+		My_sources_labeler_content( ): $mol_list
+		My_sources_labeler( ): $mol_labeler
+		Categories( ): readonly(any)[]
+		Tabs( ): $mol_list
+		Sources_labeler( ): $mol_labeler
+		category_title( id: any): string
+		sources( id: any, next?: readonly(any)[] ): readonly(any)[]
+		suggestions( id: any): readonly(any)[]
+		Sources( id: any): $mol_select_list
+		articles( id: any): readonly(any)[]
+		Items( id: any): $mol_list
+		my_rss_title( id: any): string
+		RSS_title( id: any): $mol_paragraph
+		Delete_close_icon( id: any): $mol_icon_close
+		delete_custom_feed_click( id: any, next?: any ): any
+		Delete_my_feed_button( id: any): $mol_button_major
+		runtime_links( ): any
+		custom_sources( id: any, next?: readonly(any)[] ): readonly(any)[]
+		title( ): string
+		Logo( ): $mol_icon_open_source_initiative
+		body( ): readonly(any)[]
+		Category_page( id: any): $mol_labeler
+		My_rss_item( id: any): $mol_view
+	}
+	
+}
+
+//# sourceMappingURL=sources.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $bog_ainews_app_sources extends $.$bog_ainews_app_sources {
+        runtime_links(): {
+            my: any;
+            tech: string[];
+            shared: string[];
+            russia: string[];
+            AI: string[];
+            Asia: string[];
+            Autos: string[];
+            Bay: string[];
+            Books: string[];
+            Business: string[];
+            'Celebs and Movies': string[];
+            Culture: string[];
+            Design: string[];
+            Food: string[];
+            'Freedom From Accounts': string[];
+            Gaming: string[];
+            Guns: string[];
+            Linux: string[];
+            'Middle East': string[];
+            Music: string[];
+            Podcasts: string[];
+            Science: string[];
+            Sports: string[];
+            Technology: string[];
+            Travel: string[];
+            USA: string[];
+            'Web Comics': string[];
+            World: string[];
+        };
+        Categories(): $mol_labeler[];
+        category_title(category: any): any;
+        suggestions(category: any): any;
+        sources(id: string, next?: any): any;
+        custom_sources(id: string, next?: any): any;
+        My_rss_feeds(): $mol_view[];
+        add_custom_feed_click(): void;
+        my_rss_title(id: string): string;
+        delete_custom_feed_click(id: string): void;
+    }
+}
+
+declare namespace $ {
+
+	type $bog_theme_toggle__theme_auto_bog_dobro_app_1 = $mol_type_enforce<
+		ReturnType< $bog_dobro_app['Theme'] >
+		,
+		ReturnType< $bog_theme_toggle['theme_auto'] >
+	>
+	type $bog_theme_auto__theme_light_bog_dobro_app_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_theme_auto['theme_light'] >
+	>
+	type $bog_theme_auto__theme_dark_bog_dobro_app_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_theme_auto['theme_dark'] >
+	>
+	type $gd_bot__Space_bog_dobro_app_4 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Space'] >
 	>
-	type $gd_bot__Sources_bog_dobro_app_2 = $mol_type_enforce<
+	type $gd_bot__Sources_bog_dobro_app_5 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Sources'] >
 	>
-	type $gd_bot__Donate_bog_dobro_app_3 = $mol_type_enforce<
+	type $gd_bot__Donate_bog_dobro_app_6 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Donate'] >
 	>
-	type $gd_bot__Support_bog_dobro_app_4 = $mol_type_enforce<
+	type $gd_bot__Support_bog_dobro_app_7 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Support'] >
 	>
-	type $gd_bot__Lights_bog_dobro_app_5 = $mol_type_enforce<
+	type $gd_bot__Lights_bog_dobro_app_8 = $mol_type_enforce<
 		any
 		,
 		ReturnType< $gd_bot['Lights'] >
 	>
-	type $mol_image__uri_bog_dobro_app_6 = $mol_type_enforce<
+	type $bog_ainews_app__menu_tools_bog_dobro_app_9 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $bog_ainews_app['menu_tools'] >
+	>
+	type $bog_ainews_app__param_bog_dobro_app_10 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $bog_ainews_app['param'] >
+	>
+	type $bog_ainews_app__Theme_bog_dobro_app_11 = $mol_type_enforce<
+		any
+		,
+		ReturnType< $bog_ainews_app['Theme'] >
+	>
+	type $mol_image__uri_bog_dobro_app_12 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_image['uri'] >
 	>
 	export class $bog_dobro_app extends $mol_book2_catalog {
-		Lights( ): $mol_lights_toggle
+		Theme_toggle( ): $bog_theme_toggle
 		Theme( ): $bog_theme_auto
 		Bot( ): $gd_bot
 		Prof( ): $bog_dobro_app_prof
 		Settings( ): $bog_dobro_app_settings
 		Vaka( ): $bog_dobro_app_vaka
+		Ainews( ): $bog_ainews_app
 		Placeholder( ): any
 		Menu_logo( ): $mol_image
 		menu_title( ): string
@@ -6759,6 +8456,7 @@ declare namespace $ {
 			'prof': ReturnType< $bog_dobro_app['Prof'] >,
 			'settings': ReturnType< $bog_dobro_app['Settings'] >,
 			'vaka': ReturnType< $bog_dobro_app['Vaka'] >,
+			'ainews': ReturnType< $bog_dobro_app['Ainews'] >,
 		}) 
 	}
 	
@@ -6769,6 +8467,7 @@ declare namespace $.$$ {
     class $bog_dobro_app extends $.$bog_dobro_app {
         Bot(): $.$gd_bot;
         Bot_context(): string;
+        Ainews(): $.$bog_ainews_app;
     }
 }
 

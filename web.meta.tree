@@ -44,7 +44,10 @@
 \/gd/bot
 	deploy \/gd/bot/logo
 	include \/mol/offline/install
+\/bog/ainews/app
+	include \/mol/offline/install
+	deploy \/bog/ainews/favicon.svg
+	deploy \/bog/ainews/manifest.webmanifest
 \/bog/dobro/app
 	include \/mol/offline/install
-	include \/mol/test
-	deploy \/bog/prof/assets
+	deploy \/bog/dobro/assets
