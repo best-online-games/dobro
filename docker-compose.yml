@@ -8,4 +8,6 @@ services:
     ports:
       - "9080:9080"
     restart: unless-stopped
+    tty: true
+    stdin_open: true
     command: "npm start"
