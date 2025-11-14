@@ -19,6 +19,7 @@ $bog_dobro_app $mol_book2_catalog
 				Support null
 				Lights null
 		prof <= Prof $bog_dobro_app_prof
+		charity <= Charity $bog_dobro_app_charity
 		settings <= Settings $bog_dobro_app_settings
 		vaka <= Vaka $bog_dobro_app_vaka
 		ainews <= Ainews $bog_ainews_app
