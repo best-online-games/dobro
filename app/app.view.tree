@@ -4,9 +4,12 @@ $bog_dobro_app $mol_book2_catalog
 		uri \bog/dobro/assets/icon.jpg
 	menu_title @ \Goodness is near 
 	menu_tools /
-		<= Lights $mol_lights_toggle
+		<= Theme_toggle $bog_theme_toggle
+			theme_auto <= Theme 
 	plugins /
 		<= Theme $bog_theme_auto
+			theme_light \$mol_theme_light
+			theme_dark \$mol_theme_dark
 	spreads *
 		\	
 			<= Bot $gd_bot
@@ -19,4 +22,6 @@ $bog_dobro_app $mol_book2_catalog
 		settings <= Settings $bog_dobro_app_settings
 		vaka <= Vaka $bog_dobro_app_vaka
 		ainews <= Ainews $bog_ainews_app
-			plugins null
+			menu_tools /
+			param null
+			Theme null
