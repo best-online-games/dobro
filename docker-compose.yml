@@ -11,3 +11,7 @@ services:
     tty: true
     stdin_open: true
     command: "npm start"
+    
+    # http://localhost:9080/bog/dobro/app/-/test.html
+    # 
+    # https://best-online-games.github.io/dobro/

@@ -10,3 +10,7 @@ COPY . /mam/bog/dobro
 RUN npm exec mam /bog/dobro
 
 EXPOSE 9080
+
+# http://localhost:9080/bog/dobro/app/-/test.html
+# 
+# https://best-online-games.github.io/dobro/

@@ -76,11 +76,11 @@ docker-compose up
 Что делает Compose:
 
 - строит образ по `bog/dobro/Dockerfile` на базе `node:20-alpine`
-- внутри образа создаётся новый mam‑проект в `/app/mam`
-- исходники Добро копируются в `/app/mam/bog/dobro`
-- `npm start` внутри контейнера запускает `mam .` из корня `/app/mam`
+- внутри образа создаётся mam‑проект в `/mam`
+- исходники Добро копируются в `/mam/bog/dobro`
+- `npm exec mam /bog/dobro` собирает модуль, а `npm start` поднимает dev‑сервер mam
 
-После запуска приложение доступно по адресу:
+После запуска **во всех вариантах (локально, Docker, Docker Compose)** приложение доступно по адресу:
 
 ```text
 http://localhost:9080/bog/dobro/app/-/test.html
