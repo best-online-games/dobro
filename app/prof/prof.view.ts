@@ -42,12 +42,7 @@ namespace $.$$ {
 			return indices.map(i => this.Helper_item(i))
 		}
 
-		// Link URIs to open Bot with seeded prompt
-		Helper_item_uri(index: number) {
-			return this.$.$mol_state_arg.link({ '': '\t', prompt: 'привет расскажи о себе' })
-		}
 
-		// Ensure bot starts fresh when opened from a card, set role, seed prompt and navigate
 		@$mol_action
 		Helper_item_open(index: number, event?: Event) {
 			event?.preventDefault()
@@ -64,7 +59,10 @@ namespace $.$$ {
 			try {
 				this.$.$mol_state_session?.value('gd_profession', title)
 			} catch {}
-			this.$.$mol_state_arg.go({ '': '\t', prompt: 'привет расскажи о себе' })
+			this.$.$mol_state_arg.go({
+				'': '\t',
+				prompt: 'привет',
+			})
 		}
 	}
 }

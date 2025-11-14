@@ -30,5 +30,10 @@ namespace $.$$ {
 			whiteSpace: 'normal',
 			wordBreak: 'break-word',
 		},
+		Helper_link:{
+			display: "flex"
+			, flexWrap:"wrap"
+			
+		}
 	})
 }
