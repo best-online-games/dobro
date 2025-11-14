@@ -22,5 +22,13 @@ namespace $.$$ {
 				boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
 			},
 		},
+		Helper_title_view: {
+			whiteSpace: 'normal',
+			wordBreak: 'break-word',
+		},
+		Helper_descr_view: {
+			whiteSpace: 'normal',
+			wordBreak: 'break-word',
+		},
 	})
 }

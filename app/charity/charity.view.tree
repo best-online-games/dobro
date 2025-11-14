@@ -1,0 +1,14 @@
+$bog_dobro_app_charity $mol_page
+	title @ \Charity
+	body /
+		<= Charity_list $mol_list
+			rows <= charity_rows /
+
+$bog_dobro_app_charity_row $mol_card
+	title \
+	description \
+	sub /
+		<= Title $mol_text
+			text <= title \
+		<= Description $mol_text
+			text <= description \
